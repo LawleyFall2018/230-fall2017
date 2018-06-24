@@ -1,4 +1,4 @@
-# Week 1 Tuesday Exercise (29 August 2017)
+# Week 1 Tuesday Exercise (28 August 2017)
 
 ## Overview & Goals
 
@@ -40,6 +40,3 @@ You may find these articles on VS Code useful:
   - [HTML Programming in VS Code](https://code.visualstudio.com/docs/languages/html)
   - [Save Time and Keystrokes with Emmet in Visual Studio Code](https://devhammer.net/blog/save-time-and-keystrokes-with-emmet-in-visual-studio-code/)
 
-## Review of Uploading to `people.rit.edu`
-
-If you're a New Media Design student who didn't take IGME-110, or if you've forgotten how to upload files to the RIT web server, you should complete the [review tutorial on uploading files to the people.rit.edu server](../week0/uploading.md). 
