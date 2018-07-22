@@ -1,7 +1,8 @@
 # IGME-230 Web Design &amp; Implementation, Fall 2017: Schedule of Topics
 
 ## Contents
-- [Week 1 (Aug 29/31): Course Overview, Expectations, & Tools](#week1)
+- [Week 0 (Before Class Begins)- Review Basic HTML/CSS](#week0)
+- [Week 1 (Aug 28/30): Course Overview, Expectations, & Tools; Basic Web Server Operation](#week1)
 - [Week 2 (Sep 5/7): HTML & CSS Beyond the Basics: Semantic HTML, CSS Box Model, Complex Selectors](#week2)
 - [Week 3 (Sep 12/14): Web Server Basics & Version Control](#week3)
 - [Week 4 (Sep 19/21): Designing for the Web](#week4)
@@ -18,8 +19,16 @@
 - [Week 15 (Dec 5/7): .htacces Authentication, Basic PHP & Practical Exam](#week15)
 - [Finals Week: Makeup Practical Exam](#finals)
 
+## <a name="week0"> (Before class begins): Review HTML and CSS From Prior Classes</a>
+All students in this class are expected to have familiarity with basic HTML and CSS. I will not be reviewing basic concepts in this class, so if it's been a while since you've taken a class that covers it (IGME-110 for NMID students, NMDE-103 for NMD students), you may need to get yourself up to speed before we begin. I recommend either of these tutorials:
+- [Lynda.com HTML Essential Training](https://www.lynda.com/HTML-tutorials/HTML-Essential-Training/170427-2.html?org=rit.edu), sections 1-7 (requires RIT login)
+-  [Mozilla Developers Network (MDN) Learn Web Development](https://developer.mozilla.org/en-US/docs/Learn), HTML and CSS sections. 
+
+On the Saturday after classes begin (September 1), I will offer an optional HTML/CSS/FTP "bootcamp" that you are welcome to attend if you'd like some extra help getting back up to speed on the concepts. Details will be provided in the class Slack. 
+
+
 ## <a name="week1">Week 1</a> (Aug 29/31): Overview: Syllabus, Expectations, Tools
-On Tuesday, I will review the syllabus, goals, and requirements for class, and discuss the tools and technologies we'll be using for communication, collaboration, and content creation. On Thursday, I'll talk about some general HTML and CSS concepts, and we'll start on an HTML & CSS exercise that builds on the content you should have covered in previous classes. 
+On Tuesday, I will review the syllabus, goals, and requirements for class, and discuss the tools and technologies we'll be using for communication, collaboration, and content creation. On Thursday, we'll look at how web servers work. 
 
 - **Tuesday Readings**
   - [Course Syllabus](README.md)
@@ -30,10 +39,12 @@ On Tuesday, I will review the syllabus, goals, and requirements for class, and d
   - In this exercise, you'll set up your GitHub account, set up an account on the class Slack, and configure either Visual Studio Code or Brackets for use in class. 
 
 - **Thursday Readings**
-   - Review the content in [Lynda.com HTML Essential Training, Lessons 1-3, 6, and 7](https://www.lynda.com/HTML-tutorials/HTML-Essential-Training/170427-2.html?org=rit.edu). Some of it should be familiar (like basic HTML structure and markup). Other parts may be new (like structuring content with semantic tags, linking to regions inside a page, and creating complex lists). To speed things up, you can skim the transcripts for new concepts, rather than watching all of the videos, and just watch the portions you need to get caught up. 
- 
-- **[Thursday Exercise](./weekly_materials/week1/basicMarkupExercise.md)**
-  - We will begin the process of marking up a text file with HTML and CSS  
+  - [.htaccess-Guide](http://www.htaccess-guide.com/)
+  - [Comprehensive guide to .htaccess](http://www.javascriptkit.com/howto/htaccess.shtml)
+
+- **[Tuesday Exercise](weekly_materials/week3/htaccessExercise.md)**
+  - In today's exercise, you'll create an .htaccess file for your banjo.rit.edu account. 
+
 
 ## <a name="week2">Week 2</a> (Sep 5/7): CSS
 This week we'll take a deeper dive into aspects of CSS that aren't covered in the prereq classes: the CSS box model, CSS element positioning, CSS selector types, and using Google fonts.
@@ -56,12 +67,7 @@ This week we'll take a deeper dive into aspects of CSS that aren't covered in th
 ## <a name="week3">Week 3</a> (Sep 12/14): Web Server Basics & Version Control 
 This week we'll talk about how web servers process the requests they receive from browsers, and how you can use .htaccess files to modify that behavior. We'll also talk about version control for websites, and you'll be introduced to Git and GitHub for tracking and maintaining files for your website(s). I highly recommend starting on Thursday's GitHub tutorials *early*, as they'll take some time to work through. 
 
-- **Tuesday Readings**
-  - [.htaccess-Guide](http://www.htaccess-guide.com/)
-  - [Comprehensive guide to .htaccess](http://www.javascriptkit.com/howto/htaccess.shtml)
 
-- **[Tuesday Exercise](weekly_materials/week3/htaccessExercise.md)**
-  - In today's exercise, you'll create an .htaccess file for your banjo.rit.edu account. 
 
 - **Thursday Readings**
   - [Lynda.com: GitHub for Web Designers, Chapters 1-3](https://www.lynda.com/GitHub-tutorials/GitHub-Web-Designers/162276-2.html?org=rit.edu)
