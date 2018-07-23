@@ -28,7 +28,7 @@ On the Saturday after classes begin (September 1), I will offer an optional HTML
 
 
 ## <a name="week1">Week 1</a> (Aug 29/31): Overview: Syllabus, Expectations, Tools
-On Tuesday, I will review the syllabus, goals, and requirements for class, and discuss the tools and technologies we'll be using for communication, collaboration, and content creation. On Thursday, we'll look at how web servers work. 
+On Tuesday, I will review the syllabus, goals, and requirements for class, and discuss the tools and technologies we'll be using for communication, collaboration, and content creation. On Thursday, we'll talk about how web servers process the requests they receive from browsers, and how you can use .htaccess files to modify that behavior. We'll also discuss hosting options, both at and outside of RIT. 
 
 - **Tuesday Readings**
   - [Course Syllabus](README.md)
@@ -39,12 +39,21 @@ On Tuesday, I will review the syllabus, goals, and requirements for class, and d
   - In this exercise, you'll set up your GitHub account, set up an account on the class Slack, and configure either Visual Studio Code or Brackets for use in class. 
 
 - **Thursday Readings**
+  - [MDN: What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
   - [.htaccess-Guide](http://www.htaccess-guide.com/)
   - [Comprehensive guide to .htaccess](http://www.javascriptkit.com/howto/htaccess.shtml)
 
-- **[Tuesday Exercise](weekly_materials/week3/htaccessExercise.md)**
+- **[Thursday Exercise](weekly_materials/week3/htaccessExercise.md)**
   - In today's exercise, you'll create an .htaccess file for your banjo.rit.edu account. 
 
+## <a name="week2">Week 2</a> (Sept 4/6): Web Server Basics & Version Control 
+We'll also talk about version control for websites, and you'll be introduced to Git and GitHub for tracking and maintaining files for your website(s).  
+
+- **Tuesday Readings**
+  - [Lynda.com: GitHub for Web Designers, Chapters 1-3](https://www.lynda.com/GitHub-tutorials/GitHub-Web-Designers/162276-2.html?org=rit.edu) - I highly recommend starting on this early. 
+  
+- **[Tuesday Exercise](weekly_materials/week3/github-exercise.pdf)**
+  - In this exercise, you'll work with two different GitHub repositories to learn how to submit a pull request to a repository controlled by someone else, and how to collaboratively edit a file with other users. 
 
 ## <a name="week2">Week 2</a> (Sep 5/7): CSS
 This week we'll take a deeper dive into aspects of CSS that aren't covered in the prereq classes: the CSS box model, CSS element positioning, CSS selector types, and using Google fonts.
@@ -64,16 +73,7 @@ This week we'll take a deeper dive into aspects of CSS that aren't covered in th
 
 [Project 1](projects/project1.md) (a landing page for your classwork) is due by midnight (11:59pm) on Thursday, September 14th) 
   
-## <a name="week3">Week 3</a> (Sep 12/14): Web Server Basics & Version Control 
-This week we'll talk about how web servers process the requests they receive from browsers, and how you can use .htaccess files to modify that behavior. We'll also talk about version control for websites, and you'll be introduced to Git and GitHub for tracking and maintaining files for your website(s). I highly recommend starting on Thursday's GitHub tutorials *early*, as they'll take some time to work through. 
 
-
-
-- **Thursday Readings**
-  - [Lynda.com: GitHub for Web Designers, Chapters 1-3](https://www.lynda.com/GitHub-tutorials/GitHub-Web-Designers/162276-2.html?org=rit.edu)
-  
-- **[Thursday Exercise](weekly_materials/week3/github-exercise.pdf)**
-  - In this exercise, you'll work with two different GitHub repositories to learn how to submit a pull request to a repository controlled by someone else, and how to collaboratively edit a file with other users. 
 
 ## <a name="week4">Week 4</a> (Sep 19/21): Designing for the Web
 When we talk about "web design," we're actually talking about a much wider range of concepts than graphic design--we're also talking about interaction design, usability, and accessibility. This week we'll talk about the range of design issues related to the web. On Tuesday we'll focus on the design process as a whole.
