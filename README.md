@@ -50,7 +50,7 @@ I give only three possible final grades in this class. You'll receive a grade of
 
 ### Projects (70% of grade)
 
-- **[Project 1](./projects/project1.md)**: Personal Page for Class (10% of final grade, due 10 September 2017)
+- **[Project 1](./projects/project1.md)**: Personal Page for Class (10% of final grade, due 8 September 2018)
 
 - **[Project 2](./projects/project2.md)**: Personal Portfolio (20% of final grade, due 15 October 2017)
 
