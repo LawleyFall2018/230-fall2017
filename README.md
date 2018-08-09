@@ -17,7 +17,11 @@
 This course provides an introduction to web development tools and technologies, such as X/HTML, CSS, Javascript and DHTML, AJAX, web platforms and environments, and server-side programming methods.
 
 ## <a name="prereq">Prerequisite Knowledge</prereq>
-I expect students in this class to have a basic working knowledge of HTML, CSS, and publishing to RIT's web hosting environment (people.rit.edu). For both GDD and New Media Interactive students, that material was covered in IGME-110. If you need a review of HTML & CSS, review the [Lynda.com HTML Essential Training tutorial](https://www.lynda.com/HTML-tutorials/HTML-Essential-Training/170427-2.html?org=rit.edu). I've also written up a [brief review/tutorial on how to upload files to the RIT server](weekly_materials/week0/uploading.md). 
+All students in this class are expected to have familiarity with basic HTML and CSS. I will not be reviewing basic concepts in this class, so if it's been a while since you've taken a class that covers it (IGME-110 for NMID students, NMDE-103 for NMD students), you may need to get yourself up to speed before we begin. I recommend either of these tutorials:
+- [Lynda.com HTML Essential Training](https://www.lynda.com/HTML-tutorials/HTML-Essential-Training/170427-2.html?org=rit.edu), sections 1-7 (requires RIT login)
+-  [Mozilla Developers Network (MDN) Learn Web Development](https://developer.mozilla.org/en-US/docs/Learn), HTML and CSS sections. 
+
+On the Saturday after classes begin (September 1), I will offer an optional HTML/CSS/FTP "bootcamp" that you are welcome to attend if you'd like some extra help getting back up to speed on the concepts. Details will be provided in the class Slack. 
 
 ## Course Materials and Communication!
 There is no required textbook for the course, but there will be an assortment of handouts and online readings that you will receive over the course of the semester. They will be uploaded to (or linked from) this Github site. 

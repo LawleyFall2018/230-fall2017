@@ -46,8 +46,8 @@ On Tuesday, I will review the syllabus, goals, and requirements for class, and d
 - **[Thursday Exercise](weekly_materials/week3/htaccessExercise.md)**
   - In today's exercise, you'll create an .htaccess file for your banjo.rit.edu account. 
 
-## <a name="week2">Week 2</a> (Sept 4/6): Web Server Basics & Version Control 
-We'll also talk about version control for websites, and you'll be introduced to Git and GitHub for tracking and maintaining files for your website(s).  
+## <a name="week2">Week 2</a> (Sept 4/6): Git, GitHub, and GitHub Pages 
+This week we'll talk about version control using Git, the web service GitHub, and publishing websites on GitHub using the GitHub Pages functionality. You will need to have set up your GitHub account and sent us your username to be able to complete the in-class exercise.  
 
 - **Tuesday Readings**
   - [Lynda.com: GitHub for Web Designers, Chapters 1-3](https://www.lynda.com/GitHub-tutorials/GitHub-Web-Designers/162276-2.html?org=rit.edu) - I highly recommend starting on this early. 
@@ -55,23 +55,22 @@ We'll also talk about version control for websites, and you'll be introduced to 
 - **[Tuesday Exercise](weekly_materials/week3/github-exercise.pdf)**
   - In this exercise, you'll work with two different GitHub repositories to learn how to submit a pull request to a repository controlled by someone else, and how to collaboratively edit a file with other users. 
 
-## <a name="week2">Week 2</a> (Sep 5/7): CSS
-This week we'll take a deeper dive into aspects of CSS that aren't covered in the prereq classes: the CSS box model, CSS element positioning, CSS selector types, and using Google fonts.
+## <a name="week3">Week 3</a> (Sept 11/13): HTML & CSS: Beyond the Basics
+This week we'll take a deeper dive into aspects of HTML and CSS that aren't covered in the prereq classes: semantic HTML,  complex CSS selectors, and CSS positioning.
 
 - **Tuesday Readings**
-  - [Lynda.com HTML Essential Training, Lessons 4-5](https://www.lynda.com/HTML-tutorials/HTML-Essential-Training/170427-2.html?org=rit.edu). 
-  - [Lynda.com: Learning CSS, Sections 1-3](https://www.lynda.com/CSS-tutorials/CSS-Fundamentals/417645-2.html?org=rit.edu): This is a video-only tutorial, rather than a hands-on tutorial, so it will take less time to complete. Some of it will be review from past classes, but it goes into significantly more detail that the prerequisite classes. 
+
 
 - **[Tuesday Exercise](./weekly_materials/week2/advancedMarkupExercise.md)**
   - We will revisit the file we worked on last week, adding additional CSS formatting.
  
 - **Thursday Readings**
-  - [Lynda.com: CSS Box Model, Sections 1-3](https://www.lynda.com/CSS-tutorials/Making-Sense-CSS-Box-Model/372544-2.html?org=rit.edu)
+
   
 - **[Thursday Exercise](./weekly_materials/week2/cssPositioningExercise.md)**
   - We will use CSS positioning to modify the layout of an HTML file 
 
-[Project 1](projects/project1.md) (a landing page for your classwork) is due by midnight (11:59pm) on Thursday, September 14th) 
+[Project 1](projects/project1.md) (a landing page for your classwork) is due by midnight (11:59pm) on Friday, September 14th) 
   
 
 
