@@ -1,3 +1,72 @@
 * {
     font-family: "Libre Franklin", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px
+}
+
+#wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Headings */
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* TOC */
+nav {
+    display:none;
+}
+
+/* Main Content */
+main h2 {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+
+.weekly_content {
+    font-size: 14px;
+    padding: 0 10px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 768px){
+    .mobile-break {
+        display:none;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    main h2 {
+        
+    }
+
+    .weekly_content {
+
+    }
+
+    nav {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        display: block;
+        float: right;
+    }
 }
