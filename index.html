@@ -292,19 +292,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        var week = document.querySelectorAll("main h2");
-        var i;
-
-        for (i = 0; i < week.length; i++) {
-            week[i].addEventListener("click", function () {
-                /* Toggle between hiding and showing the active panel */
-                var content = this.nextElementSibling;
-                $(content).toggle();
-            });
-        } 
-    </script>
-
+    <script src="expand.js"></script> 
 </body>
 
 </html>

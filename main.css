@@ -21,7 +21,7 @@ html {
 
 h1 {
     text-align: center;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 main h2 {
@@ -47,6 +47,10 @@ main h2 {
 p, li {
     font-size: .9em;
     line-height: 1.5;
+}
+
+li li {
+    font-size: 1em;
 }
 
 
@@ -109,11 +113,17 @@ p, li {
         border-radius: 3px;
     }
 
+
     nav h2 {
         text-align: center;
     }
 
-    .weekly_content, .syllabus_content {
+    .links {
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .weekly_content, .syllabus_content, .panel {
         background-color: white;
         display: block;
         margin-top: -5px;

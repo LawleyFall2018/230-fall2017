@@ -17,7 +17,7 @@
 
         <header id="titlebar">
             <h1>Web Design &amp; Implementation (IGME-230)
-            <h1>Professor Lawley &bull; Fall 2018 Schedule</h1>
+                <h1>Professor Lawley &bull; Fall 2018 Schedule</h1>
         </header>
 
         <nav id="calendar">
@@ -545,9 +545,8 @@
                 </ul>
 
                 <h3>Thursday Exercise</h3>
-                <p>In class you’ll get critiques from your peers (and in some cases,
-                        from the professor). Those critiques should be used to update your design document as needed
-                        before turning it in on Sunday.</p>
+                <p>In class you’ll get critiques from your peers (and in some cases, from the professor). Those critiques should
+                    be used to update your design document as needed before turning it in on Sunday.</p>
             </div>
 
             <h2 id="week5">Week 5</a> (Sep 26/28):
@@ -585,7 +584,8 @@
                 </ul>
 
                 <h3>
-                    <a href="./weekly_materials/week5/responsiveExercise.md">Thursday Exercise</a></h3>
+                    <a href="./weekly_materials/week5/responsiveExercise.md">Thursday Exercise</a>
+                </h3>
                 <p>In this exercise, you’ll create two sets of styles for a web page–one optimized for full-size browsers, and
                     the other optimized for mobile.</p>
             </div>
@@ -890,18 +890,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        var week = document.querySelectorAll("main h2");
-        var i;
-
-        for (i = 0; i < week.length; i++) {
-            week[i].addEventListener("click", function () {
-                /* Toggle between hiding and showing the active panel */
-                var content = this.nextElementSibling;
-                $(content).toggle();
-            });
-        } 
-    </script>
+    <script src="expand.js"></script> 
 
 
 </body>
