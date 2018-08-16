@@ -92,6 +92,10 @@ header #menu {
     font-weight: bold;
  }
 
+ .inactive-link {
+     color: #ccc;
+ }
+
 .selected {
     background-color: white;
     color: black;
