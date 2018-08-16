@@ -1,28 +1,39 @@
 jQuery(document).ready(function($) {
+
+    var sw = document.body.clientWidth;
+    var currentState;
+
     var setClass = function() {
-      var ww = document.body.clientWidth;
-      if (ww >= 801) {
+      if (sw >= 801) {
         console.log("onload more than 800");
         $('svg').removeClass('fa-caret-left');
         $('svg').addClass('fa-caret-down');
+        currentState = "desktop";
+      }
+      else {
+        currentState = "mobile";
       };
     };
 
     var alterClass = function() {
         var ww = document.body.clientWidth;
-        if (ww >= 801) {
-          console.log("resize above 800");
+        if ( (ww >= 801) && (currentState == "mobile") ){
+          console.log("resize from mobile to desktop");
           $('svg').removeClass('fa-caret-left');
           $('svg').removeClass('fa-caret-down');
           $('svg').addClass('fa-caret-down');
           $('.panel').show();
+          currentState = "desktop";
+          console.log("Current state changed to " + currentState);
         }
-        else if (ww <= 800) {
-            console.log("resize under 800");
+        else if ( (ww <= 800) && (currentState == "desktop") ){
+            console.log("resize from desktop to mobile");
             $('svg').removeClass('fa-caret-down');
             $('svg').removeClass('fa-caret-left');
            $('svg').addClass('fa-caret-left');  
            $('.panel').hide();  
+           currentState = "mobile";
+           console.log("Current state changed to " + currentState);
         };
       }
 
@@ -32,6 +43,7 @@ jQuery(document).ready(function($) {
 
     //Fire initial setClass when the page first loads so icons match media query:
     setClass();
+    console.log("Starting state is " + currentState);
   });
   
 var headings = document.querySelectorAll(".subhead");
