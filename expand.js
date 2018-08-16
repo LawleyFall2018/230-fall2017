@@ -26,9 +26,9 @@ jQuery(document).ready(function($) {
         };
       }
 
-    $(window).resize(function(){
+    /* $(window).resize(function(){
       alterClass();
-    });
+    }); */
 
     //Fire initial setClass when the page first loads so icons match media query:
     setClass();
