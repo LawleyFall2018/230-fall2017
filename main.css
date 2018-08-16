@@ -1,6 +1,13 @@
+/* General Formatting */
+
 html {
     box-sizing: border-box;
     font-family: "Libre Franklin", 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
 }
 
 *,
@@ -9,41 +16,11 @@ html {
     box-sizing: inherit;
 }
 
-/* Mobile Defaults */
-
-#calendar,
-#topics,
-#toc {
-    display: none;
+a {
+    color: #f6f;
+    text-decoration: none;
 }
 
-/* Main Content */
-
-h1 {
-    text-align: center;
-    font-size: 3vw;
-}
-
-main h2 {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    font-size: 16px;
-    margin-bottom: 0;
-}
-
-.weekly_content, .syllabus_content {
-    display: none;
-    margin-top: -5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-}
 p, li {
     font-size: .9em;
     line-height: 1.5;
@@ -53,22 +30,177 @@ li li {
     font-size: 1em;
 }
 
+a:hover {
+    border-bottom: 1px solid #f6f;
+}
+
+
+/* Default Header (Mobile) */
+
+header {
+    display: grid;
+    width: 100%;
+    padding: 5px;
+    grid-template-columns: 75px auto;
+    grid-template-rows: 75px 25px;
+    background-color: #333;
+    color: white;
+}
+
+header #portrait {
+    grid-row: 1;
+    grid-column: 1;
+    max-width: 75%; 
+    align-self: center;
+    justify-self: center;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+header #details {
+    grid-row: 2;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    text-align: center; 
+    font-weight: bold;
+    font-size: .5em;
+    line-height: 1.2;
+}
+
+header #title {
+    grid-row: 1 / 3 ;
+    grid-column: 2 / 4;
+    padding-left: 20px; 
+    text-align: left; 
+}
+
+header #menu {
+    grid-row: 2;
+    grid-column: 3; 
+    align-self: end;
+    justify-self: end; 
+    margin: 5px; 
+    font-size: .6em;
+    list-style-type: none; 
+}
+ #menu li {
+    display: inline; 
+    text-align: center;
+    padding: 2px; 
+    border-radius: 3px;
+    font-weight: bold;
+ }
+
+.selected {
+    background-color: white;
+    color: black;
+}
+
+#title h1 {
+    font-size: 1.8em;
+    line-height: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#title h2 {
+    font-size: 1em;
+    line-height: 0;
+
+}
+
+/* Hide Full Size Items on Mobile */
+
+#calendar,
+#topics,
+#toc {
+    display: none;
+}
+
+/* Default Main Content (Mobile) */
+
+.subhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    color: #444;
+    padding: 0 8px;
+    transition: 0.4s;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.subhead h2 {
+    font-size: 1.2em;
+}
+
+.panel {
+    display: none;
+    margin-top: -5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+
+
 
 @media screen and (min-width: 800px) {
-    /* Grid Definition */
+
+    /* Full Size Header */
+
+    header {
+        grid-template-rows: 150px 50px;
+        grid-template-columns: 250px auto;
+    }
+
+    header #portrait {
+        max-width: 50%; 
+    }
+
+    header #details {
+        align-self: start;
+        font-size: .9em;
+        line-height: 1.2;
+        margin-top: 0;
+    }
+
+    header #title {
+        grid-column: 2;
+        align-self: center; 
+    }
+
+    #title h1 {
+        font-size: 2.5em;
+    }
+
+    #title h2 {
+        font-size: 1.8em;
+        padding-left: 5px;
+    }
+
+    header #menu {
+        grid-column: 2; 
+        margin-top: 0; 
+        padding: 5px; 
+        font-size: .8em;
+    }
+
+    /* Main Grid Definition */
     #wrapper {
         margin: 0 auto;
         display: grid;
         grid-template-columns: 250px auto;
-        grid-template-rows: 150px 1fr 30px;
+        grid-template-rows: 200px 1fr 30px;
         grid-gap: 1em;
         max-width: 1048px;
     }
     header {
         grid-row: 1;
         grid-column: 1 / 3;
-        background-color: white; 
     }
+    
     footer {
         grid-row: 3;
         grid-column: 1 / 3;
@@ -79,30 +211,19 @@ li li {
         margin-top: 0;
     }
     #calendar, #toc {
-        display: block;
-        min-width: 250px;
         grid-row: 2;
-        grid-column: 1 /2;
+        grid-column: 1 / 2;
+        width: 245px;
+        margin-left: 5px;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
     }
-    header h1 {
-        font-size: 2em;
-    }
-    main h2 {
-        cursor: auto;
-        margin-top: 0;
-        margin-bottom: 5px;
-        border-radius: 3px;
-    }
+
     .mobile-break {
         display: none;
     }
-    #titlebar {
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-    }
-    main h2, nav h2 {
-        font-size: 1.1em;
-    }
+    
 
     main h3 {
         font-size: 1em;
@@ -118,35 +239,23 @@ li li {
         text-align: center;
     }
 
-    .links {
-        font-weight: 600;
-        text-align: center;
-    }
-
-    .weekly_content, .syllabus_content, .panel {
+    .panel {
         background-color: white;
         display: block;
-        margin-top: -5px;
-        padding-bottom: 5px;
         padding-left: 10px;
     }
 
-     /* Calendar Sidebar */
-    #calendar {
-        /* display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        */
-        display: block;
-        width: 250px;
-
+    .subhead h2 {
+        font-size: 1.4em;
     }
+
+     /* Calendar Sidebar */
+    
     .month {
         display: block;
-        margin-left: 25px;
         margin-bottom: 20px;
         empty-cells: hide;
-        width: 250px;
+        width: 180px;
     }
     .month_title {
         background: #666;
