@@ -188,7 +188,7 @@ header #menu {
         grid-column: 2; 
         margin-top: 0; 
         padding: 5px; 
-        font-size: .8em;
+        font-size: 1em;
     }
 
     /* Main Grid Definition */
