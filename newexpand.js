@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
 
     var alterClass = function () {
         var ww = document.body.clientWidth;
-        if ((ww >= 801) && (size = "mobile")) {
+        if ((ww >= 801) && (size == "mobile")) {
             console.log("resize above 800");
             $('svg').removeClass('fa-caret-left');
             $('svg').removeClass('fa-caret-down');
@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
             size = "desktop";
             console.log("Triggered mobile to desktop");
         }
-        else if ((ww <= 800) && (size = "desktop")) {
+        else if ((ww <= 800) && (size == "desktop")) {
             console.log("resize under 800");
             $('svg').removeClass('fa-caret-down');
             $('svg').removeClass('fa-caret-left');
