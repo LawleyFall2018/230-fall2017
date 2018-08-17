@@ -15,18 +15,20 @@
 <body>
     <div id="wrapper">
         <header>
-            <img id="portrait" alt="Photo of Professor Lawley" src="lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';"
-            />
-            <p id="details">Professor Lawley<br>Fall 2018</p>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
             <div id="title">
                 <h1>Website Design &amp; Implementation</h1>
-                <h2>IGME-230</h2>
+                <h2>IGME-230 / Fall 2018</h2>
             </div>
-            <ul id="menu">
-                <li class="selected">Syllabus</li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li class="inactive-link">Projects</li>
-            </ul>
+            <div id="menu">
+                <span><a href="/index.html">Syllabus</a> </span>/
+                <span class="selected">Schedule</span> /
+                <span><a href="/projects.html">Projects</a></span>
+            </div>
+
         </header>
 
         <nav id="toc">
