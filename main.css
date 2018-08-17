@@ -198,6 +198,7 @@ footer {
     
     #prof img {
         max-height: 50%;
+        margin-top: 5px;
     }
     
     #prof #name {
