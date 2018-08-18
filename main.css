@@ -269,7 +269,7 @@ footer {
     }
     
     /* Summary Sidebar */
-        #summary {
+        #summary, #toc {
             font-size: .8em;
             padding: 0 10px;
         }
@@ -277,13 +277,13 @@ footer {
             border-bottom: 1px solid black; 
         }
         
-        #summary ul {
+        nav ul {
             padding-left: 20px;
             line-height: 1.2;
         }
 
-        #summary ul li {
-            padding-bottom: 5px; 
+        nav ul li {
+            padding-top: 5px; 
         }
     /* Calendar Sidebar */
     #calendar {
