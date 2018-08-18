@@ -140,7 +140,9 @@ nav {
     padding-left: 10px;
     margin-top: 0;
     border-radius: 3px; 
+    font-weight: 600;
 }
+
 .subhead {
     display: flex;
     justify-content: space-between;
