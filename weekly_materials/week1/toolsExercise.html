@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../main.css">
+    <title>Lawley IGME-230 Week 1 Tools Exercise: Fall 2018</title>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design &amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+             </div>
+             <div id="menu">
+                    <span><a href="../../index.html">Syllabus</a> </span>/
+                    <span><a href="../../schedule.html">Schedule</a></span> /
+                    <span><a href="../../projects.html">Projects</a></span>
+                </div>
+
+        </header>
+
+        <nav id="summary">
+
+            <h3>Key Dates</h3>
+            <p>Assigned: Tuesday 8/28</p> 
+            <p>Due: Thursday 8/30 (by start of class)</p>
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Create a GitHub account if you don't have one</li>
+                <li>Apply for GitHub Student Developer Pack</li>
+                <li>Join class Slack and post to #introductions channel</li>
+                <li>Configure your preferred HTML editor with Git and live preview</li>
+            </ul>
+            
+        </nav>
+
+        <main>
+            <h2 class="subpage-title">Tools Setup Exercise (Week 1, Tuesday 8/28)</h2>
+            <div class="subhead">
+                <h2 id="overview">Overview &amp; Goals</h2>
+                <i class="fas fa-caret-left"></i>
+            </div>
+            <div class="panel">
+                <p>This exercise is intended to get you set up with the tools we'll be using this semester. I'll only be using myCourses for grades--all content will be distributed via this Github repository, and while I'll respond to emails, you'll get faster responses (and help from your peers) if you use the Slack chat I've set up for the class. 
+                </p>
+            </div>
+            <div class="subhead">
+                <h2 id="part1">Part 1: GitHub</h2>
+                <i class="fas fa-caret-left"></i>
+            </div>
+            <div class="panel">
+                    <p>All of the content for this class is stored here on GitHub. You can see all of the code for the pgaes by going to the repository page at <a href="https://github.com/LawleyFall2018/230-fall2018">https://github.com/LawleyFall2018/230-fall2018</a>.</p>
+                    
+                    <p>Because these materials are in a public repository ("repo"), you don't need a Github account to access them. However, next week you'll be learning how to use Git and Github to keep track of files in your own projects, and publish them using the GitHub pages service (which hosts this coures website), so you'll need to make sure you have an account for that.</p>
+                    
+                    <p>Github accounts are free, but with a free account you can only have public repos, which means everybody can see all of your files. Since you'll be uploading files related to some of your assignments, and you might not want the world-at-large to see your work in progress, private repos make more sense. Happily, Github offers a free "Student Development Pack" that gives you unlimited private repos.</p>
+                   
+                    <p>Here's the page to sign up for a GitHub account if you don't already have one: <a href="https://github.com/join">https://github.com/join</a> . (If you already have an account, you don't need a new one for this class!)</p>
+                    
+                    <p>I also encourage you to sign up for the <a href="https://education.github.com/pack">Github Student Developer Pack</a>. You can see a list there of all the perks you get--but the most important one, and the only one you'll need for the class--is the unlimited private repos.</p>
+                    
+                    <p>Click on the link to get the pack. You'll need to fill out the form with your RIT email address, RIT's name, and your expected graduation date. For the "How do you plan to use GitHub?" question, you can say that you'll be using it for assignments in your web development course.</p>
+            </div>
+            <div class="subhead">
+                <h2 id="slack">Part 2: Slack</h2>
+                <i class="fas fa-caret-left"></i>
+            </div>
+            <div class="panel">
+                <p>I've created a Slack site for our class at <a href="http://lawley230fall2018/slack.com/">http://lawley230fall2018.slack.com/</a>. It's set up so anyone with an @rit.edu address can create an account, just to make things easier during the first few weeks of class; I'll disable that after add/drop is over. (NOTE: Every Slack site uses its own login and password, so even if you already use Slack for another group, you'll need to create a new user ID and password for this one.)</p>
+  
+                <p>Be sure to include your full name so that we can count your participation towards your grade (you can pick a different "display" name as a nickname to display.</p>
+                <img src="slack_name.png" alt="Slack name entry screenshot" class="screenshot" />
+
+                <p>After you've successfully logged into Slack, post a brief message in the #introductions channel so I know you're there, and include your GitHub user name in the message.</p>
+            </div>
+
+            <div class="subhead">
+                    <h2 id="editors">HTML Editors</h2>
+                    <i class="fas fa-caret-left"></i>
+                </div>
+                <div class="panel">
+                        <p>As you know, HTML and CSS files are plain text files, and can be created by any text editor. However, editors designed for web development make your life significant easier when you're working with all but the simplest code. I don't care what editor you use, but in class and in exercises, I'll be using Visual Studio Code; that's because it has built-in git functionality that you'll need for your projects and exercises. If you prefer to use another editor, like Brackets, that's fine--but you'll need to make sure that you install any necessary extensions so that it works properly with Git for Thursday's class.</p>
+                       
+                        <p>Both VS Code and Brackets have some functionality built in by default, but much of their power comes from their extensibility. The features that are built in to each editor vary, as well. VS Code, for instance, has native support for Git, while Brackets has native support for live web server previewing of pages.</p>
+                        
+                        <h3>### Visual Studio Code</h3>
+                        <p>VS Code is not the same thing as Visual Studio, although it's also made by Microsoft. It's a web-focused editor that's free and cross-platform, and it supports all of the technologies we'll be using in class. Its biggest weakness is its lack of a native live preview function, but you can add that functionality with the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).</p>
+                       
+                        <p>You may find these articles on VS Code useful:</p>
+                        <ul>
+                            <li><a href="https://code.visualstudio.com/docs/editor/codebasics">The Basics of Visual Studio Code</a></li>
+                            <li><a href="https://code.visualstudio.com/docs/languages/html">HTML Programming in VS Code</a></li>
+                            <li><a href="https://devhammer.net/blog/save-time-and-keystrokes-with-emmet-in-visual-studio-code/">Save Time and Keystrokes with Emmet in Visual Studio Code</a></li>
+                        </ul>
+                        
+                        <h3>Brackets</h3>
+                        <p>Brackets, developed by Adobe, is also free and cross-platform, and offers much of the same functionality as VS Code. While it has live previewing built in, it does not have Git integration built in--so if you choose to use Brackets, you'll need to install the [Brackets Git extension](https://github.com/brackets-userland/brackets-git#installation). Also, because Brackets is not my primary editor, I may not be able to answer questions about why something is or isn't working in the program.</p>
+                        
+                </div>
+        </main>
+
+        <footer><a id="cc" rel="license" href="http://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i>
+                <i class="fab fa-creative-commons-by"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a>
+
+    </div>
+
+    <script defer src="https://pro.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-yBZ34R8uZDBb7pIwm+whKmsCiRDZXCW1vPPn/3Gz0xm4E95frfRNrOmAUfGbSGqN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+</body>
+
+</html>
