@@ -135,11 +135,11 @@ nav {
 /* Default Main Content (Mobile) */
 
 .subpage-title {
-    background-color: #333;
+    background-color: #666;
     color: white; 
-    font-weight: 500;
     padding-left: 10px;
     margin-top: 0;
+    border-radius: 3px; 
 }
 .subhead {
     display: flex;
@@ -198,7 +198,7 @@ footer {
         margin: 0 auto;
         grid-template-columns: 250px auto;
         grid-template-rows: 200px 1fr 35px;
-        grid-gap: 5px;
+        grid-gap: 10px;
         max-width: 1048px;
     }
     header {
@@ -288,6 +288,7 @@ footer {
     /* Calendar Sidebar */
     #calendar {
         align-items: center;
+        
     }
 
     .month {
