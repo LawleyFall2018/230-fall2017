@@ -289,6 +289,7 @@ footer img {
  
     #prof img {
         margin-top: 5px;
+        max-height: 100px;
     }
     #prof #name {
         font-size: .8em;
