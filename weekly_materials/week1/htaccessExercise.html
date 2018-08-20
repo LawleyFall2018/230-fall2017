@@ -20,7 +20,7 @@
                 <p id="name">Professor <br class="mobile-break"> Lawley</p>
             </div>
             <div id="title">
-                <h1>Website Design &amp; Implementation</h1>
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
                 <h2>IGME-230 / Fall 2018</h2>
             </div>
             <div id="menu">
@@ -33,10 +33,6 @@
         </header>
 
         <nav id="summary">
-
-            <h3>Due Dates</h3>
-            <p>Assigned: Thursday 8/30</p>
-            <p>Due: Sunday 9/2, noon</p>
             <h3>Deliverables</h3>
             <ul>
                 <li>.htaccess file properly installed in www/igme230 directory on banjo.rit.edu</li>
@@ -45,14 +41,17 @@
                 <li>custom 404 redirect points to a working HTML file</li>
             </ul>
 
-            <p>We will grade this exercise by going to people.rit.edu/<em>youruserid</em>/igme230 and checking to make sure that pagespeed is disabled and that a custom error page loads if we type in a nonexistent file name.</p> 
+            <p><strong>Due Sunday 9/2 at noon</strong>. We will grade this exercise by going to people.rit.edu/<em>youruserid</em>/igme230 and checking to make sure that pagespeed is disabled and that a custom error page loads if we type in a nonexistent file name.</p> 
+            <h3><a href="../../schedule.html#week1">Back to Week 1</a></h3>
+
+     
 
         </nav>
         <main>
-            <h2 class="page-title">.htaccess Exercise (Week 1, Thursday 8/30)</h2>
+            <h2 class="page-title">.htaccess Exercise <br class="mobile-break" /><span class="weekinfo">(Week 1, Thursday 8/30)</span></h2>
             <div class="page-desc">
                 <p>In this exercise, you’ll be adding an .htaccess file to a directory on the banjo.rit.edu web server. The file will fix some troublesome default behavior on the banjo.rit.edu server, and will also allow you to use a custom 404 page for your site.</p>
-                <p><strong>Due Date: noon on Sunday, September 2</strong></p>
+                <p><strong>Due: Sunday, September 2 at noon</strong></p>
             </div>
 
             <div class="subhead">
@@ -69,8 +68,8 @@
                 <p>Start by using FTP to retrieve a local copy of www directory on banjo. Use VS Code (or your preferred editor) to open the local copy of the directory. Create a new file in the www folder called .htaccess, and in that file, put these two lines of text. The first line is a comment (indicated by a # followed by a space), and the second turns off the Pagespeed module for this directory (and all of the directories inside it).</p>
 
                 <pre><code>
-                    # Turn off server Pagespeed module
-                    ModPagespeed off
+ # Turn off server Pagespeed module
+ ModPagespeed off
                 </code></pre>
 
                 <p><em>Note: if you already have an .htaccess file in your www directory, you can add that line to the file rather than creating a new file.</em></p>
@@ -94,8 +93,8 @@
                 <p>If you don't already have an igme230 directory in your www directory, create one now. Create a new .htaccess file in that directory. It will inherit the settings from the directory above it, so you don't need to add the pagespeed instruction--you'll only be using this file for the custom error page instruction. Here's what needs to go into the file (remember to replace <em>youruserid</em> with your <strong>own</strong> RIT ID!):</p>
 
                 <pre><code>
-                    # Add custom 404 error page
-                    ErrorDocument 404 /youruserid/igme230/custom404.html
+ # Add custom 404 error page
+ ErrorDocument 404 /youruserid/igme230/custom404.html
                     </code></pre>
 
                 <p>Note that the path needs to be a complete path from the root of people.rit.edu down to the location of the custom error page--not a relative path.</p>
@@ -111,7 +110,7 @@
     </div>
     <script defer src="https://pro.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-yBZ34R8uZDBb7pIwm+whKmsCiRDZXCW1vPPn/3Gz0xm4E95frfRNrOmAUfGbSGqN" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="expand.js"></script>
+    <script src="../../expand.js"></script>
 
 </body>
 

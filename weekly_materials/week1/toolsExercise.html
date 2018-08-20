@@ -17,77 +17,83 @@
         <header>
             <div id="prof">
                 <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';" />
-                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+                <p id="name">Professor <br class="mobile-break" /> Lawley</p>
             </div>
             <div id="title">
-                <h1>Website Design &amp; Implementation</h1>
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
                 <h2>IGME-230 / Fall 2018</h2>
             </div>
             <div id="menu">
-                <span><a href="../../index.html">Syllabus</a> </span>/
-                <span><a href="../../schedule.html">Schedule</a></span> /
-                <span><a href="../../projects.html">Projects</a></span>
-            </div>
+                    <div id="menu">
+                            <span><a href="../../index.html">Syllabus</a> </span>/
+                            <span><a href="../../schedule.html">Schedule</a></span> /
+                            <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                            <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+                        </div>
+                        </div>
 
         </header>
 
         <nav id="summary">
 
-            <h3>Key Dates</h3>
-            <p>Assigned: Tuesday 8/28</p>
-            <p>Due: Thursday 8/30 (by start of class)</p>
             <h3>Deliverables</h3>
             <ul>
-                <li>Create a GitHub account if you don't have one</li>
-                <li>Apply for GitHub Student Developer Pack</li>
+                <li>Create a GitHub account if you don't have one, and apply for the GitHub Student Developer Pack</li>
                 <li>Join class Slack and post to #introductions channel</li>
-                <li>Configure your preferred HTML editor with Git and live preview</li>
-            </ul>
+                <li>Configure your preferred HTML editor with necessary extensions</li>
+                <li>Create an igme230 directory in your www directory on banjo.rit.edu and upload an index.html file to it</li> 
+             </ul>
+
+            <p><strong>Due Thursday, 8/30 at start of class</strong>. We will grade this exercise by checking the #introductions channel in Slack for your GitHub username, and checking to see if you've successfully set up people.rit.edu/<em>youruserid</em>/igme230/ .</p>
 
         </nav>
 
         <main>
-            <h2 class="subpage-title">Tools Setup Exercise (Week 1, Tuesday 8/28)</h2>
-            <div class="subhead">
-                <h2 id="overview">Overview &amp; Goals</h2>
-                <i class="fas fa-caret-left"></i>
-            </div>
-            <div class="panel">
-                <p>This exercise is intended to get you set up with the tools we'll be using this semester. I'll only be using myCourses for grades--all content will be distributed via this Github repository, and while I'll respond to emails, you'll get faster responses (and help from your peers) if you use the Slack chat I've set up for the class.
+            <h2 class="page-title">Tools Setup Exercise <br class="mobile-break"><span class="weekinfo">(Week 1, Tuesday 8/28)</span></h2>
+            <div class="page-desc">
+                <p>This exercise is intended to get you set up with the tools we'll be using this semester, and to give us a sense of where you are on prerequisite knowledge. 
                 </p>
             </div>
-            <div class="subhead">
-                <h2 id="part1">Part 1: GitHub</h2>
+
+            <div class="subhead" id="github">
+                <h2>Part 1: GitHub</h2>
                 <i class="fas fa-caret-left"></i>
             </div>
             <div class="panel">
-                <p>All of the content for this class is stored here on GitHub. You can see all of the code for the pgaes by going to the repository page at <a href="https://github.com/LawleyFall2018/230-fall2018">https://github.com/LawleyFall2018/230-fall2018</a>.</p>
+                <p>All of the content for this class is stored here on GitHub. You can see all of the code for these pages, and see the full revision history for each page, by going to the repository page at <a href="https://github.com/LawleyFall2018/230-fall2018">https://github.com/LawleyFall2018/230-fall2018</a>.</p>
 
                 <p>Because these materials are in a public repository ("repo"), you don't need a Github account to access them. However, next week you'll be learning how to use Git and Github to keep track of files in your own projects, and publish them using the GitHub pages service (which hosts this coures website), so you'll need to make sure you have an account for that.</p>
 
                 <p>Github accounts are free, but with a free account you can only have public repos, which means everybody can see all of your files. Since you'll be uploading files related to some of your assignments, and you might not want the world-at-large to see your work in progress, private repos make more sense. Happily, Github offers a free "Student Development Pack" that gives you unlimited private repos.</p>
 
-                <p>Here's the page to sign up for a GitHub account if you don't already have one: <a href="https://github.com/join">https://github.com/join</a> . (If you already have an account, you don't need a new one for this class!)</p>
+                <p>Here's the page to sign up for a GitHub account if you don't already have one: <a href="https://github.com/join">https://github.com/join</a> . (If you already have an account, you're welcome to use it for this class; you don't need to create a new one.)</p>
 
-                <p>I also encourage you to sign up for the <a href="https://education.github.com/pack">Github Student Developer Pack</a>. You can see a list there of all the perks you get--but the most important one, and the only one you'll need for the class--is the unlimited private repos.</p>
+                <p>I also encourage you to sign up for the <a href="https://education.github.com/pack">Github Student Developer Pack</a>. You can see a list there of all the perks you get--but the most useful one for you right now is that it gives you the ability to create private repositories.</p>
 
                 <p>Click on the link to get the pack. You'll need to fill out the form with your RIT email address, RIT's name, and your expected graduation date. For the "How do you plan to use GitHub?" question, you can say that you'll be using it for assignments in your web development course.</p>
             </div>
-            <div class="subhead">
-                <h2 id="slack">Part 2: Slack</h2>
+
+            <div class="subhead" id="slack">
+                <h2>Part 2: Slack</h2>
                 <i class="fas fa-caret-left"></i>
             </div>
             <div class="panel">
-                <p>I've created a Slack site for our class at <a href="http://lawley230fall2018/slack.com/">http://lawley230fall2018.slack.com/</a>. It's set up so anyone with an @rit.edu address can create an account, just to make things easier during the first few weeks of class; I'll disable that after add/drop is over. (NOTE: Every Slack site uses its own login and password, so even if you already use Slack for another group, you'll need to create a new user ID and password for this one.)</p>
+                <p>I've created a Slack site for our class at <a href="http://lawley230fall2018/slack.com/">http://lawley230fall2018.slack.com/</a>. It's by far the best way for you to ask me (or the TA, or the class) any questions you might have, and for me to quickly get important announcemnts ("Class is canceled today!" "I'm giving you an extra day on the assignment!") out to you.</p>
+                
+                <p> It's set up so anyone with an @rit.edu address can create an account, just to make things easier during the first few weeks of class; I'll disable that after add/drop is over. (NOTE: Every Slack site uses its own login and password, so even if you already use Slack for another group, you'll need to create a new user ID and password for this one.)</p>
 
                 <p>Be sure to include your full name so that we can count your participation towards your grade (you can pick a different "display" name as a nickname to display.</p>
                 <img src="slack_name.png" alt="Slack name entry screenshot" class="screenshot" />
 
-                <p>After you've successfully logged into Slack, post a brief message in the #introductions channel so I know you're there, and include your GitHub user name in the message.</p>
+                <p>After you've successfully logged into Slack, post your GitHub user name to the <a href="https://lawley230fall2018.slack.com/messages/CCC6CMZSA/">#introductions channel</a>.</em></strong>.</p>
+
+                <p>I highly recommend installing the Slack client on your mobile device (if you have one). You configure it so that you only receive notifications when the TA or I post to the #announcements channel, or you receive a private message. Since I use Slack to get last-minute information to you, there's a real benefit to having the client on your mobile.</p>
+
+                
             </div>
 
-            <div class="subhead">
-                <h2 id="editors">HTML Editors</h2>
+            <div class="subhead" id="editors">
+                <h2>Part 3: HTML Editors</h2>
                 <i class="fas fa-caret-left"></i>
             </div>
             <div class="panel">
@@ -109,6 +115,18 @@
                 <p>Brackets, developed by Adobe, is also free and cross-platform, and offers much of the same functionality as VS Code. While it has live previewing built in, it does not have Git integration built in--so if you choose to use Brackets, you'll need to install the [Brackets Git extension](https://github.com/brackets-userland/brackets-git#installation). Also, because Brackets is not my primary editor, I may not be able to answer questions about why something is or isn't working in the program.</p>
 
             </div>
+
+            <div class="subhead" id="banjo">
+                    <h2>Part 4: RIT's Web Server</h2>
+                    <i class="fas fa-caret-left"></i>
+                </div>
+                <div class="panel">
+                    <p>We will be working with two servers this semester--the main RIT people.rit.edu server, and GitHub Pages. You'll learn about GitHub Pages next week, but this week you'll be working with the RIT server.</p>
+                    <p>To demonstrate that you have a working knowledge of HTML, CSS, and FTP, you need to create a basic index.html page, and place it in an igme230 directory in your www directory on people.rit.edu (<a href="https://www.rit.edu/webdev/people/uploading-files">you'll need to connect to banjo.rit.edu using an FTP client to do that</a>).</p>
+                    <p>If it's done correctly, loading https://people.rit.edu/<em>youruserid</em>/igme230/ should display the file you created. (Remember to replace <em>youruserid</em> with your actual RIT user ID!)</p>
+                    <p>If you are unable to do this, you will not lose points--but we will check it again on Sunday at noon, and you will lose points if it has not been uploaded by then. That gives you some time to review the <a href="../../schedule.html#week0">Week 0</a> content, and/or attend the boot camp on Saturday afternoon.</p>
+
+                </div>
         </main>
 
         <footer><a id="cc" rel="license" href="http://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i>

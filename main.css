@@ -145,15 +145,24 @@ nav, .rubric, #rubric {
     margin-bottom: 5px; 
 }
 .page-title {
-    margin-top: 0;
+    margin-top: 5px;
     margin-bottom: 0;
     border-radius: 3px; 
     font-size: 1.8em;
     font-weight: 800;
+    line-height: .8;
 }
+
+.weekinfo {
+    font-weight:200; 
+    font-size: .5em;
+    padding-left: 10px;
+}
+
 
 .page-desc {
     padding-left: 5px;
+    font-size: .9em;
 }
 
 .subhead {
@@ -176,6 +185,7 @@ nav, .rubric, #rubric {
     display: none;
     margin-top: -5px;
     padding: 0 5px 5px 5px;
+    font-size: .9em;
 }
 
 .panel h3 {
@@ -316,10 +326,21 @@ footer img {
         display: none;
     }
 
+    .weekinfo {
+        font-weight:200; 
+        font-size: .8em;
+        padding-left: 0;
+    }
+    
+    .page-desc {
+        padding-left: 5px;
+        font-size: 1em;
+    }
     .panel {
         background-color: white;
         display: block;
         padding-left: 10px;
+        font-size: 1em;
     }
     .subhead h2 {
         font-size: 1.4em;
@@ -332,6 +353,15 @@ footer img {
         }
         #summary h2 {
             border-bottom: 1px solid black; 
+        }
+
+        .weekinfo {
+            font-weight:200; 
+            font-size: .8em;
+        }
+
+        #summary h3, #summary p {
+            margin-top:0px;
         }
         
         nav ul {
