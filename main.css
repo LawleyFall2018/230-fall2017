@@ -343,8 +343,8 @@ footer img {
         .rubric {
             display: grid;
             width: 100%;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 30px repeat(1fr);
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: auto;
             grid-gap: 1em;
             border-color: #333;
             border-radius: 0 0 3px 3px;
