@@ -5,98 +5,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project 1</title>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
     <link rel="stylesheet" href="../main.css">
+    <title>IGME-230 Project 1: Lawley Fall 2018</title>
 </head>
 
 <body>
-    <h1>Project 1: Basic Personal Page</h1>
-    <h2>Requirements</h2>
-    <p>Update the index.html file for your igme230 GitHub repository to include the following:</p>
-    <ul>
-        <li>your name (and, optionally, the course name)</li>
-        <li>a (recognizable) picture of yourself</li>
-        <li>placeholders for links to your in-class exercises and class projects (keeping in mind that the list of exercises
-            will have at least 20 items, and probably more, before the end of the semester).</li>
-    </ul>
-    <p>(If for privacy reasons you do not want to make your name or photo public, please talk to me about setting up a pseudonymous
-        page.)</p>
-    <p>Do your best to use the principles of design you learned in IGME-110 or other design classes; I want to see the best
-        you can do. (That does not mean putting in every type of bell and whistle you can imagine; keep it simple and clean!)
-        This is your opportunity to make a good first impression :)</p>
-    <p>Remember to design <em>for your audience</em>–which in this case is me. I’ll be using this page throughout the semester
-        for two tasks: associating your face with your name, and reviewing the work you do in this class. Keep in mind that
-        while sometimes I’ll be viewing your work on a high-res 15.6&quot; ASUS laptop running Chrome on Win 10, I’ll also
-        often be using my 9.7&quot; iPad Pro with mobile Safari, or my 12&quot; MacBook. To ensure that your page works in
-        all of these environments, I recommend testing in a 1024x768 screen layout.</p>
-    <p>Your page should use standards-compliant HTML for structure and CSS for both design. It should be entirely your own
-        work–while it is fine to take design inspiration from other websites, you must write your own HTML and CSS for this
-        assignment. (In other projects, you will have the opportunity to work with existing frameworks and/or templates of
-        code.)</p>
-    <p>All of your CSS should be commented, with an explanation as to what the style is accomplishing, so that I know you
-        understand the code you’re using. Here’s an example:</p>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design &amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../index.html">Syllabus</a> </span>/
+                <span><a href="../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
 
-    <pre><code>
-        /* This puts my photo on the right side of the page, 
-        adds a thin black border to the image, 
-        and leaves 15px of space between the text and the image. */
+        </header>
 
-        #portrait {
-            float: right;
-            padding: 0px;
-            border: 1px solid black;
-            margin-left: 15px;
-            }
-    </code></pre>
+        <nav id="toc">
+            <h2>Key Dates</h2>
+            <p>The completed page is due at midnight (11:59pm) on <strong>Friday, September 14th</strong>. The page should appear properly at the URL specified in the requirements by that time. You do not need to send me email or post anything to myCourses.</p>
+        </nav>
 
-    <h2 id="due-date">Due Date</h2>
-    <p>The completed page is due at midnight (11:59pm) on Friday, September 14th. The page should appear properly at the
-        URL specified in the requirements by that time. You do not need to send me email or post anything to myCourses.</p>
-    <h2 id="grading">Grading</h2>
-    <p>I will use this rubric for grading your pages:</p>
-    <table>
-        <thead>
-            <tr class="header">
-                <th>Requirement</th>
-                <th>Possible Points</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="odd">
-                <td>Located at specified URL</td>
-                <td>1</td>
-            </tr>
-            <tr class="even">
-                <td>Recognizable photo and name</td>
-                <td>1</td>
-            </tr>
-            <tr class="odd">
-                <td>Placeholders for exercise and project links</td>
-                <td>1</td>
-            </tr>
-            <tr class="even">
-                <td>Uses valid HTML &amp; CSS</td>
-                <td>2</td>
-            </tr>
-            <tr class="odd">
-                <td>CSS used for formatting and layout</td>
-                <td>2</td>
-            </tr>
-            <tr class="even">
-                <td>CSS annotated</td>
-                <td>1</td>
-            </tr>
-            <tr class="odd">
-                <td>Demonstrates understanding of design principles</td>
-                <td>2</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2 id="privacy-issues">Privacy Issues</h2>
-    <p>Occasionally there are reasons that a student doesn’t want their name and image visible on the open web. If this is
-        the case for you, please let me know and I’ll provide you with instructions for an alternative publishing option
-        that will be password-protected.</p>
+        <main>
+            <h2 class="page-title">Project 1: Basic Personal Page</h2>
+            <div class="page-desc">
+                <p>In this assignment, you will demonstrate your basic HTML, CSS, and GitHub skills by creating and publishing a "landing page" for your work in this class.</p>
+            </div>
 
+            <div class="subhead" id="requirements">
+                <h2>Requirements</h2>
+                <i class="fas fa-caret-left"></i>
+            </div>
+            <div class="panel">
+                <p>Update the index.html file for your igme230 GitHub repository to include the following:</p>
+                <ul>
+                    <li>your name (and, optionally, the course name)</li>
+                    <li>a (recognizable) picture of yourself</li>
+                    <li>placeholders for links to your in-class exercises and class projects (keeping in mind that the list of exercises will have at least 20 items, and probably more, before the end of the semester).</li>
+                </ul>
+                <p>(If for privacy reasons you do not want to make your name or photo public, please contact me and we'll work out an alternative for you.)
+                </p>
+                <p>Do your best to use the principles of design you learned in IGME-110 or other design classes; I want to see the best you can do. (That does not mean putting in every type of bell and whistle you can imagine; keep it simple and clean!) This is your opportunity to make a good first impression :)</p>
+
+                <p>Remember to design <em>for your audience</em>–which in this case is me. I’ll be using this page throughout the semester for two tasks: associating your face with your name, and reviewing the work you do in this class. Keep in mind that while sometimes I’ll be viewing your work on a high-res 15.6" ASUS laptop running Chrome on Win 10, I’ll also often be using my 9.7" iPad Pro with mobile Safari, or my 12" MacBook. To ensure that your page works in all of these environments, I recommend testing in a 1024x768 screen layout. (Later this semester you'll learn how to build responsive sites that adapt to the browser window size.)</p>
+
+                <p>Your page should use standards-compliant HTML for structure and CSS for both design. It should be entirely your own work–while it is fine to take design inspiration from other websites, you must write your own HTML and CSS for this assignment. (In other projects, you will have the opportunity to work with existing frameworks and/or templates of code.)
+                </p>
+                
+                <p>All of your CSS should be commented, with an explanation as to what the style is accomplishing, so that I know you understand the code you’re using. Here’s an example:</p>
+
+                <pre><code>
+                /* This puts my photo on the right side of the page, 
+                adds a thin black border to the image, 
+                and leaves 15px of space between the text and the image. */
+
+                #portrait {
+                    float: right;
+                    padding: 0px;
+                    border: 1px solid black;
+                    margin-left: 15px;
+                    }
+                </code></pre>
+            </div>
+
+            <div class="subhead" id="grading">
+                <h2>Grading Rubric</h2> 
+                <i class="fas fa-caret-left"></i>
+            </div>
+            <div class="panel">
+                <p>I will use this rubric for grading your pages:</p>
+                <table>
+                    <thead>
+                        <tr class="header">
+                            <th>Requirement</th>
+                            <th>Possible Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd">
+                            <td>Located at specified URL</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Recognizable photo and name</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Placeholders for exercise and project links</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Uses valid HTML &amp; CSS</td>
+                            <td>2</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>CSS used for formatting and layout</td>
+                            <td>2</td>
+                        </tr>
+                        <tr class="even">
+                            <td>CSS annotated</td>
+                            <td>1</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Demonstrates understanding of design principles</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../ritlogo.gif"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../igmlogo.png"></a>
+        </footer>
+
+        </div> <!-- end wrapper -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../expand.js"></script>
 </body>
 
 </html>
