@@ -355,13 +355,15 @@ footer img {
             border-bottom: 1px solid black; 
         }
 
+
         .weekinfo {
             font-weight:200; 
             font-size: .8em;
         }
 
         #summary h3, #summary p {
-            margin-top:0px;
+            margin-top:5px;
+            margin-bottom: 3px;
         }
         
         nav ul {
