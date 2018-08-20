@@ -41,7 +41,7 @@ header {
     width: 100%;
     height: 120px;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 90px 30px;
     background-color: #333;
     border-radius: 0 0 3px 3px;
     color: white;
@@ -56,7 +56,7 @@ header {
 }
 
 #prof img {
-    max-width: 50%;
+    max-height: 45px;
     border-radius: 50%;
     border: 1px solid white;
     cursor: pointer;
@@ -74,7 +74,7 @@ header {
     grid-column: 2;
     grid-row: 1;
     width: 100%;
-    margin: 5px;
+    margin-top: 20px;
     justify-self: start;
 }
 
@@ -231,6 +231,15 @@ footer img {
 }
 
 @media screen and (min-width:365px) {
+    header { 
+        height: 150px;
+        grid-template-rows: 120px 30px;
+    }
+
+    #prof img {
+        max-height: 80px;
+    }
+
     #title h1 {
         font-size: 1.8em;
     }
@@ -277,9 +286,8 @@ footer img {
 
     }
     /* Full Size Header Contents */
-  
+ 
     #prof img {
-        max-height: 50%;
         margin-top: 5px;
     }
     #prof #name {
