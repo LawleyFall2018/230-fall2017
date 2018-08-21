@@ -75,7 +75,6 @@ header {
     grid-row: 1;
     width: 100%;
     margin-top: 20px;
-    justify-self: start;
 }
 
 #title h1 {
@@ -95,8 +94,6 @@ header {
 #menu {
     grid-column: 1 / 3;
     grid-row: 2;
-    align-self: end;
-    justify-self: end;
     font-size: .6em;
     font-weight: 400;
     width: 100%;
