@@ -340,7 +340,10 @@ footer img {
         background-color: white;
         display: block;
         padding-left: 10px;
-        font-size: 1em;
+    }
+
+    .panel:last-child {
+        margin-bottom: 5px;
     }
     .subhead h2 {
         font-size: 1.4em;
