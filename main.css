@@ -139,7 +139,7 @@ nav, .rubric, #rubric {
     border: solid 5px red;
     border-radius: 3px; 
     padding: 0 5px;
-    margin-bottom: 5px; 
+    margin-bottom: 1em; 
 }
 .page-title {
     margin-top: 5px;
@@ -185,6 +185,7 @@ nav, .rubric, #rubric {
     font-size: .9em;
 }
 
+
 .panel h3 {
     font-size: 1.1em;
     padding-top: 5px; 
@@ -192,6 +193,13 @@ nav, .rubric, #rubric {
     margin-bottom: 0;
 
 }
+
+/* Sam Ruby's lovely and elegant solution to hiding the border above the first h3 if it's the first element in the panel (see "General Policies" on index.html for an example) */
+
+    .panel>h3:first-child {
+        border: none;
+    }
+
 
 panel p {
     padding:  0 5px 0 10px;
@@ -215,7 +223,9 @@ panel p {
     border: 1px solid black;
 }
 
-
+.fa-exclamation-circle {
+    margin-right: 5px;
+}
 
 /* Default Footer (Mobile) */
 
@@ -331,21 +341,20 @@ footer img {
     
     .page-desc {
         padding-left: 5px;
-        font-size: 1em;
     }
+    
+    .subhead h2 {
+        font-size: 1.4em;
+    }
+    
     .panel {
         background-color: white;
         display: block;
         padding-left: 10px;
     }
-
-    .panel:last-child {
-        margin-bottom: 5px;
-    }
-    .subhead h2 {
-        font-size: 1.4em;
-    }
-    
+  
+     
+   
     /* Summary Sidebar */
         #summary, #toc {
             font-size: .8em;
@@ -396,45 +405,45 @@ footer img {
         }
 
     /* Calendar Sidebar */
-    #calendar {
-        align-items: center;
-        
-    }
+        #calendar {
+            align-items: center;
+            
+        }
 
-    #calendar .month {
-        display: block;
-        margin-bottom: 20px;
-        empty-cells: hide;
-    }
-    #calendar .month_title {
-        background: #666;
-        color: #fff;
-        text-align: center;
-        padding: 0;
-    }
-    #calendar .month_name {
-        font-size: 14px;
-        font-weight: bold;
-        margin: .5em;
-        padding: 3px;
-    }
-    #calendar tr.weekdays td {
-        height: 1em;
-        width: 2em;
-        font-size: 12px;
-        font-weight: 600;
-    }
-    #calendar tr.week {
-        cursor: pointer;
-    }
-    #calendar tr td {
-        text-align: center;
-        background-color: #eaeaea;
-        border: 1px solid #eaeaea;
-        padding: 5px;
-        font-size: 10px;
-    }
-    #calendar tr.inactive_week td {
-        background-color: #fff;
-    }
+        #calendar .month {
+            display: block;
+            margin-bottom: 20px;
+            empty-cells: hide;
+        }
+        #calendar .month_title {
+            background: #666;
+            color: #fff;
+            text-align: center;
+            padding: 0;
+        }
+        #calendar .month_name {
+            font-size: 14px;
+            font-weight: bold;
+            margin: .5em;
+            padding: 3px;
+        }
+        #calendar tr.weekdays td {
+            height: 1em;
+            width: 2em;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        #calendar tr.week {
+            cursor: pointer;
+        }
+        #calendar tr td {
+            text-align: center;
+            background-color: #eaeaea;
+            border: 1px solid #eaeaea;
+            padding: 5px;
+            font-size: 10px;
+        }
+        #calendar tr.inactive_week td {
+            background-color: #fff;
+        }
 }
