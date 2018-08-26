@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
   var setClass = function () {
     if (sw >= 801) {
       console.log("onload more than 800");
-       $('.fa-caret-left').toggleClass('fa-caret-left fa-caret-down');
+       $('.fa-angle-left').toggleClass('fa-angle-left fa-angle-down');
       currentState = "desktop";
     }
     else {
@@ -28,19 +28,30 @@ jQuery(document).ready(function ($) {
     var ww = document.body.clientWidth;
     if ((ww >= 801) && (currentState == "mobile")) {
       console.log("resize from mobile to desktop");
-      $('.fa-caret-left').toggleClass('fa-caret-left fa-caret-down');
+      $('.fa-angle-left').toggleClass('fa-angle-left fa-angle-down');
       $('.panel').show();
       currentState = "desktop";
       console.log("Current state changed to " + currentState);
     }
     else if ((ww <= 800) && (currentState == "desktop")) {
       console.log("resize from desktop to mobile");
-      $('.fa-caret-down').toggleClass('fa-caret-down fa-caret-left');
+      $('.fa-angle-down').toggleClass('fa-angle-down fa-angle-left');
       $('.panel').hide();
       currentState = "mobile";
       console.log("Current state changed to " + currentState);
     };
   }
+
+  $('#expandAll').click(function () {
+    $('.fa-angle-left').toggleClass('fa-angle-left fa-angle-down');
+    $('.panel').show();
+  });
+
+  $("#collapseAll").click(function () {
+    $('.fa-angle-down').toggleClass('fa-angle-down fa-angle-left');
+    $('.panel').hide();
+  });
+
 
   $(window).resize(function () {
     alterClass();
@@ -70,9 +81,9 @@ var i;
 for (i = 0; i < headings.length; i++) {
   headings[i].addEventListener("click", function () {
     /* Toggle between hiding and showing the active panel */
-    var caret = $(this).children('i');
-    console.log(caret);
-    caret.toggleClass('fa-caret-left fa-caret-down');
+    var angle = $(this).children('i');
+    console.log(angle);
+    angle.toggleClass('fa-angle-left fa-angle-down');
     var panel = this.nextElementSibling;
     $(panel).toggle();
 

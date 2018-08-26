@@ -130,7 +130,7 @@ header {
 
 /* Hide Content on Mobile */
 
-nav, .rubric, #rubric {
+nav, .rubric, #rubric, #expandCollapse {
     display: none;
 }
 
@@ -209,14 +209,39 @@ panel p {
 .panel ul, ol {
     padding-left: 25px; 
     padding-bottom: 5px;
-    margin-top: 5px;
+    margin-top: .5em;
     font-size: .95em;
+}
+
+.panel>ul:first-child, .panel>ol:first-child {
+    padding-top: 1em;
+}
+
+.panel li {
+    padding-bottom: .4em;
 }
 
 .panel ol li {
     padding-bottom: 5px; 
 }
 
+h3 + p {
+    margin-top: .4em;
+}
+
+.examplecode {
+    width: 85%;
+    margin: 0 auto;
+    border: 1px dashed black;
+    padding: .75em;
+    background-color: #eee;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+code, pre {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
 
 .screenshot {
     max-width: 95%;
@@ -225,6 +250,10 @@ panel p {
 
 .fa-exclamation-circle {
     margin-right: 5px;
+}
+
+.url {
+    font-family: "Courier New", Courier, monospace;
 }
 
 /* Default Footer (Mobile) */
@@ -332,6 +361,22 @@ footer img {
     .mobile-break {
         display: none;
     }
+
+    #expandCollapse {
+        display: block; 
+        padding-bottom: .5em;
+        padding-right: .5em;
+        text-align: right; 
+    }
+
+    #expandAll, #collapseAll {
+        color: #f6f;
+        cursor: pointer;
+        border: 2px solid #f6f;
+        border-radius: 1px;
+        padding: 0 5px;
+    }
+
 
     .weekinfo {
         font-weight:200; 
