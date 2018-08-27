@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../main.css">
+    <title>IGME-230 Project 3: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break">&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../index.html">Syllabus</a> </span>/
+                <span><a href="../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+        <nav id="toc">
+            <h2>Key Dates</h2>
+            <p>The finished site is due at 8:00am on <strong>Monday, November 12</strong>. You do not need to send me email or post anything to myCourses.</p>
+        </nav>
+
+        <main>
+            <h2 class="page-title">Project 3: Group Web Site</h2>
+            <div class="page-desc">
+                <p>You will work as a group to design a website with resources doing research at RIT, particularly in media-related topics. You can the RIT Libraries' <a href="http://infoguides.rit.edu/c.php?g=332548&p=2258424">Infoguide on Researching the Interactive Media Industry</a> as a starting point. The goal is to make something that really addresses student needs and shows evidence of good interaction and information design, not just content and code.</p>
+
+            </div>
+
+            <div class="subhead" id="deliverables">
+                <h2>Deliverables</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>This project has a number of separate deliverables:</p>
+                <h3>Roles and Responsibilities Document (Due by end of class on Tuesday, October 16)</h3>
+                <p>Begin by working as a group to determine who will have responsibility for various aspects of the project--who will be responsible for the needs assessment, the documentation, the written content on the site, the wireframing, the visual design, the coding?</p>
+
+                <p>Once you've determined individual responsibilities, <em>>each person should update their <strong>own</strong> section</em> of the Roles-Responsibilities.md document in your group's GitHub repo with their own responsiblities. (Do not have one person enter this for everyone in the group; you will not get credit unless you were the one to commit the edit with your responsibilities.)</p>
+
+                <p>Individual responsibilities will almost certainly shift over time, as your project needs evolve; make sure that you update this document to reflect what your responsibilities are, as I will use this as part of my evaluation at the end of the project.</p>
+
+                <h3>Strategy, Scope, and Structure (Due 8am on Monday, 10/22)</h3>
+                <p>Determine what the goal of the site will be (what specific problem or user need will you be addressing?), and generate a strategy/scope description reflecting that. Working with the content list I provide, generate an information architecture diagram showing how that content will be grouped and organized on your site. Include all of that information in the appropriate section of the DesignDoc.md file in your GitHub repo.</p>
+
+                <h3>Skeleton/Wireframes (Due by start of class on Tuesday, 10/30)</h3>
+                <p>Create wireframes for each of your major page types (e.g. main/landing page, main category page, individual content page, about page, contact page), showing the basic grid and page layout you plan to use. We'll do a brief critique in class on Tuesday, and your group can start on design mockups and code once that's done. Add the wireframe images to your DesignDoc.md file.</p>
+
+                <h3>Surface/Mockups (Due by start of class on Tuesday, 11/6)</h3>
+                <p>Create mockups (they can be in Photoshop, or in a prototyping tool like Axure or UXPin) showing your intended design for the site. There should be one mockup for each wireframe you created. Once again, we'll do a brief critique in class before you turn them in to myCourses. Add the mockup images, and a style guide with information on colors, fonts, grid size, etc, to your design document.</p>
+
+                <h3>Final Site (Due 8am on Monday, 11/12)</h3>
+                <p>All final versions of files for the site must be posted to your shared GitHub repository. At least one group member must also publish the site on an RIT server, and all group members must link to a published version from their class landing page. The published version must be identical to the code in the GitHub rep.</p>
+
+                <h3>Self-Assessment (Due 8am on Tuesday, 11/13)</h3>
+                <p>Once the site is complete, each person should update their section of the Roles-Responsibilities.md document, adding a summary of their actual contributions to the project. (Do not remove or edit the responsibilities listed!) Did you do all of the things that were assigned to you? If not, why not? Did you do things that weren't assigned to you? If so, why? Do you feel that you did the best work that you could? I will draw heavily on this self-assessment, as well as the commit history for the website files, when assessing the participation component of your grade. </p>
+
+            </div>
+
+
+            <div class="subhead">
+                <h2 id="requirements">Final Project Requirements</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <h3>Page &amp; Content Requirements</h3>
+                <ul>
+                    <li>Main page that makes the content of the site clear</li>
+                    <li>Navigation bar with at a minimum three categories of information (keep in mind that while students are primarily interested in things like office hours and classes taught, external viewers are more interested in scholarship and projects).</li>
+                    <li>Pages or discrete content sections containing relevant content for each of the categories defined above. (You don't have to include everything on the current site, but you should have representative content.)</li>
+                    <li>A clear indication on the page (in a footer or callout) indicating that this is a class project, and linking to a page with the containing the following:
+                        <ul>
+                            <li>Information about your team members (names and photos)</li>
+                            <li>Source information for any images, content, or code that you didn't create yourself (including CSS frameworks, typefaces, and any code libraries)</li>
+                            <li>If you used a framework or template, explain if/how you modified it to work for your project</li>
+                            <li>How your group went above and beyond the base-level expectations for the project--what did you do that was particularly challenging? This could involve art/design, content, or code.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Design Requirements</h3>
+                <ul>
+                    <li>Responsive design with a minimum of two layouts--one optimized for desktop, one for mobile</li>
+                    <li>If a framework or template was used, colors and typefaces must be modified so that the site is not a "cookie cutter" replica of the template</li>
+                    <li>Principles of visual design employed: clear visual hierarchy, good use of white space, effective alignment of content, thoughtful choices of colors and visual elements</li>
+                    <li>Effective typography employed; typeface(s) chosen should be clear and legible as well as appropriate to the content being presented</li>
+                </ul>
+
+                <h3>Technology Requirements</h3>
+                <ul>
+                    <li>Semantic, valid HTML</li>
+                    <li>Well-structured, valid CSS</li>
+                    <li>Navigation menu available on all pages</li>
+                    <li>Images and other media are properly optimized for screen display</li>
+                </ul>
+
+            </div>
+            <div class="subhead" id="grading">
+                <h2>Grading </h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Percentage of Project Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Strategy &amp; Scope Document</td>
+                            <td>5%</td>
+                        </tr>
+                        <tr>
+                            <td>Structure Document &amp; Diagram</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>Wireframes</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>Mockups</td>
+                            <td>10%</td>
+                        </tr>
+                        <tr>
+                            <td>Participation</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>Final Site</td>
+                            <td>40%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Each of the first four deliverables will be graded as Excellent (100%), Good (85%), Poor (70%), or Missing (0%).</p>
+                <p>Participation will be graded on a scale of 1 to 10 using the Individual Roles &amp; Responsibilities document in your group’s Github repo, a peer evaluation form that I will ask you all to complete, and evidence of your contributions to the GitHub repository. I will focus on the level of your participation with your group, the amount you contributed to the final project, and whether you completed the work that you committed to.</p>
+                <p>The final site will be graded using the same basic rubric as for the personal porfolio project. Once again, to get the last four “above and beyond” points you’ll need to exceed my expectations on least one aspect of your site–use of code, quality of design, depth of content, etc.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Requirement</th>
+                            <th>Possible Points (20)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>All required content present</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Written content quality and organization</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Responsive Design</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Visual Design</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Typography</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Sematic, valid HTML</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Well-structured, valid CSS</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Effective navigation</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Properly optimized media</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>“Above and Beyond”</td>
+                            <td>4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../ritlogo.gif"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-title="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-title="CC BY"></i><i class="fab fa-creative-commons-sa" aria-title="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../igmlogo.png"></a>
+        </footer>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../expand.js"></script>
+</body>
+
+</html>
