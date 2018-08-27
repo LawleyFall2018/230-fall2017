@@ -512,4 +512,15 @@ footer img {
         color: black;
         border-top: 1px double black;
     }
+
+    a {
+        color: black;
+    }
+
+    a:after {
+        content:" (" attr(href) ") ";
+        font-size:0.8em;
+        font-weight:normal;
+    }
+
 }
