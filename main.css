@@ -432,8 +432,8 @@ footer img {
 
         #toc-wrapper {
             position: fixed;
-            width: 220px;
-        }
+        } 
+
 
         #rubric {
             display: flex;
@@ -492,4 +492,24 @@ footer img {
         #calendar tr.inactive_week td {
             background-color: #fff;
         }
+}
+
+@media print {
+    #wrapper {
+        display: block;
+    }
+
+    nav, #menu, .fa-angle-left, .fa-angle-down, .fa-angle-double-up, .fa-angle-double-down {
+        display:none;
+    }
+
+    .panel {
+        display: block;
+    }
+
+    .subhead {
+        background-color: none;
+        color: black;
+        border-top: 1px double black;
+    }
 }
