@@ -432,6 +432,7 @@ footer img {
 
         #toc-wrapper {
             position: fixed;
+            width: 220px;
         }
 
         #rubric {
