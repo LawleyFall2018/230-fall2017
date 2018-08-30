@@ -35,13 +35,11 @@
         <nav id="summary">
             <h3>Deliverables</h3>
             <ul>
-                <li>.htaccess file properly installed in www/igme230 directory on banjo.rit.edu</li>
-                <li>file includes mod_pagespeed override</li>
-                <li>file includes custom 404 redirect</li>
-                <li>custom 404 redirect points to a working HTML file</li>
+                <li>custom 404 redirect in your igme230 directory points to a working HTML file</li>
+                <li>NMID only: people.rit.edu pagespeed module disabled</li>
             </ul>
 
-            <p><strong>Due Sunday 9/2 at noon</strong>. We will grade this exercise by going to people.rit.edu/<em>youruserid</em>/igme230 and checking to make sure that pagespeed is disabled and that a custom error page loads if we type in a nonexistent file name.</p> 
+            <p><strong>Due Sunday 9/2 at noon</strong>. We will grade this exercise by going to your igme230 directory and checking to make sure that a custom error page loads if we type in a nonexistent file name. (If you're using people.rit.edu, we'll also check to be sure pagespeed is disabled.)</p> 
             <h3><a href="../../schedule.html#week1">Back to Week 1</a></h3>
 
      
@@ -50,61 +48,64 @@
         <main>
             <h2 class="page-title">.htaccess Exercise <br class="mobile-break" /><span class="weekinfo">(Week 1, Thursday 8/30)</span></h2>
             <div class="page-desc">
-                <p>In this exercise, you’ll be adding an .htaccess file to a directory on the banjo.rit.edu web server. The file will fix some troublesome default behavior on the banjo.rit.edu server, and will also allow you to use a custom 404 page for your site.</p>
+                <p>In this exercise, you’ll be adding an .htaccess file to a web directory to change the default 404 error page displayed when a file can't be found. If you use people.rit.edu for your web files, you'll also be using .htaccess to fix some troublesome default behavior on that server. </p>
                 <p><strong>Due: Sunday, September 2 at noon</strong></p>
             </div>
 
             <div class="subhead">
-                <h2 id="part1">Part 1: Using .htaccess To Change Default Server Behavior</h2>
+                <h2 id="part1">Part 1: Creating a Custom 404 Page</h2>
                 <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
             </div>
             <div class="panel">
-                <p>RIT’s banjo/people web server uses a server module called “Pagespeed” to speed the loading of images–which is helpful when you have high-traffic websites like the main RIT page or departmental pages, but not really necessary for personal pages. The problem with this module is that it has the side effect of adding a lot of code to your pages when they’re returned to the browser, making it harder to debug and validate them.</p>
+                <p>Most professional websites have a custom 404 error page that displays if you try to go to a page that doesn’t exist on the site. The default 404 error page is set in the server configuration file, which only the server administrator can change. But you can change the way the server handles files in your account, using a file called .htaccess. The instructions in that file will affect how the server processes all of the files in the directory you place it in, as well as all of the files contained in any subdirectories below it.</p>
 
-                <p>You can’t change the default server settings for banjo–only the system administrator can do that. But you can change the way the server handles files in your account, using a file called .htaccess. The instructions in that file will affect how the server processes all of the files in the directory you place it in, as well as all of the files contained in any subdirectories.</p>
+                <p>Start by using FTP to retrieve a local copy of yourigme230 directory from the server. Use VS Code or Brackets to open the directory. (Web editors work best if you open a directory rather than a file.)</p>
 
-                <p>The period at the beginning of the file name is intentional; it indicates a hidden file in UNIX. However, that same period can make the file difficult to work with on a personal computer–depending on how you have your operating system configured, you may not be able to see hidden files in the explorer/finder environment. However, VS Code has no problem creating or reading hidden files.</p>
+                <p><strong><em>If you haven't yet created an igme230 directory on an RIT web server, you should start with that first--and ask for help if you need it!)</em></strong></p>
 
-                <p>Start by using FTP to retrieve a local copy of www directory on banjo. Use VS Code (or your preferred editor) to open the local copy of the directory. Create a new file in the www folder called .htaccess, and in that file, put these two lines of text. The first line is a comment (indicated by a # followed by a space), and the second turns off the Pagespeed module for this directory (and all of the directories inside it).</p>
+                <p>Create a new html document in the igme230 directory to use as your error page. You can call it whatever you want, but this example will use the filename custom404.html. Put whatever you’d like in the page content. (Here's <a href="http://www.creativebloq.com/web-design/best-404-pages-812505">some inspiration</a>.)</p>
 
-                <pre><code>
- # Turn off server Pagespeed module
- ModPagespeed off
-                </code></pre>
+                <p>Create another new file in the igme230 folder called .htaccess. The period at the beginning of the file name is intentional; it indicates a hidden file in UNIX. The file should NOT have an extension (like .html or .txt) at the end, or it will not work. Note that your computer may not display hidden files properly in the OS, so you may not see it in the igme230 folder. However, both VS Code and Brackets are able to see and edit hidden files, even if the OS isn't displaying them in the file explorer.</p>
+        
+                <p>In the .htaccess file, put these two lines of text. The first line is a comment, the second line is actual instruction for the server. The instruction is slightly different for people.rit.edu than it is for cad.rit.edu; use the right code for your server!)</p>
 
-                <p><em>Note: if you already have an .htaccess file in your www directory, you can add that line to the file rather than creating a new file.</em></p>
+                <h4>people.rit.edu</h4>
 
-                <p>Use an SFTP client (like FileZilla or MobaXterm) to upload the .htaccess file to your www folder on the banjo.rit.edu server.</p>
+                <code># Add custom 404 error page<br>
+                ErrorDocument 404 /youruserid/igme230/custom404.html</code>
+                <p>(As always, remember to replace "youruserid" with your *own* user ID.)</p>
 
-                <p>Make sure you set the permissions on this file to 644 (Read and Write for you, Read only for group and other). You can do this using the FTP client, or by logging in to the server using MobaXterm (on Windows) or Terminal (on Mac) and running the appropriate chmod command.</p>
+                <h4><em>youruserid</em>.cad.rit.edu</h4>
 
-                <p>Try loading your main classwork page (people.rit.edu/<em>youruserid</em>/igme230) in a browser. If you get an error, it could be a mistake in the syntax of the file contents, or in the file permissions of the file or folder. Ask for help if necessary. Don't go on to the next section until it's working!</p>
-            </div>
+                <code># Add custom 404 error page<br>
+                ErrorDocument 404 /igme230/custom404.html</code>
 
-            <div class="subhead">
-                <h2 id="part2">Part 2: Creating a Custom 404 Page</h2>
-                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
-            </div>
-            <div class="panel">
-                <p>Most professional websites have a custom 404 error page that displays if you try to go to a page that doesn’t exist on the site. That’s quite easy to set up using .htaccess.</p>
-
-                <p>Create a new html document called custom404.html. You can put whatever you’d like in the page content--the only requirement is that it should include an image of some sort. (Here's <a href="http://www.creativebloq.com/web-design/best-404-pages-812505">some inspiration</a>.) When it's done, upload it to your wwww directory on banjo.</p>
-
-                <p>If you don't already have an igme230 directory in your www directory, create one now. Create a new .htaccess file in that directory. It will inherit the settings from the directory above it, so you don't need to add the pagespeed instruction--you'll only be using this file for the custom error page instruction. Here's what needs to go into the file (remember to replace <em>youruserid</em> with your <strong>own</strong> RIT ID!):</p>
-
-                <pre><code>
- # Add custom 404 error page
- ErrorDocument 404 /youruserid/igme230/custom404.html
-                    </code></pre>
-
-                <p>Note that the path needs to be a complete path from the root of people.rit.edu down to the location of the custom error page--not a relative path.</p>
-
-                <p>Upload the the two files to your igme230 directory on banjo. Make sure you set the permissions properly for the directory (755) and both files (644).</p>
+ 
+                <p>Note that in both cases, the path to the error document is a full (absolute) path from the server name (people.rit.edu, or <em>youruserid</em>.cad.rit.edu) down to the location of the custom error page--not a relative path from your personal directory.</p>
                 
-                <p>Try going to a nonexistent page in your week3 directory–something like this: people.rit.edu/<em>youruserid</em>/igme230/nonsense.html. If you’ve done everything properly, you should see the nonsense.html URL you typed in the location bar, but the custom error page that should be displayed in the browser. If it doesn’t work, ask for help!</p>
+                <p>Try going to a nonexistent page in your igme230 directory–something like this: people.rit.edu/<em>youruserid</em>/igme230/nonsense.html (or <em>youruserid</em>cad.rit.edu/nonsense.html). If you’ve done everything properly, you should still see the URL you typed in the location bar, and the custom error page that you uploaded and specified should be displayed in the browser. If it doesn’t work, ask for help!</p>
 
             
             </div>
+
+            <div class="subhead">
+                <h2 id="part2">Part 2 (people.rit.edu only): Using .htaccess To Turn Off Pagespeed</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>RIT’s people.rit.edu web server uses a server module called “Pagespeed” to speed the loading of images--which is helpful when you have high-traffic websites like the main RIT page or departmental pages, but not really necessary for personal pages. The problem with this module is that it has the side effect of adding a lot of code to your pages when they’re returned to the browser, making it harder to debug and validate them.</p>
+
+                <p>To see this in action, you need to have an HTML file that includes images on the server. If you don't already have an image on the index.html file in your igme230 directory, you should add that now. Once the file is on the server, load it in a browser and view the source. You should see the pagespeed code injected into your HTML (as shown in lecture).</p>
+
+                <p>To disable Pagespeed in your igme230 directory, you're going to edit the .htaccess file you created in part 1. Below the error document instructions, add these two lines:</p>
+
+                <code># Turn off server Pagespeed module<br>
+                ModPagespeed off</code>
+
+                <p>Upload your modified .htaccess file to your igme230 directory, and then try reloading your HTML file. (Make sure you force a full reload; Shift-reload on Firefox, Ctrl-reload in Chrome.) The Pagespeed injection code should be gone. (If it's not working, ask for help!)</p>
+            </div>
+
+ 
         </main>
         <footer>
                 <a href="http://rit.edu"><img src="../../ritlogo.gif"></a>
