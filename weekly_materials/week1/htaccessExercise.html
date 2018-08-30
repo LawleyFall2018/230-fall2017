@@ -48,7 +48,7 @@
         <main>
             <h2 class="page-title">.htaccess Exercise <br class="mobile-break" /><span class="weekinfo">(Week 1, Thursday 8/30)</span></h2>
             <div class="page-desc">
-                <p>In this exercise, you’ll be adding an .htaccess file to a web directory to change the default 404 error page displayed when a file can't be found. If you use people.rit.edu for your web files, you'll also be using .htaccess to fix some troublesome default behavior on that server. </p>
+                <p>In this exercise, you’ll be adding an .htaccess file to a web directory to change the default 404 error page displayed when a file can't be found. If you use people.rit.edu for your web files, you'll also be using .htaccess to turn off a server module for pages in your igme230 directory. </p>
                 <p><strong>Due: Sunday, September 2 at noon</strong></p>
             </div>
 
@@ -59,7 +59,7 @@
             <div class="panel">
                 <p>Most professional websites have a custom 404 error page that displays if you try to go to a page that doesn’t exist on the site. The default 404 error page is set in the server configuration file, which only the server administrator can change. But you can change the way the server handles files in your account, using a file called .htaccess. The instructions in that file will affect how the server processes all of the files in the directory you place it in, as well as all of the files contained in any subdirectories below it.</p>
 
-                <p>Start by using FTP to retrieve a local copy of yourigme230 directory from the server. Use VS Code or Brackets to open the directory. (Web editors work best if you open a directory rather than a file.)</p>
+                <p>Start by using FTP to retrieve a local copy of your igme230 directory from the server. Use VS Code or Brackets to open the directory. (Web editors work best if you open a directory rather than starting with an individual file.)</p>
 
                 <p><strong><em>If you haven't yet created an igme230 directory on an RIT web server, you should start with that first--and ask for help if you need it!)</em></strong></p>
 
@@ -67,7 +67,7 @@
 
                 <p>Create another new file in the igme230 folder called .htaccess. The period at the beginning of the file name is intentional; it indicates a hidden file in UNIX. The file should NOT have an extension (like .html or .txt) at the end, or it will not work. Note that your computer may not display hidden files properly in the OS, so you may not see it in the igme230 folder. However, both VS Code and Brackets are able to see and edit hidden files, even if the OS isn't displaying them in the file explorer.</p>
         
-                <p>In the .htaccess file, put these two lines of text. The first line is a comment, the second line is actual instruction for the server. The instruction is slightly different for people.rit.edu than it is for cad.rit.edu; use the right code for your server!)</p>
+                <p>In the .htaccess file, put these two lines of text. The first line is a comment, the second line is actual instruction for the server. <em>The file path in the second line is slightly different for people.rit.edu than it is for cad.rit.edu; use the right code for your server!</em></p>
 
                 <h4>people.rit.edu</h4>
 
@@ -97,10 +97,12 @@
 
                 <p>To see this in action, you need to have an HTML file that includes images on the server. If you don't already have an image on the index.html file in your igme230 directory, you should add that now. Once the file is on the server, load it in a browser and view the source. You should see the pagespeed code injected into your HTML (as shown in lecture).</p>
 
-                <p>To disable Pagespeed in your igme230 directory, you're going to edit the .htaccess file you created in part 1. Below the error document instructions, add these two lines:</p>
+                <p>To disable Pagespeed in your igme230 directory, you're going to edit the .htaccess file you created in part 1. Under the error document instructions, add these two lines:</p>
 
                 <code># Turn off server Pagespeed module<br>
                 ModPagespeed off</code>
+
+                <p>Make sure you don't have any stray characters or typos, because any errors in this file will cause the web server to block access to your whole directory!</p>
 
                 <p>Upload your modified .htaccess file to your igme230 directory, and then try reloading your HTML file. (Make sure you force a full reload; Shift-reload on Firefox, Ctrl-reload in Chrome.) The Pagespeed injection code should be gone. (If it's not working, ask for help!)</p>
             </div>
