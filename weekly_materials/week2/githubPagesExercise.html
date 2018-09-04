@@ -16,7 +16,7 @@
     <div id="wrapper">
         <header>
             <div id="prof">
-                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onClick="document.location.href='http://lawley.rit.edu';" />
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
                 <p id="name">Professor <br class="mobile-break"> Lawley</p>
             </div>
             <div id="title">
@@ -60,15 +60,29 @@
             <div class="panel">
                 <p>(If you already have a personal github site, you can skip this.)</p>
 
-                <p>You can create a site for a user or organization by creating a new repository in that account with the name <em>username</em>.github.io; this will automatically be used to serve web pages from that address.</p>
+                <p>If you have a repository named <em>username</em>.github.io in your GitHub account, it will automatically be used to serve web pages from that address. (You can see an example at https://github.com/mamamusings/mamamusings.github.io and http://mamamusings.github.io (the resulting website).</p>
 
-                <p>You can see an example at https://github.com/mamamusings/mamamusings.github.io (my personal GitHub pages repo) and http://mamamusings.github.io (the resulting website).</p>
+                <p>In your GitHub account, create a new (public) repository called <em>username</em>.github.io .</p>
 
-                <p>In your GitHub account, create a public repository called <em>username</em>.github.io</p>
+                    <img src="newRepo.png" alt="screenshot of Liz's personal page repo" class="screenshot" /> 
+
+                <p>Add a brief description, make sure the repository is public, and click the box to create a README.md file.</p>
+
+                <img src="NewRepoSettings.png" alt="screenshot of new repository creation page" class="screenshot" /> 
+
+                <p>You'll be taken to the web page for the new repository,which should look a lot like this:</p>
 
                 <img src="personalPageRepo.png" alt="screenshot of Liz's personal page repo" class="screenshot" />
 
-                <p>Clone the new repository to your computer using VS Code, and create an index.html file that includes your name and an image. Use CSS to make it look moderately professional. Commit and push your files to GitHub, and use a web browser to go to <em>username</em>.github.io. your files should show up there!</p>
+
+
+                <p>Now you need to clone the new repository to your computer (using the same process you used in Tuesday's exercise).</p>
+                
+                <p>Once you've cloned the repo, and you have it open in your editor, create an index.html file that includes your name and an image. Use CSS to make it look moderately professional. Commit the new file, and sync your files to GitHub. Then use a web browser to go to <em>username</em>.github.io. -- your files should show up there!</p>
+
+                <p><strong><em>If you don't see your file there, ask for help before proceeding!!</em></strong></p>
+
+                <p>Once this exercise has been graded, you can either delete the repo, or you can use it however you'd like for a personal page.</p> 
             </div>
 
             <div class="subhead" id="part2">
@@ -76,15 +90,25 @@
                 <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
             </div>
             <div class="panel">
-                <p>You’ll be publishing all of your work for this class using GitHub pages, and creating a "landing page" so that it's easy for the professor and TA to quickly access your exercises and projects. Rather than placing this page in your personal directory, you’re going to create a new repository specifically for work done in this class.</p>
+                <p>You’ll be publishing all of your work for this class using GitHub pages, and creating a "landing page" so that it's easy for the professor and TA to quickly access your exercises and projects.</p>
+                
+                <p>While you could just created a subdirectory in your personal site directory, a better approach is to create a separate repository for your igme230 work.</p>
 
-                <p>Create a new repository called igme230 in your account. Clone it to your computer,  create a simple index.html file in it, and push that file to GitHub. Unlike your personal GitHub pages site, this will not be immediately available. You'll need to explicitly set this repo up to publish with GitHub Pages.</p>
+                <p>Create another new repository called igme230 in your account.</p>
+                
+                <img src="igme230repo.png" alt="creating an igme230 repo" class="screenshot">
+                
+                <p>As you did in part 1, clone the repository to your computer, and use your editor to create a simple index.html file that includes your name and the class name (no need to format it, or even use CSS if you don't want to).</p>
+                
+                <p>Sync the file to GitHub. Unlike your personal GitHub pages site, however, the page will not be immediately published on github.io. You'll need to explicitly set this repo up to publish with GitHub Pages.</p>
 
-                <p>On the GitHub site, go to your igme230 repo, select “Settings”, and scroll down to the GitHub Pages settings. Choose master branch as your source, and save. (Do not try to install a Theme; these do not use standard HTML, but instead use a templating language based on Ruby; if you want to explore using Jekyll Themese for GitHub Pages, you should create a separate repo for that.</p>
+                <p>On the GitHub site, go to your igme230 repo (http://github.com/<em>username</em>/igme230), select “Settings”, and scroll down to the GitHub Pages settings. Choose master branch as your source, and save. (Do <em>not</em> try to install a Theme; these do not use standard HTML, but instead use a templating language based on the Ruby programming language. If you want to explore using Jekyll Themese for GitHub Pages, you should create a separate repo for that. After you save your new settings, you should see this:</p>
 
-                <img src="repoPage.png" alt="Project Repo Github Pages Settings" class="screenshot" />
+                <img src="pagesSettingsDone.png" alt="github pages settings" class="screenshot">
+                
+                <p>Your index.html page should now be visible at <em>username</em>.github.io/igme230; try clinking on the link provided in the settings page to test it.</p>
 
-                <p>Your class repository page should now be visible at <em>username</em>.github.io/igme230</p>
+                <p>All of the work you do for this class moving forward will be published to this repository, rather than to an RIT server.</p> 
 
 
             </div>
