@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+    <title>IGME-230 Week 3 HTML Exercise: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Complete HTML page on Hotel LaBonte linked from class landing page</li>
+            </ul>
+
+            <p><strong>Due by start of class on Thursday, 9/13</strong>. We will grade this exercise by loading your landing page, following the link to the Week 3 HTML Exercise, checking for required elements, and then running HTML validation on the page.</p>
+
+            <h3><a href="../../schedule.html#week3">Back to Week 3</a></h3>
+
+
+
+        </nav>
+        <main>
+            <h2 class="page-title">HTML Exercise <br class="mobile-break" /><span class="weekinfo">(Week 3, Tuesday 9/11)</span></h2>
+            <div class="page-desc">
+                <p>In lecture I talked about key aspects of HTML and the document tree, including the metadata that goes into the head of the document, the separation of content and presentation, the use of semantic HTML tags, and the overall structure of HTML. In today's exercise, you'll put that knowledge into practice by marking up the text of a Wikipedia page.</p> 
+
+                <p><strong>Due: By start of class on Thursday, 9/13.</strong></p>
+            </div>
+
+            <div class="subhead" id="part1">
+                <h2>Part 1: Retrieving the Exercise Files</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Make sure that you've cloned your igme230 repository to the computer that you're currently working on. Create a new folder in that repository for this exercise. (You can call it whatever you want, but I'm going to call mine week3a.) Download the three files that you'll need for this exercise into that directory by right clicking on each of the links below and choosing "save file as..."</p>
+
+                <ul>
+                    <li><a href="hotelLaBonte.txt">Abbreviated version of Wikipedia entry for Hotel La Bonte</a></li>
+                    <li><a href="hotelLaBonte.jpg">Photo of Hotel La Bonte</a></li>
+                    <li><a href="hotelLaBonteMap.png">Map of Hotel La Bonte</a></li>
+                </ul>
+
+                <p>Stage and commit these files to the repository with the commit message "Initial starting files." Sync them to GitHub, and make sure that you can see the folder and files in your igme230 repository.</p> 
+
+            </div>
+
+            <div class="subhead" id="part2">
+                <h2>Part 2: Document Structure</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Create a new HTML document--you can call it whatever you'd like, but I'm going to call mine week3.html. Add the HTML document structure.  If you're using VS Code (or have installed Emmet for Brackets), you can use the html:5 abbreviation to insert the starting structure. (Type html:5 followed by Enter in VS Code, or by Tab in Emmet.)</p>
+
+                <p>The document must have the following things in the head:</p>
+                <ul>
+                    <li>A meaningful title</li>
+                    <li>UTF-8 character set specified</li>
+                </ul>
+
+                <p>(If you want to get fancy, you can add other meta tags--like name and content, or facebook open graph information.)</p>
+            </div>
+
+            <div class="subhead" id="part3">
+                    <h2>Part 3: Document Content</h2>
+                    <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+                </div>
+                <div class="panel">
+                    <p>Now use HTML to mark up the content. Use the original Hotel LaBonte Wikipedia page as a guide, but don't try to use their markup. </p>
+
+                    <p>Start by adding links to the images in the places indicated in the document. Then mark up the content, using HTML tags that repesent the content as well as possible. Don't do anything with the layout or design; we'll work on that on Thursday when we talk about CSS.</p>
+    
+                    <p>You should include:</p>
+                    <ul>
+                        <li>The two images, with appropriate alt text</li>
+                        <li>A level 1 heading and two level 2 headings</li>
+                        <li>A container tag of some kind to enclose the "info box" that includes the photos and basic facts</li> 
+                        <li>A simple two-column table inside the info box to hold the text values</li>
+                        <li>An ordered list for the references</li>
+                        <li>An unordered list for the external links</li>
+                        <li>Links from the in-text footnotes to the appropriate reference, and from the reference back to the note.</li>
+                    </ul>
+
+                    <p>Your finished page should look similar to <a href="hotelLaBontePage.png">this screenshot of my finished page</a>.</p>
+                </div>
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-title="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-title="CC BY"></i><i class="fab fa-creative-commons-sa" aria-title="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
