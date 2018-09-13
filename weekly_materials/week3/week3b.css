@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+#wrapper {
+    max-width: 1000px;  
+    margin: 0 auto;
+}
+
+p, li {
+    font-size: 0.875em;
+    line-height: 1.6;
+}
+
+.subhead {
+    font-size: 80%;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1, h2 {
+    font-family: serif;
+    border-bottom: 1px solid #a2a9b1;
+    font-weight: normal;
+    overflow: hidden; 
+}
+
+h1 {
+    margin-bottom: .2em;
+}
+
+#infobox {
+    text-align: center;
+    width: 250px;
+    border: 1px solid #a2a9b1;
+    border-spacing: 3px;
+    background-color: #f8f9fa;
+    color: black;
+    margin: 0.5em 0 0.5em 1em;
+    padding: 0.2em;
+    float: right;
+    clear: right;
+    font-size: 75%;
+}
+
+#infobox img {
+    max-width: 100%; 
+} 
+
+#infobox th, #infobox td {
+    vertical-align: top;
+    text-align: left;
+    padding-top: 2px; 
+}
+
+a { 
+    text-decoration: none;
+}
+
+a:hover { border-bottom: 1px solid;}
+
+a[href^="http"]:after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f35d";
+    padding-left: 3px;
+    font-size: 90%;
+  }
+
+  a[href^="http://en.wikipedia"]:after {
+    content: none;
+  } 
+  
