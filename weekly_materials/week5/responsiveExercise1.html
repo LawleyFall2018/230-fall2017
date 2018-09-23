@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+    <style>
+        .mobile-screen { 
+            max-width: 300px;
+            border: 1px solid black; 
+        }
+
+        .tablet-screen {
+            max-width: 430px;
+            border: 1px solid black; 
+        }
+    </style>
+
+    <title>IGME-230 Week 5 Responsive Design Exercise 1: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Publish completed HTML and CSS to your igme230 repository, and link to it from your landing page. <strong>Due by start of class on 9/27</strong></li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week5">Back to Week 5</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">Responsive Design Exercise 1<br class="mobile-break" /><span class="weekinfo">(Week 5, Tuesday 9/25)</span></h2>
+            <div class="page-desc">
+                <p>Today you'll work on some basic responsive design using media queries and fluid typography. </p>
+
+                <p><strong>Due: By start of class on Thursday, 9/26.</strong></p>
+            </div>
+
+            <div class="subhead" id="part1">
+                <h2>Setting Up the HTML</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Create a folder for this exercise in your igme230 repository. Download the following files into that directory (right click on the link and choose "save as"):</p>
+                <ul>
+                    <li><a href="sample.html">sample.html</a> </li>
+                    <li><a href="sample.jpg">sample.jpg</a></li> 
+                </ul> 
+
+                <p>Once you've downloaded the HTML and JPG files, create a new "sample.css" file in the same directory.</p>
+            </div>
+
+            <div class="subhead" id="part2">
+                <h2>Mobile-First Design</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Very often, responsive design is done by taking a page that's been optimized for use on a desktop screen, and adding new formatting that's applied if the screen is smaller. This type of responsive design is often referred to as "graceful degradation." Current best practices in web design, however, focus on designing first for the mobile user experience--this is referred to both as "mobile-first design", and as "progressive enhancement."</p>
+                
+                <p>This is what we want the initial mobile version of our page to look like. (We'll be doing more with formatting it on Thursday.):</p>
+
+                <img src="mobilescreen1.png" alt="mobile version of site" class="mobile-screen">
+                
+                <p>To accomplish this, you'll need to put the following style rules into your sample.css file:</p>
+
+                <ul>
+                    <li>Use box-sizing: border-box; on the html element (good practice on any page)</li>
+                    <li>Set header, article, and aside to width: 100%</li>
+                    <li>Give the header a background color of gray (I used #e5e5e5), and 8px of padding on all sides</li>
+                    <li>Set h1, h2, and nav to use text-align: center</li>
+                    <li>Set nav to overflow: auto </li>
+                    <li>Set img to max-width: 100%</li>
+                    <li>Set h3 and nav a (a elements inside of nav elements) to use the same background color as the header, padding:8px, margin-top:7px, width:100%, and display:block ( <code>h3, nav a { ... }</code> ).</li>
+                    <li>Set aside to the same background color as the header, with 15px of padding and a 7px top margin. </li>
+                </ul>
+
+                <p>Use the developer tools in your browser to view the page in a variety of device formats. (It should look the same in all of them.)</p> 
+
+            </div>
+
+            <div class="subhead" id="part3">
+                <h2>Progressive Enhancement</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>The mobile design works well on a mobile device, but not quite as well on a tablet or desktop browser:</p>
+                <img src="tabletscreen1.png" alt="Tablet/desktop layout" class="tablet-screen">
+
+                <p>We're going to add some styles so that in larger viewports, the site looks like this:</p>
+                <img src="tabletscreen2.png" alt="Tablet/desktop layout" class="tablet-screen">
+
+                <p>We can tell the browser to add additional styles to a document at specific sizes by using a media query. In this case, we want the styles to be applied when the screen size is at least 620px wide.</p>
+                
+                <code>@media screen and (min-width: 620px) { <br>
+                }</code>
+
+                <p>Styles that you want used on larger screens go in between those curly braces. Here's what you need to add in order to generate the design shown above (it's surprisingly simple):</p>
+
+                <ul>
+                    <li>Set aside and nav to have float:left and width:20%;</li>
+                    <li>Set article to have float:left, width:60%, and padding: 0 20px</li>
+                </ul> 
+
+                <p>Once again the developer tools in your browser to view the page in a variety of device formats. You should see the design shift when you go above or below 620px in width.</p> 
+
+            </div>
+
+            <div class="subhead" id="part4">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-caret-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Edit your landing page to include a link to this exercise. Commit all of your changes (if you haven't already, and sync or push your files to GitHub. <em>Check your GitHub repo (youruserid.github.io/igme230) to make sure the link is there and works properly!</em>  </p>
+            </div>
+        
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
