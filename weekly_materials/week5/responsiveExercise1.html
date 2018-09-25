@@ -17,6 +17,11 @@
             max-width: 430px;
             border: 1px solid black; 
         }
+
+        code { 
+            background-color: #eeeeee;
+            font-weight: 300;
+        }
     </style>
 
     <title>IGME-230 Week 5 Responsive Design Exercise 1: Lawley Fall 2018</title>
@@ -87,7 +92,7 @@
                 <p>To accomplish this, you'll need to put the following style rules into your sample.css file:</p>
 
                 <ul>
-                    <li>Use box-sizing: border-box; on the html element (good practice on any page)</li>
+                    <li>Assign box-sizing: border-box to all elements (this good practice on any page). You can either use <code>* { box-sizing: border-box</code>, or you can use a <a href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">slightly more robust version</a>. </li>
                     <li>Set header, article, and aside to width: 100%</li>
                     <li>Give the header a background color of gray (I used #e5e5e5), and 8px of padding on all sides</li>
                     <li>Set h1, h2, and nav to use text-align: center</li>
