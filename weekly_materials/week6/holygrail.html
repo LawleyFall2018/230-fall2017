@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail with Flexbox</title>
+    <link rel="stylesheet" href="holygrail-working.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>&lt;header&gt; containing an h1</h1>
+        </header>
+        <main>
+            <article>
+                <h3>&lt;article&gt; element</h3>
+                <p>First child of <strong>&lt;main&gt;</strong> (the gray box). Should be the center column in the 3-column version.</p> 
+                <p><strong>&lt;main&gt;</strong> is also a flex container, which controls the layout of the <strong>&lt;article&gt;</strong>, <strong>&lt;nav&gt;</strong>, and <strong>&lt;aside&gt;</strong>. </p>
+
+            </article>
+
+            <nav>
+                <h3>&lt;nav&gt; element</h3>
+                <ul>
+                    <li>second child of <strong>&lt;main&gt;</strong></li>
+                    <li>Left column in 3-column layout.</li>
+                </ul>
+            </nav>
+
+            <aside>
+                <h3>&lt;aside&gt; element</h3>
+                <p>The least important content. Last child of <strong>&lt;main&gt;</strong>. Right column in 3-column layout.</p>
+                
+            </aside>
+        </main>
+        <footer>
+            <h4>&lt;footer&gt;</h4>
+        </footer>
+    </div>
+</body>
+
+</html>
