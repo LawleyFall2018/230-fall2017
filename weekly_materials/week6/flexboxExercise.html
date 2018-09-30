@@ -128,12 +128,41 @@
             </div>
 
             <div class="subhead">
+                <h2>Graceful Degradation</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Because the focus of this exercise was on implementing the Holy Grail layout, I didn't use a "progressive enhancement" approach of designing for mobile-first. Unfortunately, this layout breaks down in a problematic way on a small screen (try resizing the window to see what happens). We can add a media query to fix that.</p>
+
+                <p>At the end of your code, add a media query for viewports smaller than 36rems:<br>
+                    <code>@media screen and (max-width: 36rem){  }</code>
+                </p>
+
+                <p>In the media query, change the flex-direction on main to be column rather than row (<code>flex-direction: column;</code>), and set its width to be 100vw rather than 95vw.</p>
+
+                <p>Assign <code>max-width: none;</code> to #wrapper, so that the content takes up the full width of the viewport.</p> 
+
+                <p>Then apply the following rules to nav, aside, and article:</p>
+
+                <ul>
+                    <li><code>order: 0;</code> /* resets order to source default */ </li>
+                    <li><code>flex: 1;</code> /* allows elements to grow to available space */</li>
+                    <li><code>margin: .5rem 0;</code> /* removes l/r margin spacing */</li>
+                </ul>
+
+                <p>When you resize your browser window, or choose a small screen in responsive mode, your page should look like this:</p>
+                <img src="layout5.png" alt="Mobile Layout" class="mobile-screenshot" >
+
+
+            </div>
+
+            <div class="subhead">
                 <h2>Submitting Your Work</h2>
                 <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
             </div>
     
             <div class="panel">
-                <p>When you're done, and your page looks like the example above, add a link to your landing page and push the files to GitHub.</p> 
+                <p>When you're done, add a link to your landing page and push the files to GitHub. Files must be online by the beginning of class on Thursday, 10/4.</p> 
             </div>
 
         

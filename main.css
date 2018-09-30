@@ -248,6 +248,10 @@ code, pre {
     border: 1px solid black;
 }
 
+.mobile-screenshot {
+    width: 320px;
+}
+
 .fa-exclamation-circle {
     margin-right: 5px;
 }
