@@ -21,6 +21,7 @@ Flexbox Formatting
 #wrapper {
     /* centers container in viewport */
     margin: 0 auto;
+    max-width: 95vw; 
 }
 
 main {
