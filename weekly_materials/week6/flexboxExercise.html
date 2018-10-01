@@ -88,6 +88,11 @@
                 <p>Preview the HTML file now. It should look like this:</p> 
 
                 <img src="layout2.png" alt="Initial Flexbox Setup" class="screenshot">
+
+                <p>Note that your columns may not fill up the window horizontally, as shown in that screenshot. Here's how it looks if I zoom out:</p>
+
+                <img src="layout2b.png" alt="Zoomed Out Initial Flexbox Settings" class="screenshot">
+
             </div>
 
             <div class="subhead">
@@ -95,7 +100,7 @@
                 <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
             </div>
             <div class="panel">
-                <p>Because the default value for align-items is stretch, all three of the columns in the main container have stretched to fit their container. But they're only as large as the tallest column, because main's height is determined by its contents.</p>
+                <p>Because the default value for align-items (vertical alignment for a row-based flex container) is stretch, all three of the columns in the main container have stretched vertically to the full size of &lt;main&gt; (the gray box). But they're only as large as the tallest column, because &lt;main's&lt; height is determined by its contents.</p>
                 
                 <p>To force the footer to the bottom of the page when the columns are short, set #wrapper to fill the full viewport height: <code>min-height: 100vh;</code> </p> 
 
