@@ -1,0 +1,36 @@
+/***************** 
+General Formatting 
+*****************/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0; 
+    font-size: 16px;
+    font-family: Calibri, Helvetica, Arial, sans-serif;
+}
+
+header,
+footer {
+    background-color: lightgray;
+    text-align: center;
+    padding: .5rem;
+}
+
+body {
+    background: #F0F0F0;
+    margin: 0;
+}
+
+.warning {
+    margin-left: 1em;
+    max-width: 600px;
+    font-size: 80%;
+    color: red;
+}
+
+/**************
+Grid Formatting
+**************/

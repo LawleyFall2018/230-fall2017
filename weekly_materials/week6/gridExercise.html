@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 6 Grid Exercise: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Publish completed HTML and CSS to your igme230 repository, and link to it from your landing page. <strong>Due by noon on Saturday, 10/7.</strong></li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week6">Back to Week 6</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">CSS Grid Exercise<br class="mobile-break" /><span class="weekinfo">(Week 6, Thursday 10/4)</span></h2>
+            <div class="page-desc">
+                <p>This exercise has two parts. First, you'll create another "holy grail" layout, using CSS Grid instead of Flexbox. Then you'll create a responsive CSS image gallery  </p>
+                <p><strong>Due: By start of class on Thursday, 10/4.</strong></p>
+            </div>
+
+            <div class="subhead">
+                <h2>Grid Garden</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Before you start on the exercise, you may want to spend some time with the <a href="http://cssgridgarden.com/">Grid Garden</a> game, which will give you some practice with grid syntax. Once you're comfortable with grid, move on to the exercise.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Setting Up the HTML</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Create a folder for this exercise in your igme230 repository. Download the following HTML files into that folder (right click on the link and choose "save file as"):</p>
+                <ul>
+                    <li><a href="holygrail-grid.html">holygrail-grid.html</a> </li>
+                    <li><a href="holygrail-grid.css">holygrail.css</a></li> 
+                    <li><a href="responsive-grid.html">responsive-grid.html</a></li>
+                    <li><a href="responsive-grid.css">responsive-grid.css</a></li>
+                </ul> 
+
+                <p>As with Tuesday's Flexbox exercise, the HTML files have the structure and content of the documents you'll be creating, and you won't be editing them at all--but you should open them and make sure you understand how they're structured. You should also open each one in a browser preview so that you see what the default layout looks like before you begin editing the CSS.</p>
+
+                <p>The CSS files are where you'll be doing your work for this exercise. I've started you off with some basic formatting, so that you can easily see how the documents are structured. You'll be adding your CSS rules to what's already there.</p> 
+
+            </div>
+
+            <div class="subhead">
+                <h2>Holy Grail with CSS Grid</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Unlike Flexbox, Grid allows us to define both rows and columns, so while we're still going to use a #wrapper div for the grid structure, we no longer need a &lt;main&gt; container for the three columns of content.</p>
+
+                <p>In your holygrail-grid.css file, assign <code>display: grid;</code> to the #wrapper div.</p>
+
+                <p>As you know from your readings, there are a variety of ways to assign elements to locations in a grid. Because we're going to define two different grids (one for mobile and one for desktop), we're going to name the various elements in the grid rather than using numeric values.</p>
+
+                <p>In holygrail-grid.css, assign the elements to named grid areas with the following code:</p>
+        <pre><code>
+        header {
+            grid-area: header;
+        }
+        
+        nav {
+            grid-area: sidenav;
+        }
+        
+        article {
+            grid-area: article;
+        }
+        
+        aside {
+            grid-area: sidebar;
+        }
+        
+        footer {
+            grid-area: footer
+        }
+    </code></pre> 
+
+
+                <p>We're going to use a mobile-first design approach with this page. On a small screen, we'll set the height to 100vh, designate five grid template areas for the five content elements (which allows us to easily specify display order), and set five row heights as proportional components of the wrapper.</p>
+                
+    <code><pre>
+        #wrapper {
+        display: grid;
+        height: 100vh;
+        grid-template-areas: "header" "sidenav" "article" "sidebar" "footer";
+        grid-template-rows: 1fr 2fr 10fr 2fr 1fr;
+     }
+    </pre></code> 
+
+                <p> Preview the holygrail-grid.html page; it should look like this:</p>
+                <img src="grid-layout1.png" alt="Initial Grid Layout" class="screenshot">
+
+                <p>Now we need to create the three-column version.</p>
+         
+                <p>Add a media query for min-width 760px, and in it, redefine the grid from 1x5 to 3x3, by specifying three content elements for each of threw rows. Then define the height for each of the three rows, and the width for each of the three columns:</p> 
+    <code><pre>
+    #wrapper {
+        grid-template-areas: "header header header"  /* 1st row: header spans three columns  */
+        "sidenav article sidebar"  /* 2nd row: one element in each of 3 columns  */
+        "footer footer footer"; /* 3rd row: footer spans three columns */
+        grid-template-rows: 1fr 10fr 1fr;   /* defines relative height of three rows */
+        grid-template-columns: 20% auto 20%;   /* defines width of the three columns */
+    }
+    </pre></code>       
+
+                <p>Preview the holygrail-grid.html page; it should now look like this:</p>
+
+                <img src="grid-layout2.png" alt="3-column grid layout" class="screenshot">
+
+
+                <p>If you'd like to constrain the overall width of the container, so that the article's line length isn't too long, you could set a max-width on the #wrapper, and use margin: 0 auto; to center it on the page.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Responsive Image Gallery</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>CSS grid's ability to create implicit structure makes it possible to create responsive layouts without having to use media queries and predefined breakpoints. In this portion of the exercise, you'll be creating a simple responsive image gallery.</p> 
+
+                <p>Preview the responsive-grid.html page before you begin. It's a simple list of 500px-square images, with all of the images inside of a &lt;main&gt; element:</p>
+
+                <img src="grid-layout3.png" alt="Initial Gallery Layout" class="screenshot">
+
+                <p>Our goal is a page that creates as many grid columns as possible, with a minimum size of 250px and a maximum size of 1 equal fraction of the container, and resizes the images to take up the full size of the column they're in.</p>
+
+                <p>Start by defining &lt;main&gt; as a grid container.</p>
+                <ul>
+                    <li>Set <code>display: grid;</code></li>
+                    <li>Define grid-template-columns with a repeating pattern of <code>minmax(250px, 1fr);</code></li>
+                    <li>Set a grid-gap of .5rem;</li>
+                </ul>
+
+                <p>Preview the page; it should look like this: </p>
+                <img src="grid-layout4.png" alt="Basic Gallery Grid" class="screenshot">
+
+                <p>It's setting up the columns properly, but the 500px square images are being cropped by the 250px wide columns. To fix that, we're going to modify the CSS rules for the img element. For img, add the following rules:</p>
+                <ul>
+                    <li>Set <code>display: block;</code> so we can control the box properly</li>
+                    <li>Set width to 100%, so that the image scales proportionally in its container (the grid cell)</li>
+                    <li>For aesthetic purposes, give it a 2px solid black border, and a border-radius of 5px</li>
+                </ul>
+
+                <p>Preview the page again; it should look like this:</p>
+
+                <img src="grid-layout5.png" alt="Square Image Gallery Grid" class="screenshot">
+            
+                <p>That's an improvement! (Try resizing the window, too, to see what happens.)</p>
+
+                <p>You now have the grid functionality in place, but there's still some work that we can do to improve the way &lt;main&gt; displays.</p>
+
+                <ul>
+                    <li>Set the max-width of main to 95vw to provide some space on either side</li>
+                    <li>Give it a .5rem margin on the top and bottom to provide some space above and below, and an auto margin for left and right so that it centers (<code>margin: .5rem auto;</code>)</li>
+                </ul>
+
+                <p>Preview the page. It should look like this now:</p> 
+
+                <img src="grid-layout6.png" alt="Final Gallery With Warning" class="screenshot">
+
+                <p>There's only one thing left to do: we want to hide the warning on browsers that support grid. To do that, we're going to use a feature query--it works very much like a media query, but instead of checking for screen size, it checks to see if a browser supports a specific CSS feature:</p>
+
+    <code><pre>
+            @supports (display: grid) {
+                .warning {
+                    display: none;
+                }
+            }
+    </pre></code>
+
+                <p>That should hide the warning if the browser supports the <code>display:grid</code> property.</p>
+
+                <p>Preview the page; it should look like the example above, but without the warning paragraph.</p> 
+
+            </div>
+
+            <div class="subhead">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+    
+            <div class="panel">
+                <p>When you're done, add links to your landing page for each of the completed pages, and push the files to GitHub. Files must be online by the beginning of class on Thursday, 10/4.</p> 
+            </div>
+
+        
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer> 
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
