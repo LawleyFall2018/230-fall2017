@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 8 CSS Animation Exercise: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Publish completed HTML and CSS to your igme230 repository, and link to it from your landing page. <strong>Due by start of class on Thursday, 10/18</strong></li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week8">Back to Week 8</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">CSS Animation Exercise<br class="mobile-break" /><span class="weekinfo">(Week 8, Tuesday 10/16)</span></h2>
+            <div class="page-desc">
+                <p>Today you're going animate some elements on an HTML page that I've created, using the techniques shown in the CSS Animations tutorial. If you haven't done that tutorial, you should use today's class to do that first, and then, if you have time, work on the exercise.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Previewing What You're Going to Make</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Because I can't give you a link to the working version of the page without also revealing the code to accomplish it, I've uploaded a video clip to YouTube showing how the page behaves when it first loads, and when mousing over specific elements. Watch it here: <a href="https://www.youtube.com/watch?v=uMmTnIRB_8c">https://www.youtube.com/watch?v=uMmTnIRB_8c</a>.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Setting Up Files</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Create a new folder for this exercise in your igme230 directory. Right click on <a href="cssanimation.zip">cssanimation.zip</a>, and choose "Save File As..." to download it. Extract the directory and put it in your igme230 directory. All of the CSS you add will go into the styles.css page. When you're done, link to the completed file from your landing page, and push the files to your repository.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Page Load Animation</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>As you can see in the video, when the page first loads, the four columns of content in the middle of the page fly in from the left side. You're going to combine animation techniques used in the "clouds" exercise in the tutorial (chapter 3, part 1).</p>
+
+                <p>Start with the "drift" keyframe animation code from the clouds example in the tutorial. Put that into your styles.css file, naming the @keyframe animation as "entrance", and then edit it to have a starting translateX value of -2000px (to put the content off the left side of the screeen), and a finishing value of 0,so that it ends up in its original position.</p>
+
+                <p>Apply the resulting "entrance" animation to "main div" (all divs inside the main element), with a duration of .5 seconds, a linear path, and "both" to use both forward and backwards fills, and then test the page. It should work, but all the elements will fly in at the same time.</p>
+
+                <p>To fix that problem, you can do one of two things. You can assign a unique ID to each of the columns and then specify timings for each of them individually, or you can use the "nth-child" technique shown in the "up &amp; over" example in the tutorial (chapter 3, section 4).</p>
+
+                <p>The disadvantage of adding an ID to each item is that it requires you to also the edit the HTML file, while the "up &amp; over" approach allows you do this completely in CSS using the "nth-child" attribute to set up four different timings for the four different columns. For example, "main div:nthchild(1)" refers to the first div child of the main element. You can set the timing for the first div inside main like this, using .5s as the animation timing, and 2s as the delay for it to take place:</p>
+
+                <p class="examplecode">css<br>
+                    main div:nth-child(1) {<br>
+                    animation: entrance .5s 2s linear both;<br>
+                    }</p>
+
+                <p>Repeat that code block for the 2nd, 3rd, and 4th children of main, decreasing the delay by .5s for each, so that the 4th image slides in first, followed by the 3rd, 2nd, and then 1st. </p>
+            </div>
+
+            <div class="subhead">
+                <h2>Expanding Images</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>To make the gallery images grow when you mouse over them, we could use keyframe animation, but there's actually an easier way to do this with <a href="https://www.w3schools.com/css/css3_transitions.asp">CSS transistions</a>.</p>
+
+                <p>We want to apply a <strong>transition</strong> property to each image in the main element, so that whenever something changes, it happens with a gentle easing in and out. Then we want to assign a <strong>transform</strong> property to the hover state, so that it scales up on hover (and, by default, back down when hover state is lost). </p>
+                    
+                <p class="examplecode">
+                    main img { transition: all .2s ease-in-out; }<br>
+                    main img:hover { transform: scale(1.2); }<br>
+                </p>
+            </div>
+
+            <div class="subhead">
+                <h2>Rotating Icons</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Finally, we want each of the four social media icons at the bottom of the page to rotate around their Y axis when we hover over them.</p>
+
+                <p>To do this, we'll modify the spin animation in the "sticker" example (chapter 3, section 3) so that it rotates on the Y axis, replacing rotate(1turn) with rotateY(360deg). Once you've added the @keyframe spin animation to your CSS, you can apply it to the icons in the footer using the hover pseudo-class:</p>
+                    
+                <p class="examplecode">
+                    a:hover .fa { <br>
+                        color: #ccc;<br>
+                        animation: spin .5s linear both;<br>
+                        }</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>When you're done, add a link to your landing page and push the files to GitHub. Files must be available by the start of class on Thursday, 10/18.</p>
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
