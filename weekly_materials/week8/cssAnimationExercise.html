@@ -62,7 +62,7 @@
             <div class="panel">
                 <p>Create a new folder for this exercise in your igme230 directory. Right click on <a href="cssanimation.zip">cssanimation.zip</a>, and choose "Save File As..." to download it. Extract the cssanimation directory and put it in your igme230 directory.</p>
                 
-                <p>All of the CSS for this exercise will go into "CSS Animation" section of the animations.css page. When you're done, put a link to the completed animation.html file on your landing page, and upload the files to your repository.</p>
+                <p>All of the CSS for this exercise will go into "CSS Animation" section of the animation.css page. When you're done, put a link to the completed animation.html file on your landing page, and upload the files to your repository.</p>
             </div>
 
             <div class="subhead">
@@ -72,7 +72,7 @@
             <div class="panel">
                 <p>As you can see in the video, when the page first loads, the four columns of content in the middle of the page fly in from the left side. You're going to combine animation techniques used in the "clouds" exercise in the tutorial (chapter 3, part 1).</p>
 
-                <p>Start with the "drift" keyframe animation code from the clouds example in the tutorial. Put that into your styles.css file, naming the @keyframe animation as "entrance", and then edit it to have a starting translateX value of -2000px (to put the content off the left side of the screeen), and a finishing value of 0,so that it ends up in its original position.</p>
+                <p>Start with the "drift" keyframe animation code from the clouds example in the tutorial. Put that into your animatios.css file, naming the @keyframe animation as "entrance", and then edit it to have a starting translateX value of -2000px (to put the content off the left side of the screeen), and a finishing value of 0,so that it ends up in its original position.</p>
 
                 <p>Apply the resulting "entrance" animation to "main div" (all divs inside the main element), with a duration of .5 seconds, a linear path, and "both" to use both forward and backwards fills, and then test the page. It should work, but all the elements will fly in at the same time.</p>
 
@@ -80,7 +80,7 @@
 
                 <p>The disadvantage of adding an ID to each item is that it requires you to also the edit the HTML file, while the "up &amp; over" approach allows you do this completely in CSS using the "nth-child" attribute to set up four different timings for the four different columns. For example, "main div:nthchild(1)" refers to the first div child of the main element. You can set the timing for the first div inside main like this, using .5s as the animation timing, and 2s as the delay for it to take place:</p>
 
-                <p class="examplecode">css<br>
+                <p class="examplecode">
                     main div:nth-child(1) {<br>
                     animation: entrance .5s 2s linear both;<br>
                     }</p>
