@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 8 SVG Exercise: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Publish completed HTML and CSS to your igme230 repository, and link to it from your landing page. <strong>Due by noon on Saturday, 10/20</strong></li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week8">Back to Week 8</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">SVG Exercise<br class="mobile-break" /><span class="weekinfo">(Week 8, Tuesday 10/16)</span></h2>
+            <div class="page-desc">
+                <p>Today you'll learn how to create Scalable Vector Graphics (SVG), and include them in a web page.</p>
+
+                <p>You may find these pages helpful:</p>
+                
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">MDN SVG Documentation & Resources</a></li>
+                    <li><a href="https://www.w3schools.com/graphics/svg_intro.asp">W3Schools SVG Tutorial</a></li>
+                    <li><a href="https://www.sitepoint.com/designers-guide-working-with-svg/">The Designer's Guide to Working With SVG</a></li>
+                </ul>
+            </div>
+
+            <div class="subhead">
+                <h2>Coding a Simple SVG</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Create a new folder for today's work. Using VS Code, create a new file called simple.svg and save it to the new folder. (Do not add an HTML template to it.) You're going to create a very simple vector image by hand using the SVG markup language.</p>
+
+                <p>SVG documents start and end with an &lt;svg&gt; tag, rather than an &lt;html&gt; tag. The SVG tag should indicate which specification it's using, via the xmlns (XML namespace) attribute, like this:</p>
+                
+                <p class="examplecode">
+                    &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;<br>
+                        <br>
+                    &lt;/svg&gt;
+                </p>
+                        
+                <p>Inside of the svg element, we can describe a vector graphic element, like this:</p>
+                        
+                <p class="examplecode">
+                    &lt;circle cx="50" cy="50" r="25" fill="red" stroke="black" stroke-width="2" /&gt;
+                </p>
+                        
+                <p>That should result in a circle, with cx and cy defining the x and y coordinates of the *center* of the circle, r defining its radius, and the remaining attributes describing the stroke and fill for the object. Save the file, and open it in a browser. You should see a red circle with a black border. </p>
+                        
+                <p>(If you omit cx and cy, the default coordinates will be 0,0. Try removing the cx and cy attributes from the circle object, saving the file, and reloading the page. What happens? Put the cx and cy values back before moving on.)</p>
+                        
+                <p>Now let's add a rectangle to the SVG. Place this after the circle definition:</p>
+                        
+                <p class="examplecode">
+                        &lt;rect width="200" height="200" x="50" y="50" fill="black" /&gt;
+                </p>
+                        
+                <p>Unlike the circle, the x and y coordinates for a rectangle describe the location of its top left corner, rather than its center. Save and reload the page; you should see a black rectangle, with its top/left coordinates in the same place as the center of the circle. Because SVG draws the elements in the order they appear in the file, the rectangle is drawn on top of the circle. If you wanted the circle on top, you could reorder the two lines.</p>
+                        
+                <p>You can see a list of other SVG shapes and elements, including ellipses, polygons, lines, paths, and text, and the syntax for creating them, in the <a href="https://www.w3schools.com/graphics/svg_intro.asp">W3Schools SVG Tutorial</a>.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Including SVG Files in HTML Documents</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>While your browser can display SVG files directly, you typically will want to include one or SVGs in the context of an HTML page with other content; this also allows you to JavaScript to manipulate the graphic. </p>
+
+                <p>There are three ways to include an SVG file in a page. The first is to treat it the same way you would a raster image, using the &lt;img&gt; tag to reference the external SVG file. The second is to embed the SVG directly in the HTML. And the third is to use JavaScript to load the external SVG file. In today's exercise, you'll be using both the first and the second approaches.</p> 
+                        
+                <p>Create a new HTML file called svgdemo.html and save it to the same folder as simple.svg. In the body of the document, add an img tag that points to your simple.svg file. Save the new HTML document, and load it in a browser; you should see your SVG displayed. It's likely, however, that part of the image will be cropped. This is because your browser doesn't actually know how big the SVG image is. We can fix this in either of two ways--we can add a height and width to the image tag, or we can add a height and width inside the SVG itself. The latter is a better choice, so let's do that. </p>
+                        
+                <p>Your SVG needs to be at least 250px in both width and length, to account for the 50px x/y offset of the 200px square. Add height="250" and width="250" to the &lt;svg&gt; tag in your simple.svg document, and then reload the svgdemo.html page. You should be able to see the entire SVG now.</p>
+                        
+                <p>The problem with adding an SVG with the img tag, however, is that the browser can't control any of the individual components of the SVG--it's treated as a single img element in the browser's internal model of all the things that can be manipulated with CSS and/or JavaScript. (That model is called the Document Object Model, or DOM, and we'll be talking a lot more about it next week.)</p>
+                        
+                <p>The alternative is to embed the SVG directly inside the HTML.</p>
+                        
+                <p>Remove the &lt;img&gt; element from your svgdemo.html file, and in its place paste the entire contents of your simple.svg. That code becomes an svg element contained within your HTML page. Save the file, and display it. It should look exactly the same as it did when you used the img tag. However, each element in the SVG is now part of the DOM, meaning we can independently manipulate them with CSS and/or JavaScript. Try right-clicking and choosing "Inspect Element"--you should see all the components of the SVG.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Exporting and Scaling an SVG from Illustrator</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Creating your own SVGs by hand works reasonably well if you're only creating simple shapes. But if you need to work with more complex images, you'll want to use an illustration program (like Adobe Illustrator, Inkscape, or even Google Draw) to create your image and then export it as an SVG.</p>
+
+                <p>Download the <a href="logo.ai">logo.ai</a> file (right-click and choose "save file as" or "save link as"). Open the in Adobe Illustator. You should see an image consisting of three arrows--one green, one blue, and and one purple.</p>
+                    
+                <p>From the File menu in Illustrator, select Export As..., change the format to SVG, and select the folder for today's work. After you click the Export button, you should be presented with an "SVG Options" panel--most of the defaults are fine, but make sure you uncheck the "Minify" option, which removes whitespace from the SVG, making it harder to read and edit.</p>
+                        
+                <p>Open the resulting logo.svg file in a browser. The logo, which looked a lot smaller in Illustrator, should fill up your browser window.</p>
+                        
+                <p>Take a look at the logo.svg file in a text editor. You'll see that the svg element does not have a width and height specified, but it does have a "viewbox" attribute.</p>
+                        
+                <p> Scaling SVGs is a little bit tricky, because it depends on two separate things:</p>
+                <ul>
+                    <li>The <strong>SVG viewport</strong>, which is the containing element for the SVG, and not the browser viewport. It can be explicitly set in the svg element with the width and height attributes, and defaults to the size of the containing element</li>
+                    <li>The <strong>viewbox</strong> which is an SVG-specific attribute that defines the aspect ratio of the image, how all the lengths and coordinates used inside the SVG should be scaled to fit the total space available, and the origin of the SVG coordinate system, the point where x=0 and y=0.</li>
+                </ul>
+                        
+                <p>(The CSS-Tricks site has <a href="https://css-tricks.com/scale-svg/">a more detailed description of how SVG scaling works</a>.)</p>
+                        
+                <p>You can also see that the logo.svg has its own embedded style sheet, which is how Illustrator assigned the fill colors. The arrows are each defined as complex paths, with a transform applied to them to adjust rotation.</p>
+                        
+                <p>Now add the logo to your svgdemo page. (As you did in the previous section, copy the entire contents of the file into the body of the HTML file, below the existing SVG element. Preview svgdemo.html in a browser--the logo should appear even bigger. We can fix that by changing the viewport associated with the SVG. That can be done either by adding width and height attributes to the svg element itself, or by using a CSS declaration in the html file to change the size of the SVG id. If we use the CSS approach, we can also add a border so it's easier to see the edges of the viewport. Add this to the head of the document:</p>
+
+                <p class="examplecode">&lt;style&gt;<br>
+                #Layer_1 { width: 200px; height: 200px; border: 1px solid black; }<br>
+                &lt;/style&gt;
+                </p>
+                
+                <p>Reload the page, and the logo should now take up only a 200x200px box. Try changing the width of #Layer_1 to 300px. Because it's the viewbox, not the viewport, that controls the aspect ratio, the logo should not change even though the box is wider.</p>
+                        
+                <p>Now right-click and download the <a href="logo.png">logo.png</a> file to your  folder, and add this line to svgdemo.html, above the logo SVG element:</p>
+
+                <p class="examplecode">
+                    &lt;img src="logo.png" style="float: left;"&gt;
+                </p>
+                        
+                <p>Reload the page, and you should see two versions of the logo; the one on the left is a PNG version that I exported from the Illustrator file, and the one on the right is the SVG. Depending on the resolution of your monitor, you may be able to see that the SVG version has slightly crisper lines. Try zooming in on the page (Ctrl-+ in Chrome). As the zoom level increases, you should start to see significant differences in the clarity of the two versions of the logo. While the SVG version is higher quality, it is also significantly smaller in size. The PNG is 3,851 bytes, while the SVG is 1,024 bytes. If we exported a larger size of the PNG, it would result in a larger file size, but we can scale the SVG up without any change in file size.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>When you're done, add a link to your landing page and push the files to GitHub. Files must be available by the start of class on Saturday, 10/20.</p>
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
