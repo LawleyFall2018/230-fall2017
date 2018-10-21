@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 9 JavaScript In-Class Exercise 1: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your dom-exercise.html file from your landing page as JS Exercise 2, and publish it to your GitHub site. This should be done by the start of class on Thursday.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week9">Back to Week 9</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 2: The DOM <br class="mobile-break" /><span class="weekinfo">(Week 9, Tuesday 10/23)</span></h2>
+            <div class="page-desc">
+                    <p>In this exercise we are going to look at how to use JavaScript to alter HTML elements on the page. To do this we will need to utilize the DOM (Document Object Model). The DOM API defines methods and properties need to access and manipulate a web page.</p>
+
+                    <p>When developers discuss database records and operations, there’s a concept known as <strong>C.R.U.D.</strong> - “Create”, “Read”, “Update” and “Delete”. Every database needs to be able to let the developer perform these operations in code.</p>
+
+                    <p>Similarly, if we are going to create web applications, we will have to do the same things to our web pages: <strong>create</strong> new elements, select (<strong>read</strong>) existing elements, <strong>update</strong> elements, and <strong>delete</strong> elements.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Selecting and Modifying Elements on a Page</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+            <p>To modify an HTML element, we need to do two separate things:</p>
+            <ol type="1">
+                <li>Get a <em>reference</em> to the element</li>
+                <li>Change the value of a <em>property</em> of the element</li>
+            </ol>
+
+            <p>To get a reference to a <strong>single element</strong> we usually use <code>document.querySelector(selector)</code> where <code>selector</code> is a valid CSS selector.</p>
+            
+            <p>For example <code>document.querySelector('p')</code> would select the first paragraph on a web page, while <code>document.querySelector('#table')</code> would select the element on the page of <code>id='table'</code>. You can use the same syntax that's used in CSS to select descendant elements, specific child elements, etc.</p>
+
+            <p>To get a reference to <strong>multiple elements</strong>, we usually use <code>document.querySelectorAll(selector)</code>. For example, <code>document.querySelectorAll('p')</code> would return an array (actually a <code>DomNodeList</code>) of all of the paragraph tags on a page.</p>
+
+            <p>HTML elements are instances of the DOM class <code>HTMLElement</code> and have <code>innerHTML</code> and other properties we can set. A full list of element properties and methods can be found at <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">https://developer.mozilla.org/en-US/docs/Web/API/Element</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement">https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement</a></p>
+
+           <p>Download the <a href="DOM-exercise.html">DOM-exercise.html</a> file (right-click on the link and choose "Save File As...". Open it in a browser; it should look like this:</p>
+
+           <img src="dom-1.png" alt="original page" class="screenshot">
+
+           <p>We're going to use JavaScript to change the content of the h1 element. In the head of the document, add the following script block:</p>
+
+           <textarea class="samplecode">
+&lt;script&gt;
+    // first, get a reference to the first &lt;h1&gt; on the page
+    let h1 = document.querySelector('h1');
+
+    // second, change its HTML
+    h1.innerHTML = 'My &lt;em&gt;UFO&lt;/em&gt; Page'; 
+&lt;/script&gt;
+           </textarea>
+
+           <p>View it in a browser. It didn't work, did it? Let's figure out what went wrong.</p>
+           
+           <p>View the Javascript console for the document, and you'll see the following error message:</p> 
+
+           <img src="dom-2.png" alt="TypeError: h1 is null" class="screenshot">
+
+           <p>The screenshot is from Firefox; in Chrome, the error will read "Uncaught TypeError: Cannot set property 'innerHTML' of null".</p>
+
+           <p>The JavaScript engine is complaining about our second line of code. There's clearly an h1 element in the page, and the syntax for our <code>h1</code> selector is correct, but the value is <code>null</code>. What happened?</p>
+ 
+
+           <p>The problem here is that the JavaScript code is in the head of the document, so it’s running <em>before</em> the body of the page has loaded into the DOM. Since the h1 element is in the body of the document, our statement <code>let h1 = document.querySelector('h1');</code> returns a value of <code>null</code>, and when we try to set the <code>.innerHTML</code> of <code>null</code> we get an error.</p>
+
+           <p><strong>How do we fix this? We need for our script to run <em>after</em> the page loads.</strong> There are many ways to accomplish this, for now the easiest way is to move the &lt;script&gt; element to just before the closing &lt;body&gt; tag, like this:</p>
+
+<textarea class="samplecode">
+    &lt;/main&gt;
+    &lt;script&gt;
+        // first, get a reference to the first &lt;h1&gt; on the page
+        let h1 = document.querySelector('h1');
+
+        // second, change its HTML
+        h1.innerHTML = 'My &lt;em&gt;UFO&lt;/em&gt; Page'; 
+    &lt;/script&gt;
+&lt;/body&gt;
+</textarea>
+
+                <p>Test the page again; this time, the heading text should change, and there shouldn't be any errors in the console.</p>
+    
+            </div>
+
+            <div class="subhead">
+                <h2>Experimenting With Selectors</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">               
+                <p>The power of <code>document.querySelector()</code> and <code>document.querySelectorAll()</code> is that they accept all <a href="https://www.w3.org/TR/css3-selectors/#selectors">CSS selectors</a>. Let’s try a few of these out. </p>
+
+                <p>Put the following code into the script block on your dom-exercise page:</p>
+            
+                <textarea class="samplecode">
+// 1 - get a reference to the first &lt;h1&gt; on the page
+let h1 = document.querySelector('h1');
+
+// 2-  change its HTML
+h1.innerHTML = 'My UFO Page';  
+
+// 3 - get a reference to the second h2 element and change its HTML in a single line of code
+document.querySelector('h2:nth-of-type(2)').innerHTML = '&lt;em&gt;Klaatu Barada Nikto!&lt;/em&gt;';
+
+// 4 - get a reference to the paragraph immediately following the second h2 
+let text = document.querySelector('h2:nth-of-type(2)+p');
+
+// 5 -  set CSS values through the .style property
+h1.style.fontFamily = 'Orbitron';
+h1.style.fontSize = '3rem';
+text.style.color = 'green';
+text.style.fontFamily = 'Orbitron';
+text.style.fontSize = '.75rem';
+text.style.border = '2px solid magenta';
+text.style.padding = '10px';
+text.style.margin = '5px';
+                </textarea>
+
+                <p>Load the page; it should now look something like this:</p>
+
+                <img src="dom-4.png" alt="js-altered page" class="screenshot">
+
+                <p>There was quite a bit going on in that example. Let’s break it down a bit:</p>
+                
+                <p>In the third section, we used a pseudo selector of h2:nth-of-type(2) to select the 2nd h2 element, and in the fourth section we added an adjacency selector to select the paragraph immediately following that h2.</p>
+
+                <p>In the fifth section, we changed the CSS on the h1 and the text elements by accessing their .style property. Note that in JavaScript, to use CSS properties that have dashes in their name (like font-family) we need to make alterations. We have to drop the dash in the property name, and “camel case” the second word--so the CSS font-family property becomes style.fontFamily. </p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Selecting Multiple Elements with document.querySelectorAll()</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>When we use <code>document.querySelector()</code>, we get only the first element matching the request. If we want all of the elements that match the request, we need to use <code>document.querySelectorAll()</code>, which returns an array of results that match the given selector.</p>
+
+                <p>In your dom-exercise file, add the following code to your existing script block, after the existing code:</p>
+
+                <textarea class="samplecode">
+// 6 - get a reference to ALL h2 elements 
+let allHeadings = document.querySelectorAll("h2");
+
+// 7 - loop through h2 array to add a number and an animation
+for (let i = 0; i &lt; allHeadings.length; i++) {
+    let h2 = allHeadings[i];
+    let currentText = h2.innerHTML;
+    h2.innerHTML = "#" + (i + 1) + " - " + currentText;
+
+    h2.style.animation = "entrance .5s " + (i * .5) + "s linear both";
+
+    // or write the above as an ES6 template string like this:
+    // h2.style.animation = `entrance .5s ${i*.5}s linear both`;
+}
+</textarea>
+                 
+            </div>
+
+            <div class="subhead">
+                <h2>Original Source vs Document Inspector</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+                
+            <div class="panel">
+                <p>It is important to understand the difference between the original HTML file (which we can see when we choose "View Source" in the browser), and what's in the DOM, which is what we see through the browser's "Inspector" in the developer tools panel.</p> 
+                
+                <p>If we view the HTML source of our page in a browser (in Firefox or Chrome, right-click and choose View Page Source), we will not see any of the changes our JavaScript made. Also, there will be no indication that our new styles were applied:</p>
+
+                <p>But if we use the inspector in the developer tools panel (choose Inspector for Firefox, Elements for Chrome), we will see all of those changes reflected in the current DOM tree. </p>
+                <img src="dom-5.png" alt="document inspector" class="screenshot" />
+
+            </div>
+
+            <div class="subhead">
+                <h2>A Few Notes</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <ol type="1">
+                    <li>In this document we have been using <code>document.querySelector()</code> and <code>document.querySelectorAll()</code> to select elements on the page. Out on the web you will also see the older methods <code>document.getElementsByTagName()</code> and <code>document.getElementById()</code> in use - we recommend that you NOT use these methods as they are much less flexible and powerful than the <code>querySelector()</code> and <code>querySelectorAll()</code> methods.</li>
+                    <li>What happens when <code>document.querySelectorAll()</code> finds no matching elements on the page? What does it <em>return</em>? Answer: an empty array.</li>
+                    <li>What happens when we try to loop though an empty array with a <code>for</code> or <code>for...of</code> loop? Answer: Nothing. The looping never happens if the array is empty.</li>
+                    <li>When <code>document.querySelector()</code> finds no matching elements on the page, what does it <em>return</em>? Answer: <code>null</code>.</li>
+                    <li>What happens if we try to call a method on <code>null</code>? Answer: We get a runtime error! How can we avoid this? Read on!</li>
+                </ol>
+            </div>
+
+
+            <div class="subhead">
+                <h2>Avoiding Run-Time Errors</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+            <p>Suppose you have the following code in your page:</p>
+            
+            <textarea class="samplecode">
+let element = document.querySelector("h4");
+element.innerHTML = "Found an h4 tag"; // WILL CAUSE AN ERROR
+            </textarea>
+
+            <p>The <code>element</code> will be null because the page has no h4 elements, and attempting to set a property of element will cause an error. (You saw this at the beginning of this exercise.)</p> 
+                    
+            <p>A safer approach is to check for null first, like this:</p>
+
+            <textarea class="samplecode">
+if (element != null){
+    element.innerHTML = "Found an h4 tag";
+}else{
+    console.log("No h4 found");
+}
+</textarea>
+
+            <p>We can make the code even better, however, by shortening our if statements.  JavaScript has a number of "falsy" values (false, 0, undefined, null , "", '') that evaluate to false in boolean contexts. So we can replace the above with:</p>
+
+<textarea class="samplecode">
+if (element){    // check for false boolean value
+    element.innerHTML = "Found an h4 tag";
+}else{
+    console.log("No h4 found");
+}
+</textarea>
+            </div>
+
+
+            <div class="subhead">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Link your dom-exercise.html file from your landing page as JS Exercise 1, and publish it to your GitHub site. This should be done before the end of class. </p>
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 9 JavaScript In-Class Exercise 1: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your hello.html file from your landing page as JS Exercise 1, and publish it to your GitHub site. This should be done before the end of class.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week9">Back to Week 9</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 1: The Console<br class="mobile-break" /><span class="weekinfo">(Week 9, Tuesday 10/23)</span></h2>
+            <div class="page-desc">
+                <p>We’re going to start by running some JavaScript in a web page without ever actually displaying anything on the page. Instead, we’ll look at the output of the code in the the JavaScript console window that the browser inspector tools provide.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Hello, World!</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+            <p>As you probably know, Federal law requires that every programming tutorial begin with a “Hello World” application. (Okay, maybe that’s not entirely true. But we’re still going to do it!)</p>
+            <p>Create a new folder for today’s work, and in create a new HTML document called hello.html. Copy the following code into the body of the document:</p>
+
+                <textarea class="samplecode">
+<script>
+    console.log("Hello world!");
+</script>
+
+                </textarea>
+                
+
+                <p>Open the file in Chrome or Firefox. It will be blank, since we haven't added any content other than the script tag (which doesn't display on the page). Bring up the console window--in Firefox, by selecting "Tools -&gt; Web Developer -&gt; Web Console", and in Chrome by selecting "View -&gt; Developer -&gt; JavaScript Console". You change the placement of the developer tools window in relation to your content by selecting the "..." menu in the top right corner of the console. (In Firefox the dots are are horizontal; in Chrome they're vertical.)</p>
+
+                <img src="console-1.png" alt="1st Console Example" class="screenshot" />
+
+                <p>The <code>console.log()</code> function allows you to output content to the console rather than displaying it on the page. You should see the output of your script in the console window. (If you're using a live preview function from your editor, you may also see other Javascript output that's been added.) This can be extremely helpful when debugging your code!</p>
+
+                <p>The console also contains an interactive interpreter where you can run JavaScript commands. At the prompt, type <code>Date()</code> to create and see a new date from the <code>Date</code> object, and <code>Math.random()</code> to get a random number from the <code>Math</code> object.</p>
+
+                <img src="console-2.png" alt="2nd Console Example" class="screenshot">
+
+                <p><em>Note: We're not making changes to the HTML file when we enter commands into the console; we’re just testing out what our code would do. </em></p>
+
+            
+            </div>
+
+            <div class="subhead">
+                <h2>Declaring Variables and Constants</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">               
+                <p>In pre-ES6 versions of JavaScript, all variables were defined with the <code>var</code> keyword, and you'll still see that in a lot of code libraries and examples online. In ES6, we can use the <code>const</code> keyword to declare constant values (that do not change), and the <code>let</code> keyword to declare variables.</p>
+
+                <p><em>Many developers (and several IGM professors) recommend that you NOT use the pre-ES6 approach of <code>var</code> to declare variables, as the variables that <code>var</code> declares are <em>scoped to functions</em>, rather than the <em>block scoping</em> of <code>let</code> and <code>const</code>, which introduces odd behavior. However, if your code needs to work on <a href="https://caniuse.com/#feat=let">older browsers</a>, you may still need to use var. Read more here: <a href="https://hackernoon.com/why-you-shouldnt-use-var-anymore-f109a58b9b70">Why You Shouldn't Use var Anymore</a></em></p>
+
+                <p>JavaScript is a <em>loosely typed</em> (aka <em>dynamic</em>) language. That means you don’t have to declare the <em>type</em> of a variable ahead of time. The type will be determined automatically by the engine while the program is being run. That also means that the same variable can contain data of different types</p>
+
+                <p>After the console.log command in your &lt;script&gt; block, add the following lines:</p>
+
+                <textarea class="samplecode">
+const answer = 42;
+
+// string concatenation
+console.log("The answer to everything is " + answer); 
+
+let x = 1;
+let y = 1;
+let sum = x + y;
+
+// this string templating is an ES6-only alternative to normal concatenation
+console.log(`${x} + ${y} is ${sum}`);
+                </textarea>
+
+                <p>View the file in a browser. Again, you’ll see nothing in the browser window, but in the console you should see this:</p>
+
+                <img src="console-3.png" alt="3rd console example" class="screenshot" />
+
+                <p>Some things to note about that code: - When strings are added to numbers, we get back a concatenated string. - ES6 also allows <a href="https://developers.google.com/web/updates/2015/01/ES6-Template-Strings"><em>String Templating</em></a>, which is more powerful than simple string concatenation. Note the backtick ( ` ) symbol is used to denote the string, and <code>${}</code> encloses the variable names.</p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Console Error Messages</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                    <p>The console will display error messages that will help you debug your code. Let’s produce an error by attempting to change the value of the <code>answer</code> constant above. Add this line to the end of your script block:</p>
+                        
+                    <textarea class="samplecode">answer = 43;</textarea>
+                    
+                    <p>When you reload the page in the browser, you should see an error in the console:</p>
+                    <img src="console-4.png" alt="Javascript console error" class="screenshot" />
+                        
+                    <p>That’s because we defined <code>answer</code> as a constant rather than a variable. Fix this error by changing the declaration for <code>answer</code> to a variable rather than a constant.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Data Types and Objects</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            
+            <div class="panel">
+                <p>The five common built-in “primitive” data types in JavaScript are: Number, String, Boolean, Undefined (a value has never been defined) and Null (the intentional absence of a value). ES6 has also added the Symbol type.</p>
+                        
+                <p>Replace the contents of your script block with the following code: </p>
+
+                <textarea class="samplecode">
+// 5 fundamental JavaScript types
+let sum = 99; // Number
+let name = "Fred"; //String
+let isLoggedIn = false; // Boolean
+let userName = undefined;
+let data = null;
+
+// We can later change what type a variable contains without redefining it
+sum = "Joe"; // sum now contains a String
+name = 50; // name now contains a Number
+
+console.log(sum); // should output the string "Joe" to console
+                </textarea>
+
+                <p>View the file in the browser again. You should see the string “Joe” output to the console.</p>
+
+                <p>JavaScript also contains a number of built-in objects that we can use. There is <code>Object</code>, which is a starting point for our own customized objects, as well as <code>Array</code>, <code>Date</code>, <code>Math</code>, and others. The “primitive” types above also can be treated like objects and have properties and methods that can be called on them.</p>
+
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Arrays</a> - A list of values</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Objects</a> - A list of name/value pairs</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a> - Represents a single moment in time</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a> - A built-in object with properties and methods for mathematical operations</li>
+                </ul>
+                
+                <p>Objects have methods and properties that you can access with your code. For instance: </p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString"><em>obj</em>.toString()</a>- Returns a string representing the object.</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed"><em>obj</em>.toFixed()</a> - Formats a number using fixed-point notation.</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length"><em>str</em>.length</a> - Returns the length of a string.</li>
+                </ul>
+
+                <p>In your hello.html document, replace the contents of the script block with this:</p>
+
+                <textarea class="samplecode">
+// Common JS Objects
+let colors = ["red","green","blue"]; // Array literal
+let person = {name:"Fred",age:20};   // Object literal
+let month = new Date().getMonth(); 
+let age = Math.round(20.999); // Doesn't affect person.age
+
+console.log(colors[0]);   // first value of colors
+console.log(person.name); // name value from person object
+console.log(month);  // Note: Uses JS array position, starting from 0
+console.log(age);  // References variable, not object property 
+
+// Treat "primitives" like objects
+let sum = 99.980809809;             // Number
+let name = "Fred";                  // String
+let isLoggedIn = false;             // Boolean
+
+console.log(sum); // Number
+console.log(sum.toFixed(2)); // String 
+console.log(name.length); // Number (length of "Fred")
+console.log(isLoggedIn); // Boolean 
+console.log(isLoggedIn.toString()); // String 
+                </textarea>
+                
+                <p>preview the file in Chrome and view the console. You should see nine values output, and they should match the values in the code comments. Make sure you understand how each of those values is being generated!</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Link your hello.html file from your landing page as JS Exercise 1, and publish it to your GitHub site. This should be done before the end of class. </p>
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>

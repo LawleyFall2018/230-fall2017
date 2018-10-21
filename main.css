@@ -233,9 +233,18 @@ h3 + p {
     width: 85%;
     margin: 0 auto;
     border: 1px dashed black;
-    padding: .75em;
+    padding: .5em;
     background-color: #eee;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.samplecode {
+    width: 95%;
+    margin: 0 auto;
+    border: 1px dashed black;
+    padding: 5px;
+    background-color: #eee;
+    font-family: 'Courier New', monospace;
 }
 
 code, pre {
