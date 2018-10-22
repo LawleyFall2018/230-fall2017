@@ -63,7 +63,12 @@
                 </textarea>
                 
 
-                <p>Open the file in Chrome or Firefox. It will be blank, since we haven't added any content other than the script tag (which doesn't display on the page). Bring up the console window--in Firefox, by selecting "Tools -&gt; Web Developer -&gt; Web Console", and in Chrome by selecting "View -&gt; Developer -&gt; JavaScript Console". You change the placement of the developer tools window in relation to your content by selecting the "..." menu in the top right corner of the console. (In Firefox the dots are are horizontal; in Chrome they're vertical.)</p>
+                <p>Open the file in Chrome or Firefox. It will be blank, since we haven't added any content other than the script tag (which doesn't display on the page). Bring up the console window--in most browsers you have multiple options</p>
+                <ul>
+                    <li>In Chrome or Firefox you can press F12, or you can right click on the page and choose "Inspect" (Chrome)  or "Inspect Element" (Firefox), and then select "Console" from the tabs at the top of the Tools panel</li>
+                    <li>In Chrome you can click on the three vertical dots in the top right corner of the window, and choose More Tools-&gt;Developer Tools; in Firefox you can choose the "hamburger" menu, and choose "Web Developer-&gt;Web Console"</li>
+                    <li>There are key combinations available, as well, but they vary across platform and browser, so you'll have to check your specific setup for which keys will work </li>
+                </ul>
 
                 <img src="console-1.png" alt="1st Console Example" class="screenshot" />
 
@@ -124,6 +129,9 @@ console.log(`${x} + ${y} is ${sum}`);
                     
                     <p>When you reload the page in the browser, you should see an error in the console:</p>
                     <img src="console-4.png" alt="Javascript console error" class="screenshot" />
+
+                    <p>(The screenshot is from Firefox; in Chrome, the error will read "hello-2.html:19 Uncaught TypeError: Assignment to constant variable.")</p>
+
                         
                     <p>That’s because we defined <code>answer</code> as a constant rather than a variable. Fix this error by changing the declaration for <code>answer</code> to a variable rather than a constant.</p>
             </div>
