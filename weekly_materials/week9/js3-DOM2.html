@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 9 JavaScript In-Class Exercise 3: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your completed dom-exercise2.html file from your landing page as DOM Exercise 2, and publish it to your GitHub site. This should be done before the start of Thursday's class.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week9">Back to Week 9</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 3: More About the DOM <br class="mobile-break" /><span class="weekinfo">(Week 9, Tuesday 10/23)</span></h2>
+            <div class="page-desc">
+                    <p>In this exercise, we are going to look at alternatives to <code>.innerHTML</code> that can be used for <strong>"CRUD"</strong> (i.e. Create, Read, Update, Delete) HTML elements in the DOM.</p>  
+
+                    <p>Although we can do quite a bit with the <code>.innerHTML</code> property, it can only be used to modify existing elements. There are times that we might want to insert a new element somewhere on the page, or delete a specific element. To do these things, we need more control over the page than the <code>.innerHTML</code> property gives us.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Understanding the DOM</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>The <a href="https://www.w3schools.com/js/js_htmldom_navigation.asp">browser DOM is an inverted tree structure</a> that consists of <em>nodes</em> - which are mostly HTML elements (software <em>objects</em>) that have properties and methods associated with them. These nodes have hierarchical relationships with one another - <em>parent</em>, <em>child</em>, and <em>sibling</em>.</p>
+
+                <img src="more-dom-0.jpg" alt="DOM tree structure" class="screenshot">
+
+                <p>In this exercise, we will learn how to create new DOM elements and insert them anywhere into the DOM tree.</p>
+
+                <p>Here are some of the new DOM methods we will be working with in this exercise. These allow us to <em>create</em> DOM elements, <em>modify</em> them, <em>insert</em> them into the document, and <em>delete</em> them from the document (you can click on any of them to see the relevant MDN documentation):</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"><code>document.createElement(elementName)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode"><code>document.createTextNode(text)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute"><code>element.getAttribute(attributeName)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute"><code>element.setAttribute(attributeName,attributeValue)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"><code>element.appendChild(anotherElement)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore"><code>element.insertBefore(referenceElement,anotherElement)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild"><code>element.removeChild(anotherElement)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild"><code>element.replaceChild(oldElement,newElement)</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes"><code>element.hasChildNodes()</code></a></li>
+                </ul>
+                <p>And some properties:</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/body"><code>document.body</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ParentNode"><code>element.parentNode</code></a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children"><code>element.children</code></a></li>
+                </ul>
+            </div>
+
+            <div class="subhead">
+                <h2>New DOM Methods</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">               
+                <p>Download the file <a href="dom-exercise2.html">dom-exercise2.html</a> (right click on the link and choose "Save File As"). Preview it in a browser; it should look like this:</p>
+
+                <img src="more-dom-1.png" alt="starting page" class="screenshot">
+
+                <p>Let's use JavaScript to add a &lt;footer&gt; element to the page. Put this code into the script block at the bottom of the page:</p>
+
+                <textarea class="samplecode">
+// 1 - Create a &lt;footer&gt;
+let footer = document.createElement("footer");
+
+// 2 - set the title attribute, which gives us a tooltip 
+footer.setAttribute("title","Don't copy this page without my permission!");
+
+// 3 - create the text of the &lt;footer&gt;
+let textNode = document.createTextNode("© 20XX by Ima Student");
+
+// 4 - insert the text into the &lt;footer&gt;
+footer.appendChild(textNode);
+
+// 5 - insert the &lt;footer&gt; at the end of the &lt;body&gt;
+document.body.appendChild(footer);
+
+// 6 - center the contents of footer 
+footer.style.textAlign = "center";
+
+// 7 - this code does the same thing as #1-#6 above, but without 
+// document.createTextNode() or element.setAttribute()
+
+let footer2 = document.createElement("footer");
+footer2.title = "I'm serious! Don't copy it!";
+footer2.innerHTML = "&copy; 20XX by Ima Student"
+document.body.appendChild(footer2);
+footer2.style.textAlign = "center";
+
+                </textarea>
+
+
+                <p>When you preview the page, it should look like this:</p>
+                <img src="more-dom-2.png" alt="page with two footers" class="screenshot">
+                
+                <p>There's a problem, obviously; the HTML entity for the copyright symbol displays properly in the second footer, but not the first. That's because you can't insert HTML entities using createTextNode; you'd have to use the Unicode encoding instead (\u00A9), or the &copy; symbol itself if you're using Unicode encoding on your documents.</p> 
+            </div>
+
+            <div class="subhead">
+                <h2>Inserting Elements Into the Middle of the DOM Tree</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Rather than just append everything to the bottom of the page, let’s try adding elements to both the end and the middle of the list of links.</p>
+
+                <p>Add the following code to the end of your script block:</p>
+
+                <textarea class="samplecode">
+// 8 - get a reference to the official bob ross site list item
+
+let targetListItem = document.querySelector("li a[href*='bobross.com']").parentNode;
+
+// 9 - create a new list item 
+
+let newListItem = document.createElement("li");
+    newListItem.innerHTML = "&lt;a href='https://www.youtube.com/channel/UCxcnsr1R5Ge_fbTu5ajt8DQ'&gt;Bob Ross YouTube Channel&lt;/a&gt;";
+
+// 10 - insert the new list item into the existing list, before the target item
+    
+let unorderedList = document.querySelector("ul");
+    unorderedList.insertBefore(newListItem,targetListItem);
+                </textarea>
+
+                <p>Reload your page; you should see the YouTube link in the list, before the Official Bob Ross Page link. Right-clicking and choosing "Inspect" will show it in the current DOM. However, keep in mind that you have not modified the actual file--just what the browser is using to represent the page.</p>
+
+            </div>
+
+
+            <div class="subhead">
+                <h2>Deleting DOM Elements</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Removing DOM elements is also easy. Add the following to the end of the script block to remove the <em>first</em> footer:</p>
+
+                <textarea class="samplecode">
+// 11 - Delete a footer
+    document.body.removeChild(document.querySelector("footer"));
+                </textarea>
+
+                <p>Reload the page - the first footer is now gone. You can also see this in the inspector tab of the tools window.</p>
+            </div>
+
+
+            <div class="subhead">
+                    <h2>A Few Notes</h2>
+                    <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+ 
+
+            <div class="panel">
+                    <p>As with most programming languages, there are a variety of ways to accomplish the same task in JavaScript, and there is often not a "right" or "best" way. It will depend on your preferences as well as the context in which your code is being written.</p>
+
+                    <p>Much of this process might have seemed a bit silly--why not just add this content into the original HTML of the page? Once we start triggering JavaScript on events other than the initial page load, however, this will all be a lot more useful!</p> 
+            </div>
+                
+            <div class="subhead">
+                <h2>Submitting Your Work</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Link your completed dom-exercise2.html file from your landing page as DOM Exercise 2, and publish it to your GitHub site. This should be done before the start of Thursday's class. </p>
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
