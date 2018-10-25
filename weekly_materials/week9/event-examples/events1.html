@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Events Example 1</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i');
+            html { font-family: Lato; font-size: 16px; }
+            main { max-width: 800px; margin: 0 auto; border: 1px dotted black; padding: 0 1em 2em;} h1 { font-weight: 900;}
+        </style>
+
+    </head>
+
+<body>
+    <main>
+        <h1>Events Example 1</h1>
+        <p>I am a paragraph. Click me!</p>
+    </main>
+
+    <script>
+        //1 - select the first p element
+        let paragraph = document.querySelector("p");
+
+        // 1 - assign a function expression as the value for the selected element
+        paragraph.onclick = function (e) {
+            
+            // 2 - use the keyword 'this' to reference the object that triggered the event
+            this.innerHTML = "I was clicked!";
+
+            // 3 - will do the same thing
+            //e.target.innerHTML = "I was clicked!";
+        }
+
+
+    </script>
+</body>
+
+</html>

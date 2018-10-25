@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Events Example 2</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i');
+            html { font-family: Lato; font-size: 16px; }
+            main { max-width: 800px; margin: 0 auto; border: 1px dotted black; padding: 1em 2em;} h1 { font-weight: 900;}
+            div {background-color: aqua; padding: .5em}
+        </style>
+
+    </head>
+
+<body>
+    <main>
+        <h1>Events Example 2</h1>
+
+        <p>I am a paragraph</p>
+
+        <div>I am a div</div>
+    
+    </main>
+    
+    <script>
+        let p = document.querySelector("p");
+        let div = document.querySelector("div");
+
+        p.onclick = function (e) {
+            // 1 - the keyword 'this' in this context means the object that triggered the event
+            this.innerHTML = "I was clicked!";
+
+            // 2 - will do the same thing
+            //e.target.innerHTML = "I was clicked!";
+        }
+
+        // 3 - Declare a function to be called later
+        function divClicked() {
+            this.innerHTML = "I am a div, and I was clicked!";
+        }
+
+        // 4 - use the .onclick event to call the divClicked function
+
+        div.onclick = divClicked;
+    </script>
+
+</body>
+
+</html>

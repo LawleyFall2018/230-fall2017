@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Arrow Examples</title>
+</head>
+
+<body>
+
+	<script>
+		// 1 - function declaration
+		function addThem1(num1, num2) {
+			return num1 + num2;
+		}
+
+		// 2 - function expression
+		let addThem2 = function (num1, num2) {
+			return num1 + num2;
+		}
+
+		// 3 - arrow function with the usual "block body"
+		let addThem3 = (num1, num2) => { return num1 + num2; }
+
+		// 4 - arrow function with a "concise body" and implied return statement
+		let addThem4 = (num1, num2) => num1 + num2;
+
+		// They all do the same thing
+		console.log(addThem1(5, 5)) // 10
+		console.log(addThem2(5, 5)) // 10
+		console.log(addThem3(5, 5)) // 10
+		console.log(addThem4(5, 5)) // 10
+
+		// 5 - and here's an even more concise version, if the function has only a single argument the
+		// parentheses can be omitted
+		let doubleIt = num => num * 2;
+		console.log(doubleIt(5));
+
+	</script>
+</body>
+
+</html>

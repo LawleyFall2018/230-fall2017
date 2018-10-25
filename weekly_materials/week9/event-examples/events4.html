@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Events Example 4</title>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i');
+            html { font-family: Lato; font-size: 16px; }
+            main { max-width: 800px; margin: 0 auto; border: 1px dotted black; padding: 1em 2em;} h1 { font-weight: 900;}
+            div {background-color: aqua; padding: .5em}
+        </style>
+
+    </head>
+
+<body>
+    <main>
+        <h1>Events Example 4</h1>
+
+        <p>I am a paragraph</p>
+
+        <div>I am a div</div>
+    
+    </main>
+    
+    <script>
+        // 1 - Declare 3 arrow functions that can be called later
+        let changeText = (e) => { e.target.innerHTML = "I was clicked!"; };
+        let changeColor = (e) => { e.target.style.color = "magenta"; };
+        let changeStyle = (e) => { e.target.style.fontStyle = "italic"; };
+
+
+        // 2 - get references to the <p> and the <div>
+        let p = document.querySelector("p");
+        let div = document.querySelector("div");
+
+        // 3 - use addEventListener() to add three events to the <p>
+        p.addEventListener("click", changeText); // NOTE the event is named 'click', NOT 'onclick'
+        p.addEventListener("click", changeColor);
+        p.addEventListener("click", changeStyle); // now three functions will be called when `p` is clicked
+
+        // 4 - we will only give the <div> two events
+        div.addEventListener("click", changeText);
+        div.addEventListener("click", changeColor);
+
+
+    </script>
+
+</body>
+
+</html>

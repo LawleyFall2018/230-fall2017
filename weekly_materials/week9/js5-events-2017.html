@@ -1,430 +1,477 @@
-<h1 id="javascript-events">JavaScript Events</h1>
-<p>The browser generates DOM events when interesting things have happened. Some examples of the things that generate events are “the page loaded”, “the button was clicked”, “the file started to download”, “the selected value changed” “the user clicked in a form field”.</p>
-<p>You can see a complete list of DOM events here: https://developer.mozilla.org/en-US/docs/Web/Events</p>
-<p>And you can learn more about events here: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events</p>
-<p><strong>Table of Contents</strong> * <a href="#event-handlers">Event Handlers</a> * <a href="#event-handlers-and-function-references">Event Handlers and Function References</a> * <a href="#breaking-our-code">Breaking Our Code</a> * <a href="#events-and-arrow-functions">Events and Arrow Functions</a> * <a href="#event-listeners---addeventlistener">Event Listeners - <code>addEventListener()</code></a> * <a href="#event-listeners---removeeventlistener">Event Listeners - <code>removeEventListener()</code></a> * <a href="#adding-properties-to-elements-with-elementdataset">Adding Properties to Elements with <code>element.dataset</code></a> * <a href="#important-notes">Important Notes</a> * <a href="#review-questions">Review Questions</a> * <a href="#deliverable">Deliverable</a></p>
-<h2 id="event-handlers">Event Handlers</h2>
-<p>Browser “on-event” handlers have been around since the early days of the Internet, and are the easiest way to hook into events like <code>onload</code>, <code>onclick</code>, <code>onmousedown</code>,<code>onkeyup</code> and so on.</p>
-<h3 id="events-1.html">events-1.html</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-1<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="kw">&lt;/style&gt;</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">  <span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">  </a>
-<a class="sourceLine" id="cb1-17" data-line-number="17">  <span class="co">// 1 - the onclick event handler now has a function expression as its value</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18">  <span class="va">p</span>.<span class="at">onclick</span> <span class="op">=</span> <span class="kw">function</span>(e)<span class="op">{</span></a>
-<a class="sourceLine" id="cb1-19" data-line-number="19">    <span class="co">// 2 - the keyword &#39;this&#39; in this context means the object that triggered the event</span></a>
-<a class="sourceLine" id="cb1-20" data-line-number="20">    <span class="kw">this</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I was clicked!&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb1-21" data-line-number="21">    </a>
-<a class="sourceLine" id="cb1-22" data-line-number="22">   <span class="co">// 3 - will do the same thing</span></a>
-<a class="sourceLine" id="cb1-23" data-line-number="23">   <span class="co">//e.target.innerHTML = &quot;I was clicked!&quot;;</span></a>
-<a class="sourceLine" id="cb1-24" data-line-number="24">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb1-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb1-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<p>Copy and paste the above code into a new HTML document and load it in a browser. Clicking the paragraph should cause its text contents to change.</p>
-<h3 id="explanation">Explanation</h3>
-<ol type="1">
-<li>In #1 above, we give the <code>onclick</code> event handler a <em>function expression</em> as its value. This function will be called once a click event has been triggered by the paragraph.</li>
-<li>In #2 above, we used the <code>this</code> keyword. In JavaScript the value of <code>this</code> varies depending how it it used. In a function that is triggered by an event, this is a reference to the object that called the method - in this case the paragraph.</li>
-<li>In #3 above, the <code>e</code> parameter is the default <code>Event</code> object that is sent along by the event handler. It has a number of properties and methods, and in this case <code>e.target</code> is the object that recieved the event (once again, the paragraph).</li>
-</ol>
-<p><strong>If we pop a breakpoint into the debugger (Use the </strong>Sources** tab, and select <strong>event-1.html</strong>, then click in the gutter to set breakpoint), and then click the paragraph, we can inspect the properies of this <code>Event</code> object, and see that it’s actually a <code>MouseEvent</code> object.**</p>
-<figure>
-<img src="events-1.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<p><strong>Below we can see that the value of <code>e.target</code> and the value of <code>this</code> were both the paragraph that was clicked on.</strong></p>
-<figure>
-<img src="events-2.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h2 id="event-handlers-and-function-references">Event Handlers and Function References</h2>
-<p>Below our code will point at a declared (and named) function - this code will be triggered when the paragraph is clicked on. Go ahead and try this code out - clicking the paragraph will cause its text to change as it did in the previous section, clicking the div will similarly trigger the <code>divClicked()</code> function.</p>
-<h3 id="events-2.html">events-2.html</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-2<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="va">p</span>.<span class="at">onclick</span> <span class="op">=</span> <span class="kw">function</span>(e)<span class="op">{</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19">    <span class="co">// 1 - the keyword &#39;this&#39; in this context means the object that triggered the event</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20">    <span class="kw">this</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I was clicked!&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21">   </a>
-<a class="sourceLine" id="cb2-22" data-line-number="22">   <span class="co">// 2 - will do the same thing</span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23">   <span class="co">//e.target.innerHTML = &quot;I was clicked!&quot;;</span></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="op">}</span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26">   <span class="co">// 3 - Let&#39;s declare a function to be called later</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="kw">function</span> <span class="at">divClicked</span>()<span class="op">{</span></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28">    <span class="kw">this</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I am a div, and I was clicked!&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="op">}</span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31">   <span class="co">// 4 - .onclick now points at the divClicked() function</span></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>).<span class="at">onclick</span> <span class="op">=</span> divClicked<span class="op">;</span></a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<h3 id="explanation-1">Explanation</h3>
-<ul>
-<li>In #3 above, we declare a function which we will call later.</li>
-<li>In #4 above, the value of onclick is the function’s <em>reference</em>. The function will be called when the button is clicked.</li>
-</ul>
-<h2 id="breaking-our-code">Breaking our Code</h2>
-<p>One common mistake that is easy to make is to write this line:</p>
-<p><code>document.querySelector(&quot;div&quot;).onclick = divClicked;</code></p>
-<p><strong>as this:</strong></p>
-<p><code>document.querySelector(&quot;div&quot;).onclick = divClicked(); // add parentheses</code></p>
-<ul>
-<li>Go ahead and make that change to <strong>events-2.html</strong> and run this code - note that our <code>div.onclick</code> code doesn’t seem to work now - what happened?</li>
-<li>Check out the debugger - add a breakpoint and reload the page. Then find the value of <code>p.onclick</code> (recall we didn’t change that code) - you can see below that the value of p.onclick is a function.</li>
-</ul>
-<figure>
-<img src="events-3.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<ul>
-<li>Now check out the value of <code>div.onclick</code> in the debugger - you will see that it is <code>null</code> - which is why the click code no longer works.</li>
-</ul>
-<figure>
-<img src="events-4.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<ul>
-<li>What happened is that when we added the <code>()</code> to the end of <code>onclick = divClicked()</code>, the function was called immediately, and the <em>return value</em> of the function (<code>null</code>) was stored in the <code>onclick</code> property instead of the function <em>reference</em> it was expecting.</li>
-<li>Make sure you change the code back so that it works again.</li>
-</ul>
-<h2 id="events-and-arrow-functions">Events and Arrow Functions</h2>
-<p>We can use arrow functions as event handlers too. You might recall that in the Functions lesson we mentioned that arrow functions have two advantages:</p>
-<ul>
-<li>they have a shorter syntax than regular functions</li>
-<li>they do not bind their own <code>this</code> keyword.</li>
-</ul>
-<p>What this means is that when an event handler points at a <em>regular function</em>, the value of <code>this</code> is the object that received the event. But when an event handler points at an <em>arrow function</em>, the value of <code>this</code> will instead be “the value of the enclosing execution context”, which below will be the <code>window</code> object - so we will be able to call top level fucntions in the script.</p>
-<p>Go ahead and run <strong>events-3.html</strong> and see what happens.</p>
-<h3 id="events-3.html">events-3.html</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-3<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">// 1 - Let&#39;s declare a function that can be called later</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="kw">function</span> <span class="at">changeParagraph</span>()<span class="op">{</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>).<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Somebody changed me!&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="op">}</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">// 2 - Let&#39;s declare an arrow function to be called later</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="kw">let</span> divClicked <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> </a>
-<a class="sourceLine" id="cb3-24" data-line-number="24">              <span class="va">e</span>.<span class="va">target</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I am a div, and I was clicked!&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25">              <span class="kw">this</span>.<span class="at">changeParagraph</span>()<span class="op">;</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26">            <span class="op">}</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">// 3 - .onclick now points at the divClicked arrow function</span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="kw">let</span> div <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>).<span class="at">onclick</span> <span class="op">=</span> divClicked<span class="op">;</span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<figure>
-<img src="events-5.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h3 id="explanation-2">Explanation</h3>
-<ul>
-<li>Clicking the div changed both the div and the paragraph</li>
-<li>in #1 above, we created a function that will change the paragraph</li>
-<li>in #2 above, we declared an arrow function that will change the div</li>
-<li>in #3 above, we hooked up the div <code>onclick</code> event to the arrow function</li>
-<li>when the div is clicked, the code in #2 runs. Here, <code>e.target</code> refers to the element that was clicked on, the div. But in an arrow function (unlike a regular function), <code>this</code> now refers to the <code>window</code> object, which includes the <code>changeParagraph()</code> function we called earlier.</li>
-<li>(actually, in the above example, the <code>this</code> in <code>this.changeParagraph()</code> was optional, but we wanted to illustrate how the value of <code>this</code> has changed in an arrow function.</li>
-</ul>
-<h2 id="event-listeners---addeventlistener">Event Listeners - <code>addEventListener()</code></h2>
-<p>The major limitation of the event handlers shown above is that each element can have only <em>one</em> event handling function attached to it at a time. <code>addEventListener()</code> - which we will cover now, has no such restrictions.</p>
-<p>Try out the code below:</p>
-<h3 id="events-4.html">events-4.html</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-4<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">// 1 - Let&#39;s declare 3 arrow functions that can be called later</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="kw">let</span> changeText <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> <span class="va">e</span>.<span class="va">target</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I was clicked!&quot;</span><span class="op">;</span> <span class="op">};</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="kw">let</span> changeColor <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&quot;red&quot;</span><span class="op">;</span> <span class="op">};</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="kw">let</span> changeStyle <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">fontStyle</span> <span class="op">=</span> <span class="st">&quot;italic&quot;</span><span class="op">;</span> <span class="op">};</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">// 2 - get references to the &lt;p&gt; and the &lt;div&gt;</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="kw">let</span> div <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">// 3 - use addEventListener() to add three events to the &lt;p&gt;</span></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeText)<span class="op">;</span> <span class="co">// </span><span class="al">NOTE</span><span class="co"> the event is named &#39;click&#39;, NOT &#39;onclick&#39;</span></a>
-<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeColor)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeStyle)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">// 4 - we will only give the &lt;div&gt; two events</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="va">div</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeText)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="va">div</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeColor)<span class="op">;</span></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<p>When you run the code and click on the elements, this is what you will see:</p>
-<figure>
-<img src="events-6.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h3 id="explanation-3">Explanation</h3>
-<ul>
-<li>When you try out the code, you should see that the paragraph has 3 functions attached to it. These 3 functions will change the HTML, the color to red, and the font-style to italic.</li>
-<li>When you try out the code, you should see that the div has 2 functions attached to it. These 2 functions will change the HTML, the color to red, but leave the font-style alone.</li>
-<li>It is very important to note that the events that are being passed into <code>addEventListener()</code> are named ‘click’, NOT ‘onclick’ like the event handler was.</li>
-</ul>
-<h2 id="event-listeners---removeeventlistener">Event Listeners - <code>removeEventListener()</code></h2>
-<p>You can also call <code>removeEventListener()</code> to later remove event functions.</p>
-<p>Add the following to <strong>events-4.html</strong></p>
-<pre><code>let messWithDiv = (e) =&gt; { 
-               div.removeEventListener(&quot;click&quot;,changeText);
-               div.removeEventListener(&quot;click&quot;,changeColor);
-               div.addEventListener(&quot;click&quot;,changeStyle);
-            };
+<!DOCTYPE html>
+<html lang="en">
 
-p.addEventListener(&quot;click&quot;,messWithDiv);</code></pre>
-<p>Try out this new code. If you click on the paragraph first, and then the div, you will see that the div has lost 2 of its event functions, but gained the <code>changeStyle</code> function.</p>
-<figure>
-<img src="events-7.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h2 id="adding-properties-to-elements-with-element.dataset">Adding Properties to Elements with <code>element.dataset</code></h2>
-<p>Let’s imagine that we would like to toggle the paragraph and div back and forth when we click on them. We would also like to use the same code for the paragraph and div, as well as any number of other elements. There are a number of ways to do this, but let’s go ahead and try out the HTML5 “Custom Data” attribute to add properties to the HTML elements we click on. You can read more about them here:</p>
-<ul>
-<li>http://html5doctor.com/html5-custom-data-attributes/</li>
-</ul>
-<h3 id="events-5.html">events-5.html</h3>
-<p>Create a new html file with the following code, and test it in a browser.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-5<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">// 1 - get references to &lt;p&gt; and &lt;div&gt;</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span> </a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="kw">let</span> div <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">// 2 - create a custom property named &quot;state&quot; for each element and give it a default value</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">// all new properties will be added to the element&#39;s .dataset property</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="va">p</span>.<span class="va">dataset</span>.<span class="at">state</span> <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span> <span class="co">// A</span></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="va">div</span>.<span class="va">dataset</span>.<span class="at">state</span> <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span> <span class="co">// B</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">// 3 - Let&#39;s declare an arrow function that can be called later</span></a>
-<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="kw">let</span> toggleStyle <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> </a>
-<a class="sourceLine" id="cb6-28" data-line-number="28">               <span class="kw">let</span> state <span class="op">=</span> <span class="va">e</span>.<span class="va">target</span>.<span class="va">dataset</span>.<span class="at">state</span><span class="op">;</span> <span class="co">// C</span></a>
-<a class="sourceLine" id="cb6-29" data-line-number="29">               <span class="cf">if</span> (state <span class="op">==</span> <span class="st">&quot;changed&quot;</span>)<span class="op">{</span> <span class="co">// == for comparison</span></a>
-<a class="sourceLine" id="cb6-30" data-line-number="30">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;white&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb6-31" data-line-number="31">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">fontStyle</span> <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb6-32" data-line-number="32">                  state <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb6-33" data-line-number="33">            <span class="op">}</span> <span class="cf">else</span><span class="op">{</span></a>
-<a class="sourceLine" id="cb6-34" data-line-number="34">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;yellow&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb6-35" data-line-number="35">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">fontStyle</span> <span class="op">=</span> <span class="st">&quot;italic&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb6-36" data-line-number="36">                  state <span class="op">=</span> <span class="st">&quot;changed&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb6-37" data-line-number="37">            <span class="op">}</span></a>
-<a class="sourceLine" id="cb6-38" data-line-number="38">                        </a>
-<a class="sourceLine" id="cb6-39" data-line-number="39">            <span class="va">e</span>.<span class="va">target</span>.<span class="va">dataset</span>.<span class="at">state</span> <span class="op">=</span> state<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-40" data-line-number="40">             <span class="op">};</span></a>
-<a class="sourceLine" id="cb6-41" data-line-number="41"></a>
-<a class="sourceLine" id="cb6-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb6-43" data-line-number="43"></a>
-<a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">// 4 - add events </span></a>
-<a class="sourceLine" id="cb6-45" data-line-number="45"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>toggleStyle)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-46" data-line-number="46"><span class="va">div</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>toggleStyle)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-47" data-line-number="47"></a>
-<a class="sourceLine" id="cb6-48" data-line-number="48"><span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb6-49" data-line-number="49"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb6-50" data-line-number="50"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<p><strong>Running the code will allow you to repeatedly click on each element, and toggle its styles back and forth, looking like this:</strong></p>
-<figure>
-<img src="events-8.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h3 id="explanation-4">Explanation</h3>
-<p>Clicking on an element should toggle the styles back and forth from its normal appearance, to a changed appearance with a yellow background color and italic text. This toggling between the 2 appearances is being tracked by changing <code>dataset.state</code> from “normal” to “changed”. Note that we came up with the name <code>.state</code> on our own. We could have called it anything like <code>.selected</code> or <code>.clicked</code>.</p>
-<ul>
-<li><p><strong>Note <em>above</em> that we can see the changing value (as we click) of the div’s <code>data-state</code> in the web inspector elements tab.</strong></p></li>
-<li><p><strong>Note <em>below</em> that we can also see the value of the div’s <code>dataset.state</code> (the same value) in debugger.</strong></p></li>
-</ul>
-<figure>
-<img src="events-9.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h3 id="one-more-thing">One more thing</h3>
-<p>Note the 2A, 2B, and 3C lines in the <strong>events-5.html</strong> code sample above. Lines A &amp; B are not necessary because line C will evaluate to <code>undefined</code> if we never define an initial value for <code>dataset.state</code> on each element. And because <code>undefined</code> is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a> value and will evaluate to <code>false</code>, the code will run fine. So why did we include A and B? To make the coder’s intent more clear, and also so that we could have this discussion :-)</p>
-<h2 id="important-notes">Important Notes</h2>
-<p>If we use the <code>window.onload</code> event handler, we can move our code back up to the the &lt;head&gt; section of the document, see below:</p>
-<h3 id="events-6.html">events-6.html</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="kw">&lt;title&gt;&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="va">window</span>.<span class="at">onload</span> <span class="op">=</span> init<span class="op">;</span> <span class="co">// do you understand WHY there are no parentheses after init?</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="kw">function</span> <span class="at">init</span>()<span class="op">{</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">        <span class="co">// this is the second log we see in the console - do you understand WHY?</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Page is loaded!&quot;</span>)<span class="op">;</span> </a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">        <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;h1&quot;</span>).<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Window loaded!&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">    <span class="op">}</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">    </a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="co">// this is the first log we see in the console - do you understand WHY?</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Page is NOT loaded!&quot;</span>)<span class="op">;</span> </a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="kw">&lt;h1&gt;</span>???<span class="kw">&lt;/h1&gt;</span></a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<p><strong>Be sure you can answer the “WHY” questions in the comments above!</strong></p>
-<h2 id="review-questions">Review Questions</h2>
-<ol type="1">
-<li>What are 2 advantages to using <em>event listeners</em> instead of <em>event handlers</em></li>
-<li>Describe a situation where you might use an <em>event handler</em> anyway</li>
-<li>What does an event handler (or event listener) “point” at?</li>
-<li>What are the two advantages of using arrow functions?</li>
-</ol>
-<h2 id="deliverable">Deliverable</h2>
-<p>You’re going to create a “Color Chooser” JS application</p>
-<h4 id="start-with-this">1) Start with this…</h4>
-<p>Create a new HTML page named javascript5.html, using the following code:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Web Apps-6<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">        body{</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">            <span class="kw">font-family</span>:<span class="dv">sans-serif</span>;</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">        }</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">        <span class="pp">#colorform</span>{</a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">            <span class="kw">background-color</span>:<span class="dv">#dfecdf</span>;</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">            <span class="kw">color</span>: <span class="dv">#111</span>;</a>
-<a class="sourceLine" id="cb8-13" data-line-number="13">            <span class="kw">padding</span>:<span class="dv">1em</span>;<span class="kw">width</span>:<span class="dv">400px</span>;</a>
-<a class="sourceLine" id="cb8-14" data-line-number="14">        }</a>
-<a class="sourceLine" id="cb8-15" data-line-number="15">        <span class="pp">#colorform</span> p<span class="pp">#info</span>{</a>
-<a class="sourceLine" id="cb8-16" data-line-number="16">            <span class="kw">background-color</span>:<span class="dv">white</span>;</a>
-<a class="sourceLine" id="cb8-17" data-line-number="17">            <span class="kw">color</span>: <span class="dv">black</span>;</a>
-<a class="sourceLine" id="cb8-18" data-line-number="18">            <span class="kw">width</span>:<span class="dv">300px</span>;</a>
-<a class="sourceLine" id="cb8-19" data-line-number="19">            <span class="kw">height</span>:<span class="dv">100px</span>;</a>
-<a class="sourceLine" id="cb8-20" data-line-number="20">            <span class="kw">padding</span>:<span class="dv">.5em</span>;</a>
-<a class="sourceLine" id="cb8-21" data-line-number="21">        }</a>
-<a class="sourceLine" id="cb8-22" data-line-number="22">        </a>
-<a class="sourceLine" id="cb8-23" data-line-number="23">        <span class="pp">#colorform</span> legend{ </a>
-<a class="sourceLine" id="cb8-24" data-line-number="24">            <span class="kw">font-weight</span>:<span class="dv">bold</span>;</a>
-<a class="sourceLine" id="cb8-25" data-line-number="25">            <span class="kw">font-size</span>:<span class="dv">1.2em</span>;</a>
-<a class="sourceLine" id="cb8-26" data-line-number="26">        }</a>
-<a class="sourceLine" id="cb8-27" data-line-number="27">    <span class="kw">&lt;/style&gt;</span></a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb8-30" data-line-number="30"></a>
-<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;colorform&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb8-32" data-line-number="32">    <span class="kw">&lt;legend&gt;</span>Choose your favorite color!<span class="kw">&lt;/legend&gt;</span></a>
-<a class="sourceLine" id="cb8-33" data-line-number="33">    <span class="kw">&lt;p&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> id=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> value=</span><span class="st">&quot;red&quot;</span> <span class="kw">/&gt;</span> Red<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb8-34" data-line-number="34">    <span class="kw">&lt;p&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> id=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> value=</span><span class="st">&quot;green&quot;</span> <span class="kw">/&gt;</span> Green<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb8-35" data-line-number="35">    <span class="kw">&lt;p&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> id=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> value=</span><span class="st">&quot;blue&quot;</span> <span class="kw">/&gt;</span> Blue<span class="kw">&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb8-36" data-line-number="36">    <span class="kw">&lt;p&gt;&lt;button</span><span class="ot"> id=</span><span class="st">&quot;colorButton&quot;</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="kw">&gt;</span>Submit<span class="kw">&lt;/button&gt;&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb8-37" data-line-number="37">    <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;info&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></a>
-<a class="sourceLine" id="cb8-38" data-line-number="38"><span class="kw">&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb8-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb8-40" data-line-number="40"><span class="kw">&lt;script&gt;</span></a>
-<a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">/* Write you code here! */</span></a>
-<a class="sourceLine" id="cb8-42" data-line-number="42"><span class="kw">&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb8-44" data-line-number="44"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
-<h4 id="which-looks-like-this-in-the-browser">2) Which looks like this in the browser:</h4>
-<p>Note that because we <code>name</code> all of the radio buttons the same, they are considered a “group” by the browser, and we can only select one radio button at a time. Try it. The submit button currently does nothing.</p>
-<figure>
-<img src="events-10.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h4 id="after-you-have-written-all-of-your-javascript-code-and-clicked-a-radio-button">3) After you have written all of your JavaScript code, and clicked a radio button …</h4>
-<p>You should see a message indicating what color you have selected.</p>
-<figure>
-<img src="events-11.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h4 id="once-you-click-the-submit-button">4) Once you click the Submit button …</h4>
-<p>You should see another message about the color you selected, and the &lt;legend&gt; element should also change to that color.</p>
-<figure>
-<img src="events-12.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<h3 id="hints">Hints</h3>
-<ol type="1">
-<li>You can use event handlers OR event listeners, it’s your choice</li>
-<li>You can use standard funtions OR arrow functions, it’s you choice</li>
-<li>The <strong>Submit button</strong> code should be triggered by the <code>click</code> event</li>
-<li>The <strong>Radio button</strong> code should be triggered by the <code>change</code> event</li>
-<li><code>document.querySelectorAll()</code> can be used to get reference to all of the radio buttons. You can then loop through the list you get back (use a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for"><code>for</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of"><code>for...of</code></a> loop).</li>
-<li>To get the value of the selected radio button, use <code>e.target.value</code></li>
-<li>In the submit button code, you can check to see which radio button is selected by checking its <code>.checked</code> property</li>
-<li>The <code>value</code> of these radio buttons happens to be a CSS color keyword, so it will be pretty easy to assign the value to the color property of the &lt;legend&gt; element (and CSS color values are not case sensitive, so don’t worry about the capitalization).</li>
-</ol>
-<p>When you’re done, upload it to banjo.rit.edu, and point to it from your main 230 page. It should be completed by 11:59pm on Monday, October 30.</p>
-<h3 id="challenge-yourself">Challenge Yourself!</h3>
-<p>Can you do a version of this web app, but with checkboxes?</p>
-<p>Hint: Checkboxes have a <code>.checked</code> property.</p>
-<p>Hint: Don’t worry about changing the color of the &lt;legend&gt; in this version.</p>
-<p>Checkboxes allow the user to make multiple selections. Yours should work like the version below.</p>
-<p><strong>Check multiple select boxes:</strong></p>
-<figure>
-<img src="events-13.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
-<p><strong>Click Submit button:</strong></p>
-<figure>
-<img src="events-14.jpg" alt="Web Page" /><figcaption>Web Page</figcaption>
-</figure>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="javascript-events">JavaScript Events</h1>
+    <p>The browser generates DOM events when interesting things have happened. Some examples of the things that generate events are “the page loaded”, “the button was clicked”, “the file started to download”, “the selected value changed” “the user clicked in a form field”.</p>
+    <p>You can see a complete list of DOM events here: https://developer.mozilla.org/en-US/docs/Web/Events</p>
+    <p>And you can learn more about events here: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events</p>
+    <p><strong>Table of Contents</strong> * <a href="#event-handlers">Event Handlers</a> * <a href="#event-handlers-and-function-references">Event Handlers and Function References</a> * <a href="#breaking-our-code">Breaking Our Code</a> * <a href="#events-and-arrow-functions">Events and Arrow Functions</a> * <a href="#event-listeners---addeventlistener">Event Listeners - <code>addEventListener()</code></a> * <a href="#event-listeners---removeeventlistener">Event Listeners - <code>removeEventListener()</code></a> * <a href="#adding-properties-to-elements-with-elementdataset">Adding Properties to Elements with <code>element.dataset</code></a> * <a href="#important-notes">Important Notes</a> * <a href="#review-questions">Review Questions</a> * <a href="#deliverable">Deliverable</a></p>
+    <h2 id="event-handlers">Event Handlers</h2>
+    <p>Browser “on-event” handlers have been around since the early days of the Internet, and are the easiest way to hook into events like <code>onload</code>, <code>onclick</code>, <code>onmousedown</code>,<code>onkeyup</code> and so on.</p>
+    <h3 id="events-1.html">events-1.html</h3>
+    <div class="sourceCode" id="cb1">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-1<span class="kw">&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb1-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
+    <a class="sourceLine" id="cb1-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
+    <a class="sourceLine" id="cb1-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
+    <a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="kw">&lt;/style&gt;</span></a>
+    <a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb1-12" data-line-number="12"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb1-14" data-line-number="14"></a>
+    <a class="sourceLine" id="cb1-15" data-line-number="15">  <span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb1-16" data-line-number="16">  </a>
+    <a class="sourceLine" id="cb1-17" data-line-number="17">  <span class="co">// 1 - the onclick event handler now has a function expression as its value</span></a>
+    <a class="sourceLine" id="cb1-18" data-line-number="18">  <span class="va">p</span>.<span class="at">onclick</span> <span class="op">=</span> <span class="kw">function</span>(e)<span class="op">{</span></a>
+    <a class="sourceLine" id="cb1-19" data-line-number="19">    <span class="co">// 2 - the keyword &#39;this&#39; in this context means the object that triggered the event</span></a>
+    <a class="sourceLine" id="cb1-20" data-line-number="20">    <span class="kw">this</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I was clicked!&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb1-21" data-line-number="21">    </a>
+    <a class="sourceLine" id="cb1-22" data-line-number="22">   <span class="co">// 3 - will do the same thing</span></a>
+    <a class="sourceLine" id="cb1-23" data-line-number="23">   <span class="co">//e.target.innerHTML = &quot;I was clicked!&quot;;</span></a>
+    <a class="sourceLine" id="cb1-24" data-line-number="24">  <span class="op">}</span></a>
+    <a class="sourceLine" id="cb1-25" data-line-number="25"></a>
+    <a class="sourceLine" id="cb1-26" data-line-number="26"></a>
+    <a class="sourceLine" id="cb1-27" data-line-number="27"><span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb1-28" data-line-number="28"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb1-29" data-line-number="29"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <p>Copy and paste the above code into a new HTML document and load it in a browser. Clicking the paragraph should cause its text contents to change.</p>
+    <h3 id="explanation">Explanation</h3>
+    <ol type="1">
+        <li>In #1 above, we give the <code>onclick</code> event handler a <em>function expression</em> as its value. This function will be called once a click event has been triggered by the paragraph.</li>
+        <li>In #2 above, we used the <code>this</code> keyword. In JavaScript the value of <code>this</code> varies depending how it it used. In a function that is triggered by an event, this is a reference to the object that called the method - in this case the paragraph.</li>
+        <li>In #3 above, the <code>e</code> parameter is the default <code>Event</code> object that is sent along by the event handler. It has a number of properties and methods, and in this case <code>e.target</code> is the object that recieved the event (once again, the paragraph).</li>
+    </ol>
+    <p><strong>If we pop a breakpoint into the debugger (Use the </strong>Sources** tab, and select <strong>event-1.html</strong>, then click in the gutter to set breakpoint), and then click the paragraph, we can inspect the properies of this <code>Event</code> object, and see that it’s actually a <code>MouseEvent</code> object.**</p>
+    <figure>
+        <img src="events-1.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <p><strong>Below we can see that the value of <code>e.target</code> and the value of <code>this</code> were both the paragraph that was clicked on.</strong></p>
+    <figure>
+        <img src="events-2.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h2 id="event-handlers-and-function-references">Event Handlers and Function References</h2>
+    <p>Below our code will point at a declared (and named) function - this code will be triggered when the paragraph is clicked on. Go ahead and try this code out - clicking the paragraph will cause its text to change as it did in the previous section, clicking the div will similarly trigger the <code>divClicked()</code> function.</p>
+    <h3 id="events-2.html">events-2.html</h3>
+    <div class="sourceCode" id="cb2">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-2<span class="kw">&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
+    <a class="sourceLine" id="cb2-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
+    <a class="sourceLine" id="cb2-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
+    <a class="sourceLine" id="cb2-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
+    <a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
+    <a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb2-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
+    <a class="sourceLine" id="cb2-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb2-16" data-line-number="16"></a>
+    <a class="sourceLine" id="cb2-17" data-line-number="17"><span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb2-18" data-line-number="18"><span class="va">p</span>.<span class="at">onclick</span> <span class="op">=</span> <span class="kw">function</span>(e)<span class="op">{</span></a>
+    <a class="sourceLine" id="cb2-19" data-line-number="19">    <span class="co">// 1 - the keyword &#39;this&#39; in this context means the object that triggered the event</span></a>
+    <a class="sourceLine" id="cb2-20" data-line-number="20">    <span class="kw">this</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I was clicked!&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb2-21" data-line-number="21">   </a>
+    <a class="sourceLine" id="cb2-22" data-line-number="22">   <span class="co">// 2 - will do the same thing</span></a>
+    <a class="sourceLine" id="cb2-23" data-line-number="23">   <span class="co">//e.target.innerHTML = &quot;I was clicked!&quot;;</span></a>
+    <a class="sourceLine" id="cb2-24" data-line-number="24"><span class="op">}</span></a>
+    <a class="sourceLine" id="cb2-25" data-line-number="25"></a>
+    <a class="sourceLine" id="cb2-26" data-line-number="26">   <span class="co">// 3 - Let&#39;s declare a function to be called later</span></a>
+    <a class="sourceLine" id="cb2-27" data-line-number="27"><span class="kw">function</span> <span class="at">divClicked</span>()<span class="op">{</span></a>
+    <a class="sourceLine" id="cb2-28" data-line-number="28">    <span class="kw">this</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I am a div, and I was clicked!&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb2-29" data-line-number="29"><span class="op">}</span></a>
+    <a class="sourceLine" id="cb2-30" data-line-number="30"></a>
+    <a class="sourceLine" id="cb2-31" data-line-number="31">   <span class="co">// 4 - .onclick now points at the divClicked() function</span></a>
+    <a class="sourceLine" id="cb2-32" data-line-number="32"><span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>).<span class="at">onclick</span> <span class="op">=</span> divClicked<span class="op">;</span></a>
+    <a class="sourceLine" id="cb2-33" data-line-number="33"><span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb2-34" data-line-number="34"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb2-35" data-line-number="35"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <h3 id="explanation-1">Explanation</h3>
+    <ul>
+        <li>In #3 above, we declare a function which we will call later.</li>
+        <li>In #4 above, the value of onclick is the function’s <em>reference</em>. The function will be called when the button is clicked.</li>
+    </ul>
+    <h2 id="breaking-our-code">Breaking our Code</h2>
+    <p>One common mistake that is easy to make is to write this line:</p>
+    <p><code>document.querySelector(&quot;div&quot;).onclick = divClicked;</code></p>
+    <p><strong>as this:</strong></p>
+    <p><code>document.querySelector(&quot;div&quot;).onclick = divClicked(); // add parentheses</code></p>
+    <ul>
+        <li>Go ahead and make that change to <strong>events-2.html</strong> and run this code - note that our <code>div.onclick</code> code doesn’t seem to work now - what happened?</li>
+        <li>Check out the debugger - add a breakpoint and reload the page. Then find the value of <code>p.onclick</code> (recall we didn’t change that code) - you can see below that the value of p.onclick is a function.</li>
+    </ul>
+    <figure>
+        <img src="events-3.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <ul>
+        <li>Now check out the value of <code>div.onclick</code> in the debugger - you will see that it is <code>null</code> - which is why the click code no longer works.</li>
+    </ul>
+    <figure>
+        <img src="events-4.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <ul>
+        <li>What happened is that when we added the <code>()</code> to the end of <code>onclick = divClicked()</code>, the function was called immediately, and the <em>return value</em> of the function (<code>null</code>) was stored in the <code>onclick</code> property instead of the function <em>reference</em> it was expecting.</li>
+        <li>Make sure you change the code back so that it works again.</li>
+    </ul>
+    <h2 id="events-and-arrow-functions">Events and Arrow Functions</h2>
+    <p>We can use arrow functions as event handlers too. You might recall that in the Functions lesson we mentioned that arrow functions have two advantages:</p>
+    <ul>
+        <li>they have a shorter syntax than regular functions</li>
+        <li>they do not bind their own <code>this</code> keyword.</li>
+    </ul>
+    <p>What this means is that when an event handler points at a <em>regular function</em>, the value of <code>this</code> is the object that received the event. But when an event handler points at an <em>arrow function</em>, the value of <code>this</code> will instead be “the value of the enclosing execution context”, which below will be the <code>window</code> object - so we will be able to call top level fucntions in the script.</p>
+    <p>Go ahead and run <strong>events-3.html</strong> and see what happens.</p>
+    <h3 id="events-3.html">events-3.html</h3>
+    <div class="sourceCode" id="cb3">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-3<span class="kw">&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
+    <a class="sourceLine" id="cb3-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
+    <a class="sourceLine" id="cb3-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
+    <a class="sourceLine" id="cb3-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
+    <a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
+    <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
+    <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb3-16" data-line-number="16"></a>
+    <a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">// 1 - Let&#39;s declare a function that can be called later</span></a>
+    <a class="sourceLine" id="cb3-18" data-line-number="18"><span class="kw">function</span> <span class="at">changeParagraph</span>()<span class="op">{</span></a>
+    <a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>).<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Somebody changed me!&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb3-20" data-line-number="20"><span class="op">}</span></a>
+    <a class="sourceLine" id="cb3-21" data-line-number="21"></a>
+    <a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">// 2 - Let&#39;s declare an arrow function to be called later</span></a>
+    <a class="sourceLine" id="cb3-23" data-line-number="23"><span class="kw">let</span> divClicked <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> </a>
+    <a class="sourceLine" id="cb3-24" data-line-number="24">              <span class="va">e</span>.<span class="va">target</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I am a div, and I was clicked!&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb3-25" data-line-number="25">              <span class="kw">this</span>.<span class="at">changeParagraph</span>()<span class="op">;</span></a>
+    <a class="sourceLine" id="cb3-26" data-line-number="26">            <span class="op">}</span></a>
+    <a class="sourceLine" id="cb3-27" data-line-number="27"></a>
+    <a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">// 3 - .onclick now points at the divClicked arrow function</span></a>
+    <a class="sourceLine" id="cb3-29" data-line-number="29"><span class="kw">let</span> div <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>).<span class="at">onclick</span> <span class="op">=</span> divClicked<span class="op">;</span></a>
+    <a class="sourceLine" id="cb3-30" data-line-number="30"></a>
+    <a class="sourceLine" id="cb3-31" data-line-number="31"><span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb3-32" data-line-number="32"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb3-33" data-line-number="33"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <figure>
+        <img src="events-5.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h3 id="explanation-2">Explanation</h3>
+    <ul>
+        <li>Clicking the div changed both the div and the paragraph</li>
+        <li>in #1 above, we created a function that will change the paragraph</li>
+        <li>in #2 above, we declared an arrow function that will change the div</li>
+        <li>in #3 above, we hooked up the div <code>onclick</code> event to the arrow function</li>
+        <li>when the div is clicked, the code in #2 runs. Here, <code>e.target</code> refers to the element that was clicked on, the div. But in an arrow function (unlike a regular function), <code>this</code> now refers to the <code>window</code> object, which includes the <code>changeParagraph()</code> function we called earlier.</li>
+        <li>(actually, in the above example, the <code>this</code> in <code>this.changeParagraph()</code> was optional, but we wanted to illustrate how the value of <code>this</code> has changed in an arrow function.</li>
+    </ul>
+    <h2 id="event-listeners---addeventlistener">Event Listeners - <code>addEventListener()</code></h2>
+    <p>The major limitation of the event handlers shown above is that each element can have only <em>one</em> event handling function attached to it at a time. <code>addEventListener()</code> - which we will cover now, has no such restrictions.</p>
+    <p>Try out the code below:</p>
+    <h3 id="events-4.html">events-4.html</h3>
+    <div class="sourceCode" id="cb4">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb4-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-4<span class="kw">&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
+    <a class="sourceLine" id="cb4-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
+    <a class="sourceLine" id="cb4-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
+    <a class="sourceLine" id="cb4-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
+    <a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
+    <a class="sourceLine" id="cb4-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb4-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
+    <a class="sourceLine" id="cb4-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb4-16" data-line-number="16"></a>
+    <a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">// 1 - Let&#39;s declare 3 arrow functions that can be called later</span></a>
+    <a class="sourceLine" id="cb4-18" data-line-number="18"><span class="kw">let</span> changeText <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> <span class="va">e</span>.<span class="va">target</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;I was clicked!&quot;</span><span class="op">;</span> <span class="op">};</span></a>
+    <a class="sourceLine" id="cb4-19" data-line-number="19"><span class="kw">let</span> changeColor <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&quot;red&quot;</span><span class="op">;</span> <span class="op">};</span></a>
+    <a class="sourceLine" id="cb4-20" data-line-number="20"><span class="kw">let</span> changeStyle <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">fontStyle</span> <span class="op">=</span> <span class="st">&quot;italic&quot;</span><span class="op">;</span> <span class="op">};</span></a>
+    <a class="sourceLine" id="cb4-21" data-line-number="21"></a>
+    <a class="sourceLine" id="cb4-22" data-line-number="22"></a>
+    <a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">// 2 - get references to the &lt;p&gt; and the &lt;div&gt;</span></a>
+    <a class="sourceLine" id="cb4-24" data-line-number="24"><span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb4-25" data-line-number="25"><span class="kw">let</span> div <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb4-26" data-line-number="26"></a>
+    <a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">// 3 - use addEventListener() to add three events to the &lt;p&gt;</span></a>
+    <a class="sourceLine" id="cb4-28" data-line-number="28"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeText)<span class="op">;</span> <span class="co">// </span><span class="al">NOTE</span><span class="co"> the event is named &#39;click&#39;, NOT &#39;onclick&#39;</span></a>
+    <a class="sourceLine" id="cb4-29" data-line-number="29"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeColor)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb4-30" data-line-number="30"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeStyle)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb4-31" data-line-number="31"></a>
+    <a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">// 4 - we will only give the &lt;div&gt; two events</span></a>
+    <a class="sourceLine" id="cb4-33" data-line-number="33"><span class="va">div</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeText)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb4-34" data-line-number="34"><span class="va">div</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>changeColor)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb4-35" data-line-number="35"></a>
+    <a class="sourceLine" id="cb4-36" data-line-number="36"><span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb4-37" data-line-number="37"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb4-38" data-line-number="38"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <p>When you run the code and click on the elements, this is what you will see:</p>
+    <figure>
+        <img src="events-6.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h3 id="explanation-3">Explanation</h3>
+    <ul>
+        <li>When you try out the code, you should see that the paragraph has 3 functions attached to it. These 3 functions will change the HTML, the color to red, and the font-style to italic.</li>
+        <li>When you try out the code, you should see that the div has 2 functions attached to it. These 2 functions will change the HTML, the color to red, but leave the font-style alone.</li>
+        <li>It is very important to note that the events that are being passed into <code>addEventListener()</code> are named ‘click’, NOT ‘onclick’ like the event handler was.</li>
+    </ul>
+    <h2 id="event-listeners---removeeventlistener">Event Listeners - <code>removeEventListener()</code></h2>
+    <p>You can also call <code>removeEventListener()</code> to later remove event functions.</p>
+    <p>Add the following to <strong>events-4.html</strong></p>
+    <pre><code>let messWithDiv = (e) =&gt; { 
+                   div.removeEventListener(&quot;click&quot;,changeText);
+                   div.removeEventListener(&quot;click&quot;,changeColor);
+                   div.addEventListener(&quot;click&quot;,changeStyle);
+                };
+    
+    p.addEventListener(&quot;click&quot;,messWithDiv);</code></pre>
+    <p>Try out this new code. If you click on the paragraph first, and then the div, you will see that the div has lost 2 of its event functions, but gained the <code>changeStyle</code> function.</p>
+    <figure>
+        <img src="events-7.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h2 id="adding-properties-to-elements-with-element.dataset">Adding Properties to Elements with <code>element.dataset</code></h2>
+    <p>Let’s imagine that we would like to toggle the paragraph and div back and forth when we click on them. We would also like to use the same code for the paragraph and div, as well as any number of other elements. There are a number of ways to do this, but let’s go ahead and try out the HTML5 “Custom Data” attribute to add properties to the HTML elements we click on. You can read more about them here:</p>
+    <ul>
+        <li>http://html5doctor.com/html5-custom-data-attributes/</li>
+    </ul>
+    <h3 id="events-5.html">events-5.html</h3>
+    <p>Create a new html file with the following code, and test it in a browser.</p>
+    <div class="sourceCode" id="cb6">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Events-5<span class="kw">&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
+    <a class="sourceLine" id="cb6-7" data-line-number="7">    body{<span class="kw">border</span>:<span class="dv">1px</span> <span class="dv">solid</span> <span class="dv">gray</span>;}</a>
+    <a class="sourceLine" id="cb6-8" data-line-number="8">    p{<span class="kw">font-size</span>:<span class="dv">2em</span>;}</a>
+    <a class="sourceLine" id="cb6-9" data-line-number="9">    div{<span class="kw">font-size</span>:<span class="dv">2em</span>;<span class="kw">font-weight</span>:<span class="dv">bold</span>;}</a>
+    <a class="sourceLine" id="cb6-10" data-line-number="10">    <span class="kw">&lt;/style&gt;</span></a>
+    <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb6-12" data-line-number="12"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb6-13" data-line-number="13"><span class="kw">&lt;p&gt;</span>I am a paragraph<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb6-14" data-line-number="14"><span class="kw">&lt;div&gt;</span>I am a division<span class="kw">&lt;/div&gt;</span></a>
+    <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb6-16" data-line-number="16"></a>
+    <a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">// 1 - get references to &lt;p&gt; and &lt;div&gt;</span></a>
+    <a class="sourceLine" id="cb6-18" data-line-number="18"><span class="kw">let</span> p <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span> </a>
+    <a class="sourceLine" id="cb6-19" data-line-number="19"><span class="kw">let</span> div <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;div&quot;</span>)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-20" data-line-number="20"></a>
+    <a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">// 2 - create a custom property named &quot;state&quot; for each element and give it a default value</span></a>
+    <a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">// all new properties will be added to the element&#39;s .dataset property</span></a>
+    <a class="sourceLine" id="cb6-23" data-line-number="23"><span class="va">p</span>.<span class="va">dataset</span>.<span class="at">state</span> <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span> <span class="co">// A</span></a>
+    <a class="sourceLine" id="cb6-24" data-line-number="24"><span class="va">div</span>.<span class="va">dataset</span>.<span class="at">state</span> <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span> <span class="co">// B</span></a>
+    <a class="sourceLine" id="cb6-25" data-line-number="25"></a>
+    <a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">// 3 - Let&#39;s declare an arrow function that can be called later</span></a>
+    <a class="sourceLine" id="cb6-27" data-line-number="27"><span class="kw">let</span> toggleStyle <span class="op">=</span> (e) <span class="op">=&gt;</span> <span class="op">{</span> </a>
+    <a class="sourceLine" id="cb6-28" data-line-number="28">               <span class="kw">let</span> state <span class="op">=</span> <span class="va">e</span>.<span class="va">target</span>.<span class="va">dataset</span>.<span class="at">state</span><span class="op">;</span> <span class="co">// C</span></a>
+    <a class="sourceLine" id="cb6-29" data-line-number="29">               <span class="cf">if</span> (state <span class="op">==</span> <span class="st">&quot;changed&quot;</span>)<span class="op">{</span> <span class="co">// == for comparison</span></a>
+    <a class="sourceLine" id="cb6-30" data-line-number="30">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;white&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-31" data-line-number="31">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">fontStyle</span> <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-32" data-line-number="32">                  state <span class="op">=</span> <span class="st">&quot;normal&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-33" data-line-number="33">            <span class="op">}</span> <span class="cf">else</span><span class="op">{</span></a>
+    <a class="sourceLine" id="cb6-34" data-line-number="34">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;yellow&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-35" data-line-number="35">                  <span class="va">e</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">fontStyle</span> <span class="op">=</span> <span class="st">&quot;italic&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-36" data-line-number="36">                  state <span class="op">=</span> <span class="st">&quot;changed&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-37" data-line-number="37">            <span class="op">}</span></a>
+    <a class="sourceLine" id="cb6-38" data-line-number="38">                        </a>
+    <a class="sourceLine" id="cb6-39" data-line-number="39">            <span class="va">e</span>.<span class="va">target</span>.<span class="va">dataset</span>.<span class="at">state</span> <span class="op">=</span> state<span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-40" data-line-number="40">             <span class="op">};</span></a>
+    <a class="sourceLine" id="cb6-41" data-line-number="41"></a>
+    <a class="sourceLine" id="cb6-42" data-line-number="42"></a>
+    <a class="sourceLine" id="cb6-43" data-line-number="43"></a>
+    <a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">// 4 - add events </span></a>
+    <a class="sourceLine" id="cb6-45" data-line-number="45"><span class="va">p</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>toggleStyle)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-46" data-line-number="46"><span class="va">div</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span>toggleStyle)<span class="op">;</span></a>
+    <a class="sourceLine" id="cb6-47" data-line-number="47"></a>
+    <a class="sourceLine" id="cb6-48" data-line-number="48"><span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb6-49" data-line-number="49"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb6-50" data-line-number="50"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <p><strong>Running the code will allow you to repeatedly click on each element, and toggle its styles back and forth, looking like this:</strong></p>
+    <figure>
+        <img src="events-8.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h3 id="explanation-4">Explanation</h3>
+    <p>Clicking on an element should toggle the styles back and forth from its normal appearance, to a changed appearance with a yellow background color and italic text. This toggling between the 2 appearances is being tracked by changing <code>dataset.state</code> from “normal” to “changed”. Note that we came up with the name <code>.state</code> on our own. We could have called it anything like <code>.selected</code> or <code>.clicked</code>.</p>
+    <ul>
+        <li>
+            <p><strong>Note <em>above</em> that we can see the changing value (as we click) of the div’s <code>data-state</code> in the web inspector elements tab.</strong></p>
+        </li>
+        <li>
+            <p><strong>Note <em>below</em> that we can also see the value of the div’s <code>dataset.state</code> (the same value) in debugger.</strong></p>
+        </li>
+    </ul>
+    <figure>
+        <img src="events-9.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h3 id="one-more-thing">One more thing</h3>
+    <p>Note the 2A, 2B, and 3C lines in the <strong>events-5.html</strong> code sample above. Lines A &amp; B are not necessary because line C will evaluate to <code>undefined</code> if we never define an initial value for <code>dataset.state</code> on each element. And because <code>undefined</code> is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a> value and will evaluate to <code>false</code>, the code will run fine. So why did we include A and B? To make the coder’s intent more clear, and also so that we could have this discussion :-)</p>
+    <h2 id="important-notes">Important Notes</h2>
+    <p>If we use the <code>window.onload</code> event handler, we can move our code back up to the the &lt;head&gt; section of the document, see below:</p>
+    <h3 id="events-6.html">events-6.html</h3>
+    <div class="sourceCode" id="cb7">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="kw">&lt;title&gt;&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="va">window</span>.<span class="at">onload</span> <span class="op">=</span> init<span class="op">;</span> <span class="co">// do you understand WHY there are no parentheses after init?</span></a>
+    <a class="sourceLine" id="cb7-8" data-line-number="8"></a>
+    <a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="kw">function</span> <span class="at">init</span>()<span class="op">{</span></a>
+    <a class="sourceLine" id="cb7-10" data-line-number="10">        <span class="co">// this is the second log we see in the console - do you understand WHY?</span></a>
+    <a class="sourceLine" id="cb7-11" data-line-number="11">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Page is loaded!&quot;</span>)<span class="op">;</span> </a>
+    <a class="sourceLine" id="cb7-12" data-line-number="12">        <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;h1&quot;</span>).<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Window loaded!&quot;</span><span class="op">;</span></a>
+    <a class="sourceLine" id="cb7-13" data-line-number="13">    <span class="op">}</span></a>
+    <a class="sourceLine" id="cb7-14" data-line-number="14">    </a>
+    <a class="sourceLine" id="cb7-15" data-line-number="15">    <span class="co">// this is the first log we see in the console - do you understand WHY?</span></a>
+    <a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Page is NOT loaded!&quot;</span>)<span class="op">;</span> </a>
+    <a class="sourceLine" id="cb7-17" data-line-number="17">    <span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb7-18" data-line-number="18"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb7-19" data-line-number="19"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb7-20" data-line-number="20"><span class="kw">&lt;h1&gt;</span>???<span class="kw">&lt;/h1&gt;</span></a>
+    <a class="sourceLine" id="cb7-21" data-line-number="21"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb7-22" data-line-number="22"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <p><strong>Be sure you can answer the “WHY” questions in the comments above!</strong></p>
+    <h2 id="review-questions">Review Questions</h2>
+    <ol type="1">
+        <li>What are 2 advantages to using <em>event listeners</em> instead of <em>event handlers</em></li>
+        <li>Describe a situation where you might use an <em>event handler</em> anyway</li>
+        <li>What does an event handler (or event listener) “point” at?</li>
+        <li>What are the two advantages of using arrow functions?</li>
+    </ol>
+    <h2 id="deliverable">Deliverable</h2>
+    <p>You’re going to create a “Color Chooser” JS application</p>
+    <h4 id="start-with-this">1) Start with this…</h4>
+    <p>Create a new HTML page named javascript5.html, using the following code:</p>
+    <div class="sourceCode" id="cb8">
+        <pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+    <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+    <a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+    <a class="sourceLine" id="cb8-5" data-line-number="5">    <span class="kw">&lt;title&gt;</span>Web Apps-6<span class="kw">&lt;/title&gt;</span></a>
+    <a class="sourceLine" id="cb8-6" data-line-number="6">    <span class="kw">&lt;style&gt;</span></a>
+    <a class="sourceLine" id="cb8-7" data-line-number="7">        body{</a>
+    <a class="sourceLine" id="cb8-8" data-line-number="8">            <span class="kw">font-family</span>:<span class="dv">sans-serif</span>;</a>
+    <a class="sourceLine" id="cb8-9" data-line-number="9">        }</a>
+    <a class="sourceLine" id="cb8-10" data-line-number="10">        <span class="pp">#colorform</span>{</a>
+    <a class="sourceLine" id="cb8-11" data-line-number="11">            <span class="kw">background-color</span>:<span class="dv">#dfecdf</span>;</a>
+    <a class="sourceLine" id="cb8-12" data-line-number="12">            <span class="kw">color</span>: <span class="dv">#111</span>;</a>
+    <a class="sourceLine" id="cb8-13" data-line-number="13">            <span class="kw">padding</span>:<span class="dv">1em</span>;<span class="kw">width</span>:<span class="dv">400px</span>;</a>
+    <a class="sourceLine" id="cb8-14" data-line-number="14">        }</a>
+    <a class="sourceLine" id="cb8-15" data-line-number="15">        <span class="pp">#colorform</span> p<span class="pp">#info</span>{</a>
+    <a class="sourceLine" id="cb8-16" data-line-number="16">            <span class="kw">background-color</span>:<span class="dv">white</span>;</a>
+    <a class="sourceLine" id="cb8-17" data-line-number="17">            <span class="kw">color</span>: <span class="dv">black</span>;</a>
+    <a class="sourceLine" id="cb8-18" data-line-number="18">            <span class="kw">width</span>:<span class="dv">300px</span>;</a>
+    <a class="sourceLine" id="cb8-19" data-line-number="19">            <span class="kw">height</span>:<span class="dv">100px</span>;</a>
+    <a class="sourceLine" id="cb8-20" data-line-number="20">            <span class="kw">padding</span>:<span class="dv">.5em</span>;</a>
+    <a class="sourceLine" id="cb8-21" data-line-number="21">        }</a>
+    <a class="sourceLine" id="cb8-22" data-line-number="22">        </a>
+    <a class="sourceLine" id="cb8-23" data-line-number="23">        <span class="pp">#colorform</span> legend{ </a>
+    <a class="sourceLine" id="cb8-24" data-line-number="24">            <span class="kw">font-weight</span>:<span class="dv">bold</span>;</a>
+    <a class="sourceLine" id="cb8-25" data-line-number="25">            <span class="kw">font-size</span>:<span class="dv">1.2em</span>;</a>
+    <a class="sourceLine" id="cb8-26" data-line-number="26">        }</a>
+    <a class="sourceLine" id="cb8-27" data-line-number="27">    <span class="kw">&lt;/style&gt;</span></a>
+    <a class="sourceLine" id="cb8-28" data-line-number="28"><span class="kw">&lt;/head&gt;</span></a>
+    <a class="sourceLine" id="cb8-29" data-line-number="29"><span class="kw">&lt;body&gt;</span></a>
+    <a class="sourceLine" id="cb8-30" data-line-number="30"></a>
+    <a class="sourceLine" id="cb8-31" data-line-number="31"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;colorform&quot;</span><span class="kw">&gt;</span></a>
+    <a class="sourceLine" id="cb8-32" data-line-number="32">    <span class="kw">&lt;legend&gt;</span>Choose your favorite color!<span class="kw">&lt;/legend&gt;</span></a>
+    <a class="sourceLine" id="cb8-33" data-line-number="33">    <span class="kw">&lt;p&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> id=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> value=</span><span class="st">&quot;red&quot;</span> <span class="kw">/&gt;</span> Red<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb8-34" data-line-number="34">    <span class="kw">&lt;p&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> id=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> value=</span><span class="st">&quot;green&quot;</span> <span class="kw">/&gt;</span> Green<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb8-35" data-line-number="35">    <span class="kw">&lt;p&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> id=</span><span class="st">&quot;colorGroup&quot;</span><span class="ot"> value=</span><span class="st">&quot;blue&quot;</span> <span class="kw">/&gt;</span> Blue<span class="kw">&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb8-36" data-line-number="36">    <span class="kw">&lt;p&gt;&lt;button</span><span class="ot"> id=</span><span class="st">&quot;colorButton&quot;</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="kw">&gt;</span>Submit<span class="kw">&lt;/button&gt;&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb8-37" data-line-number="37">    <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;info&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></a>
+    <a class="sourceLine" id="cb8-38" data-line-number="38"><span class="kw">&lt;/div&gt;</span></a>
+    <a class="sourceLine" id="cb8-39" data-line-number="39"></a>
+    <a class="sourceLine" id="cb8-40" data-line-number="40"><span class="kw">&lt;script&gt;</span></a>
+    <a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">/* Write you code here! */</span></a>
+    <a class="sourceLine" id="cb8-42" data-line-number="42"><span class="kw">&lt;/script&gt;</span></a>
+    <a class="sourceLine" id="cb8-43" data-line-number="43"><span class="kw">&lt;/body&gt;</span></a>
+    <a class="sourceLine" id="cb8-44" data-line-number="44"><span class="kw">&lt;/html&gt;</span></a></code></pre>
+    </div>
+    <h4 id="which-looks-like-this-in-the-browser">2) Which looks like this in the browser:</h4>
+    <p>Note that because we <code>name</code> all of the radio buttons the same, they are considered a “group” by the browser, and we can only select one radio button at a time. Try it. The submit button currently does nothing.</p>
+    <figure>
+        <img src="events-10.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h4 id="after-you-have-written-all-of-your-javascript-code-and-clicked-a-radio-button">3) After you have written all of your JavaScript code, and clicked a radio button …</h4>
+    <p>You should see a message indicating what color you have selected.</p>
+    <figure>
+        <img src="events-11.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h4 id="once-you-click-the-submit-button">4) Once you click the Submit button …</h4>
+    <p>You should see another message about the color you selected, and the &lt;legend&gt; element should also change to that color.</p>
+    <figure>
+        <img src="events-12.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <h3 id="hints">Hints</h3>
+    <ol type="1">
+        <li>You can use event handlers OR event listeners, it’s your choice</li>
+        <li>You can use standard funtions OR arrow functions, it’s you choice</li>
+        <li>The <strong>Submit button</strong> code should be triggered by the <code>click</code> event</li>
+        <li>The <strong>Radio button</strong> code should be triggered by the <code>change</code> event</li>
+        <li><code>document.querySelectorAll()</code> can be used to get reference to all of the radio buttons. You can then loop through the list you get back (use a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for"><code>for</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of"><code>for...of</code></a> loop).</li>
+        <li>To get the value of the selected radio button, use <code>e.target.value</code></li>
+        <li>In the submit button code, you can check to see which radio button is selected by checking its <code>.checked</code> property</li>
+        <li>The <code>value</code> of these radio buttons happens to be a CSS color keyword, so it will be pretty easy to assign the value to the color property of the &lt;legend&gt; element (and CSS color values are not case sensitive, so don’t worry about the capitalization).</li>
+    </ol>
+    <p>When you’re done, upload it to banjo.rit.edu, and point to it from your main 230 page. It should be completed by 11:59pm on Monday, October 30.</p>
+    <h3 id="challenge-yourself">Challenge Yourself!</h3>
+    <p>Can you do a version of this web app, but with checkboxes?</p>
+    <p>Hint: Checkboxes have a <code>.checked</code> property.</p>
+    <p>Hint: Don’t worry about changing the color of the &lt;legend&gt; in this version.</p>
+    <p>Checkboxes allow the user to make multiple selections. Yours should work like the version below.</p>
+    <p><strong>Check multiple select boxes:</strong></p>
+    <figure>
+        <img src="events-13.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+    <p><strong>Click Submit button:</strong></p>
+    <figure>
+        <img src="events-14.jpg" alt="Web Page" />
+        <figcaption>Web Page</figcaption>
+    </figure>
+
+</body>
+
+</html>

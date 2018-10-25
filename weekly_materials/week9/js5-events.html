@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 9 JavaScript In-Class Exercise 5: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your completed file from your landing page as JS Events Exercise, and publish it to your GitHub site. This should be done before noon on Saturday.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week9">Back to Week 9</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 5: Events <br class="mobile-break" /><span class="weekinfo">(Week 9, Tuesday 10/23)</span></h2>
+            <div class="page-desc">
+                <p>In the previous exercises, our code all executed as soon as the page loaded. In this exercise we'll look at how DOM <em>events</em> can be used to trigger the execution of code. Some typical events that are used to trigger a script include "the page has finished loading", "a link or button was clicked", "the file started to download", "the select value changed. You can see a complete list of DOM events here on <a href="https://developer.mozilla.org/en-US/docs/Web/Events">MDN's Event Reference</a> page, and on their <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">"Introduction to Events" tutorial</a>.</p>
+
+                <p>Start by downloading and uncompressing the <a href="event-examples.zip">event-examples.zip</a> folder. We will be referring to  pages in that folder throughout this exercise.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Event Handlers</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+
+                <p>Browser "on-event" handlers are one of the most common ways to invoke a script based on basic browser events like onload, onclick, onmousedown, onkeyup and so on. Open the events.html file in an editor and look at the code. Then load it in a browser, and click on the paragraph; the text should change.</p>
+                
+                <p>We start by selecting an element on the page, and then assigning a function expression as the onclick event handler for the selected element (the first paragraph).</p>
+
+                <p>In the function, we used the <code>this</code> keyword. In JavaScript the value of <code>this</code> varies depending how it it used. In a function that is triggered by an event, <code>this</code> is a reference to the object that called the method - in this case the paragraph.</p>
+                
+                <p>The commented-out third section uses a slightly different approach. Rather than using the <code>this</code> keyword, it uses the <code>e</code> parameter, which is the default Event object that is sent along by the event handler. The event object has a number of properties and methods, and in this case e.target is the object that recieved the event (once again, the paragraph).</p>
+                    
+                <p>If you add a breakpoint into the debugger (Use the Sources tab in Chrome, or the Debugger tab in Firefox, and click in the gutter to set breakpoint), and then click the paragraph, you can inspect the properies of this Event object and see that it's actually a MouseEvent object.</p>
+
+                <img src="events-1.jpg" alt="onclick debugger screen" class="screenshot">
+
+                <p>Scroll down in the list of properties and values, and you'll see that the value of <code>e.target</code> and the value of <code>this</code> are both the paragraph that was clicked on.</p>
+
+                <img src="events-2.jpg" alt="on click debugger screen" class="screenshot">
+
+            </div>
+
+            <div class="subhead">
+                <h2>Event Handlers and Function References</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Open the events2.html file and look at the code. In this example, the code points to a declared (and named) function. The function will be triggered when you click on the paragraph. Try it out in a browser. Clicking the paragraph will cause its text to change as it did in the previous section; clicking the div will trigger the divClicked() function.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>(Intentionally) Breaking Your Code</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>One common mistake that is easy to make is to write this line:</p>
+
+                <code>document.querySelector("div").onclick = divClicked;</code>
+                    
+                <p>as this:</p>
+                    
+                <code>document.querySelector("div").onclick = divClicked();</code>
+                    
+                <p>Go ahead and make that change to events2.html and run this code. Note that the div.onclick code doesn't work now - what happened?</p>
+
+                <p>In the debugger, add a breakpoint and reload the page. Then find the value of p.onclick (recall we didn't change that code) - you can see below that the value of p.onclick is a function.</p>
+
+                <img src="events-3.jpg" alt="debugger" class="screenshot">
+
+                <p>Now look at the value of div.onclick - you will see that it is null, which is why the onclick code no longer works.</p>
+
+                <p>What happened is that when we added the <code>()</code> to the end of <code>onclick = divClicked()</code>, the function was called immediately, and the return value of the function <code>(undefined)</code> was stored in the <code>onclick</code> property instead of the function reference it was expecting.</p>
+                
+                <p>Change the code back so that it works again.</p>
+                    
+                    
+            </div>
+
+            <div class="subhead">
+                <h2>Events and Arrow Functions</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Arrow functions are an ES6 addition. They have two advantages: they have a shorter syntax than regular functions, and they do not bind their own <code>this</code> keyword.</p>
+
+                <p>Open the arrows.html file and look at the code.</p>
+                
+                <p>Four of the five function definitions in that example do the same thing, but the syntax is increasingly concise. Arrow functions are particularly helpful with arrays, because you can easily pass the arrays as arguments to functions such as .sort() or .filter() or .forEach() -- all of which we'll be working with.</p>
+    
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN Arrow function documentation</a></p>.
+
+                <p>Note: not everyone thinks that the more concise syntax of arrrow functions is advantageous, since they are sometimes less readable than functions written with the tradtional function syntax. Our advice: use arrow functions wherever you don't need or want this binding, and where they make your code more clear.</p>
+
+                <p>We can use arrow functions as event handlers too. When an event handler points at a <em>regular function</em>, the value of <code>this</code> is the object that received the event. However, when an event handler points at an <em>arrow function</em>, the value of <code>this</code> will instead be "the value of the enclosing execution context.</p>
+                
+                <p>Open the events3.html file and look at the code, and then open in in a browser. Clicking on the div changes both the div and the paragraph!</p>
+    
+                <p>Here's what's happening:</p>
+                <ol>
+                    <li>creates a function that will change the paragraph</li>
+                    <li>declares an arrow function that will change the div</li>
+                    <li>connected the div onclick event to the arrow function</li>
+                </ol>
+
+                <p>When the div is clicked, the code in #2 runs. In that context, e.target refers to the element that was clicked on, the div. But in an arrow function (unlike a regular function), <code>this</code> now refers to the window object, which includes the changeParagraph() function we called earlier.</p>
+    
+                <p><em>(Actually, in the above example, the <code>this</code> in <code>this.changeParagraph()</code> was optional, but we wanted to illustrate how the value of <code>this</code> has changed in an arrow function.)</em></p>
+            </div>
+
+
+            <div class="subhead">
+                <h2>Event Listeners</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            
+            <div class="panel">
+                <p>The major limitation of the event handlers shown above is that each element can have only one event handling function attached to it at a time (click, hover, etc). The addEventListener() method has no such restriction.</p>
+
+                <p>Open the events4.html in a browser and click on the paragraph and the div to see what happens. Then open it in your editor. You should see that the paragraph has three functions attached to it. These three functions will change the contents of the HTML, set its color to magenta, and change the font-style to italic.</p>
+
+                <p>The div has two functions attached to it. These functions will change also change the contents of the element and set its color to magenta, but the font-style should not change.</p>
+    
+                <p><strong>It is very important to note that the event being passed into addEventListener() is 'click', and NOT the event handler 'onclick'.</strong></p>
+
+                <h3>Removing Event Listeners</h3>
+                <p>If neceessary, you can call removeEventListener() later in your script to remove event listener functions.</p>
+
+                <p>In events4.html, add the following code:</p>
+
+                <textarea class="samplecode">
+let messWithDiv = (e) =&gt; { 
+div.removeEventListener("click",changeText);
+div.removeEventListener("click",changeColor);
+div.addEventListener("click",changeStyle);
+	};
+
+p.addEventListener("click",messWithDiv);
+}
+</textarea>
+
+                <p>Try out this new code. If you click on the paragraph first, and then the div, you will see that the div has lost 2 of its event functions, but gained the changeStyle function.</p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Adding Properties to Elements With element.dataset</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>What if we want to toggle the appearance of the paragraph and div when we click on them. Or if we want to use the same code for the paragraph and div, as well as any number of other elements? There are a number of ways to do this, but in this example we'll use the HTML5 "Custom Data" attribute to add properties to the HTML elements we click on. (You can read more about them on <a href="http://html5doctor.com/html5-custom-data-attributes/">this page</a>.)</p>
+
+                <p>Open the file events5.html in a browser, and try clicking on the elements multiple times. Each click should toggle the element's styles between two states. Open the inspector tab so that you can see what happens to the element in the DOM when you do this.</p> 
+
+                <img src="events-8.png" alt="data state" class="screenshot">
+
+                <p>Open the file in an editor and look at the code.</p> 
+                            
+                <p>This toggling between the 2 appearances is being tracked by changing dataset.state from "normal" to "changed". By adding a state property to any element we click on, our code allows that element to "remember" that it has been changed or not. Note that we came up with the name .state on our own. We could have called it anything we wanted--like .mystate or .toggle.</p>
+
+                <p>Look at 2A, 2B, and 3C in the events5.html script. Lines 2A & 2B are really unnecessary because line 3C will evaluate to undefined if we never define an initial value for dataset.state on each element. And because undefined is a "falsy" value and will evaluate to false, the code will run fine even with 2A and 2B. So why did we include A and B? It's really just to make the code easier to understand by humans--and also so that we could remind you about default values!</p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Deliverable</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Open the events-exercise.html file. It has a form in it, with a Submit button that current does nothing.</p>
+
+                <p>Using what you learned in this exercise, modify this page to do the following:</p>
+
+                <ul>
+                    <li>When you click on a radio button, text reading "You have selected the color <em>value</em>" (where value is the value of the button you chose) should appear in the #info paragraph.</li>
+                    <li>When you click the submit button, the text in the paragraph should change to "Your FINAL CHOICE is <em>value</em>," and the &lt;legend&lt; element should be displayed in the color you chose.</li>
+                </ul>
+
+                <p>When you're done, link the file to your landing page with the name JS Event Exercise, and upload it no later than noon on Saturday.</p> 
+
+
+                    
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
