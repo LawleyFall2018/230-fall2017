@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions Example 4</title>
+</head>
+
+<body>
+    <script>
+        "use strict"; // ES5/ES6 literal to invoke Strict Mode
+        
+        // #1 - a & b here are in "script scope" because they are declared outside of a block
+        let A = "A";
+        let B = "B";
+
+
+        // #2 a function 
+        function func1() {
+            let A = "AA"; // A scoped to this function's block masks the "script scoped" A
+            console.log(`INSIDE func1(), A equals ${A}`); // "AA"
+            console.log(`INSIDE func1(), B equals ${B}`); // "B" - "script scoped" b is visible
+            B = "BB"; // change value of "script scoped" B
+            let C = "C"; // declare a block-scoped C variable
+            debugger; // debugger breakpoint
+        }
+
+        func1(); // call func1() 
+
+        console.log(`OUTSIDE func1() A equals ${A}`); // "A" - A is in scope
+
+        console.log(`OUTSIDE func1() B equals ${B}`); // "BB" -  B is in scope
+
+        //console.log(`OUTSIDE func1() C equals ${C}`); // reference error! C is not defined
+
+
+    </script>
+</body>
+
+</html>

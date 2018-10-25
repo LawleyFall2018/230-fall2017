@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions Example 4</title>
+</head>
+
+<body>
+    <script>
+        "use strict"; 
+
+        // borrowed from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+        function addSquares(a, b) {
+            function square(x) {
+                return x * x;
+            }
+            return square(a) + square(b);
+        }
+
+        let a = addSquares(2, 3); // returns 13
+        let b = addSquares(3, 4); // returns 25
+        let c = addSquares(4, 5); // returns 41
+
+    </script>
+</body>
+
+</html>

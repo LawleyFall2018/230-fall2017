@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions Example 3</title>
+
+</head>
+
+<body>
+    <script>
+
+        // 1 - A standard JavaScript function, it does not handle missing arguments well
+        function multiply1(a, b) {
+            return a * b;
+        }
+
+        console.log(multiply1(2, 5)); // 10
+        console.log(multiply1(2));   // we omit the b parameter, the result is NaN (not a Number), because b is undefined
+
+
+        // 2 - by checking the value of b before using it, we can give it a default value 
+        function multiply2(a, b) {
+            b = (typeof b !== 'undefined') ? b : 1; // ternary operator
+            return a * b;
+        }
+
+        console.log(multiply2(2, 5));    // 10
+        console.log(multiply2(2));  // 2, because b will default to 1
+
+
+        // 3 - this is much easier with ES6 default parameters
+        function multiply3(a, b = 1) {
+            return a * b;
+        }
+
+        console.log(multiply3(2, 5));    // 10
+        console.log(multiply3(2));  // 2, because b has a default value of 1
+
+    </script>
+</body>
+
+</html>

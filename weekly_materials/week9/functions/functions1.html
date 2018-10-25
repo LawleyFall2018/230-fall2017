@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions Example 1</title>
+
+</head>
+
+<body>
+    <script>
+
+        // 1 - These first 2 examples do not have a return value, and instead rely on "side effects"
+
+        // 1A - No arguments provided, no return value
+        function sayHello() {
+            console.log("Hello!");
+        }
+ 
+        // 1B - String argument provided, no return value
+        function sayHelloTo(name) {
+            console.log("Hello " + name + "!");
+        }
+
+        sayHello();             // outputs the string "Hello!"
+        sayHelloTo("Bob");      // outputs the concatenated string "Hello Bob!"
+
+
+        // 2 - these functions DO return values
+
+        // 2A - one String argument, String return value
+        
+        function formatGreeting(name) {
+            return "Hello " + name + "!";
+        }
+
+        // 2B - takes the returned value from the function and stores it in a variable
+        let greeting = formatGreeting("Mary");
+
+        // 3 - formats the variable created in 2B and outputs it
+        greeting = greeting.toUpperCase();
+        console.log(greeting);  // HELLO MARY!
+
+    </script>
+</body>
+
+</html>

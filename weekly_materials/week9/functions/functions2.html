@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions Example 2</title>
+
+</head>
+
+<body>
+    <script>
+        // 1 - Function Expression
+        let formatGreeting1 = function (name) {
+            // we are going to use ES6 String template literals instead of concatenation going forward
+            return `Hello ${name}!`;
+        }
+
+        let formatGreeting2 = function (name) {
+            return `Greetings and felicitations, kind ${name}.`
+        }
+
+        // 1A - pass strings into the functions, and output to consol
+
+        let greeting = formatGreeting1("Mary");
+        let greeting2 = formatGreeting2("Mary");
+
+        console.log(greeting);      // Hello Mary!
+        console.log(greeting2);     // Greetings and felicitations, kind Mary.
+
+
+        // 2 - create an array of greetings by passing in an array of names (myData) and a function
+        function createGreetings(myArray, myFunc) {
+            let greetings = []; // create empty array
+            for (let n of myArray) {  // loop through the passed-in array of names
+                let g = myFunc(n); // call the passed in greeetings function and pass in a name
+                //let g = myFunc.call(this,n); // does the same thing
+                greetings.push(g); // add output of greetings function to array
+            }
+            return greetings;
+        }
+
+        // 3 - create an array of names 
+        let names = ["Gary", "Larry", "Mary", "Sherri"];
+
+        // 3A - pass the names and the first format function to the createGreetings function
+        let greetings1 = createGreetings(names, formatGreeting1);
+
+        // 3B - pass the names and the second format function
+        let greetings2 = createGreetings(names, formatGreeting2);
+
+        console.log(greetings1); // ["Hello Gary!", "Hello Larry!", "Hello Mary!", "Hello Sherri!"]
+        console.log(greetings2); // ["Greetings and felicitations, kind Gary.", "Greetings and felicitations, kind Larry.", "Greetings and felicitations, kind Mary.", "Greetings and felicitations, kind Sherri."]
+
+    </script>
+</body>
+
+</html>

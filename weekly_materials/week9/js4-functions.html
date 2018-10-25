@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 9 JavaScript In-Class Exercise 4: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your completed file from your landing page as JS Functions Exercise, and publish it to your GitHub site. This should be done before noon on Saturday.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week9">Back to Week 9</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 4: Functions <br class="mobile-break" /><span class="weekinfo">(Week 9, Tuesday 10/23)</span></h2>
+            <div class="page-desc">
+                <p>In computer programming, a <em>function</em> is a named section of a program that perform a specific task; they are basically “mini programs” within a larger program. Those functions can then be called at any point, rather than simply running when the page initially loads. In this exercise, we are going to learn about how to write functions in JavaScript.</p>
+                <p>Start by downloading and uncompressing the <a href="function-examples.zip">function-examples.zip</a> folder. We will be referring to example pages in that folder throughout this exercise.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>Function Declarations</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+
+                <p>Open functions1.html in your editor and look at the code. It contains several examples of JavaScript function declarations. Note that when we declare a JavaScript function, we do not declare the type of the arguments it will accept, nor the type of the value it returns.</p>
+                <p>Preview the file it in a browser and check the console output; make sure you understand what's happening.</p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Function Expressions</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>In JavaScript, functions are <em>first-class values</em> - they are actually objects. This means that like any other JavaScript type (e.g. numbers or strings) they can be referenced by a variable, passed as an argument to a function, and returned as a value by a function.</p>
+
+                <p>Open the functions2.html page in an editor and look at the code.</p>
+                <ul>
+                    <li>1 - declares two function expressions for formatting a string, and calls them by passing in a string directly</li>
+                    <li>2 - declares a function that takes an array and another function as arguments; as the main function loops through the array, the passed in function is called repeatedly</li>
+                    <li>2A/B - calls the new function, using an array of strings and each of the two formatting functions from part 1</li>
+                </ul>
+
+                <p>Preview the file in a browser and check the console output; make sure you understand what's happening. Note the information provided when arrays are written to the console.</p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Default Function Parameters</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is where default parameters can help.</p>
+
+                <p>Open the functions3.html page in an editor and look at the code. Then preview it in a browser and view the console.</p>
+
+                <ul>
+                    <li>1 - When the second parameter is left out, we get a result of <code>NaN</code> (Not a Number), because when an undefined value is multiplied by anything, the result is always <code>NaN</code></li>
+                    <li>2 - This function uses a ternary operator, which is a shortcut for if/then/else (<code>condition ? trueThen : falseElse</code>), to check to see if a value is undefined.</li>
+                    <li>3 - Uses default function parameters, which are an ES6 feature</li>
+                </ul>
+            </div>
+
+            <div class="subhead">
+                <h2>Variable Scope (let &amp; const)</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>When functions or variables are declared using either <code>let</code> or <code>var</code>, they are <em>scoped</em> to the current <em>block</em> they were declared in.</p>
+                <ul>
+                    <li>A <strong>Block</strong> is delimited by a pair of curly braces <code>{}</code> and is used to group statements.</li>
+                    <li><strong>Scope</strong> means where your variable is accessible and modifiable in your program.</li>
+                    <li>Functions and variables declared by <code>let</code> and <code>const</code> have as their scope the block in which they are defined, as well as in any contained sub-blocks.</li>
+                    <li>If a variable is declared with <code>let</code> and <code>const</code> <strong>outside</strong> of a block (at the top-level of the &lt;script&gt; element) it has <strong>script</strong> scope. Script scope means that the variable is available throughout the current script, and in other &lt;script&gt; tags.</li>
+                </ul>
+
+                <p>Open the file functions4.html and look at the code. (Note that it begins with the literal statement "use strict", which is an ES5/ES6 command to invoke <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">Strict Mode</a>). Then preview it in a browser. If you're using Chrome, view the "Sources" tab in the developer tools; if you're using Firefox, view the "Debugger" tab. The <code>debugger;</code> statement will suspend execution of the program and allow you to inspect both the values and the scopes of the variables.</p>
+                
+                <p>In Chrome, it shows you that you have three scopes here: “Local”, “Script”, and “Global”. In Firefox, it specifies individual functions and blocks, with script being a type of block. </p>
+
+                <ul>
+                    <li>Ther script scoped variables <code>A</code> and <code>B</code> are available throughout the script block.</li>
+                    <li>The local variables <code>A</code> and <code>C</code> inside <code>func1()</code>,  are only available within the function; redeclaring <code>A</code> here means that changing it in the function does not affect the global value. (It's not great coding practice to have variables with the same name masking each other like this, though; humans tend to get more confused than computers about their values!)</li>
+                    <li>There are also many default globally scoped objects, including alerts, arrays, the <code>Math</code> object, and more. All scripts have full access to these and other global variables. </li>
+                </ul>
+
+                <img src="functions-1.jpg" alt="breakpoints illustration" class="screenshot">
+
+                <p><strong>Try this</strong>: Remove the <code>debugger;</code> statement and uncomment the final <code>console.log()</code> that tries to print out <code>C</code>. You should get an error message in your console. Do you understand why?</p>
+
+                <h3>A Few Notes on Variables Defined with <code>var</code></h3>
+
+                <p>Variables declared with the var keyword (which preceded the ES6 let and const methods) are scoped to the nearest enclosing function in which they were declared; they are NOT block scoped.</p>
+
+                <p>If a variable is declared with the var keyword outside of a function, that variable is now in the <em>global</em> scope rather than the <em>script</em> scope.</p>
+
+                <p>You can read about this and other behaviors of the <code>var</code> keyword--including variable declaration hoisting and global scope--in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var">MDN's <code>var</code> reference</a>.</p>
+
+            </div>
+
+
+            <div class="subhead">
+                <h2>Hoisting and the "Temporal Dead Zone"</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+
+                <h3>Function Declaration and Hoisting</h3>
+
+                <p>Functions that are declared and defined with the <code>function</code> keyword are available for use within their entire scope, even if code that calls them is placed before they have been declared. Here is an example:</p>
+
+                <textarea class="samplecode">
+doStuff(); // this is Legal!
+                    
+function doStuff(){
+    ...
+}
+</textarea>
+
+                <p>This works because with declared functions, their name and definition (implementation) are both "hoisted" to the top of the scope by the JavaScript runtime, and thus made immediately available to all of the code in that scope.</p>
+
+
+                <h3>Function Expressions Declared Using <code>let</code></h3>
+
+                <p>But function expressions that are declared with <code>let</code> will NOT be available.</p>
+
+                <textarea class="samplecode">
+doStuff(); // ERROR! - "Uncaught ReferenceError: doStuff is not defined"
+
+let doStuff = function(){
+    ...
+}
+
+To fix this, we have to move the call to doStuff() below where it was declared and defined:
+
+let doStuff = function(){
+
+}
+
+doStuff(); // this is Legal!
+            </textarea>
+
+                <h3>Other variables declared with let</h3>
+
+                <p>Other variables declared with let work the same way - the declaration is NOT available:</p>
+                <textarea class="samplecode">
+// Bad! "Uncaught ReferenceError: x is not defined"
+x ++;
+let x = 0; 
+
+// Good!
+let y = 0;
+y ++; // `y` is now equal to 1
+                </textarea>
+
+                <h3>Variables declared with var</h3>
+
+                <p>Variables declared with var work differently. The declaration IS hoisted to the top of the function scope, but the definition (assigned value) is NOT:</p>
+
+<textarea class="samplecode">
+function doStuff(){
+    var x = 10;
+    x++;
+
+    y++;
+    var y = 10;
+
+    console.log(`x=${x}`); // will output 11
+    console.log(`y=${y}`); // will output 10
+}
+
+doStuff();
+</textarea>
+
+                <p>In this example, x behaves as we expect.</p>
+
+                <p>For y, however, here's what will happen:</p>
+                <ol>
+                    <li>The definition of y will be hoisted to the top of the function, but it will be given a value of undefined.</li>
+                    <li>The ++ operator will be run on the undefined value, which then gives y a value of <code>NaN</code>.</li>
+                    <li>The value of 10 is then assigned to y</li>
+                </ol>
+        
+
+                <h3>The Temporal Dead Zone</h3>
+                <p>So what is the "Temporal Dead Zone"? For variables declared with <code>let</code> or <code>const</code>, there is a period between entering scope and being declared where they cannot be accessed. This period is known as the temporal dead zone (TDZ). You can read more about it here: <a href="https://medium.com/@sbakkila/javascript-es-6-let-and-the-dreaded-temporal-dead-zone-85b89314d168">JavaScript ES 6: let and the dreaded Temporal Dead Zone</a>.</p>
+            </div>
+
+            <div class="subhead">
+                <h2>A Few Notes on Functions</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <ol>
+                    <li>We have not yet talked about the <code>this</code> keyword, which has a special value within functions based on how it is called. We will take a closer look at <code>this</code> next week when we talk about events and triggers.</li>
+            
+                    <li>A new kind of function for ES6 is called a Generator Function - which is a function that can be paused and later resumed. We will not be covering them in this course. If you are interested, here is some information about them:
+                        <ul>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">MDN: Iterators and Generators</a></li>
+                            <li><a href="http://thejsguy.com/2016/10/15/a-practical-introduction-to-es6-generator-functions.html">A Practical Introduction to ES6 Generator Functions</a></li>
+                        </ul>
+                    </li>
+                    <li>We are going to use String Template literals in our examples instead of string concatentation going forward. But there is one caveat - Internet Explorer 11 (the final version of IE) does not support them, so be cautious about using them in your "shipping" JavaScript projects.</li>
+            
+                    <li>You may have noticed global variable scope above. How can you add variables to this global scope?
+                        <ul>
+                            <li>Use the var keyword outside of a function definition (we will avoid using var in this class)</li>
+                            <li>Every time you give an element an id value, you are actually creating a property on the global .window object.</li>
+                        </ul>          
+                        This "auto creation" of global properties is a feature you probably don't want to use in your code, but you need to be aware of it because it can cause quirky behavior in your programs depending on how you "id" your elements.
+                    </li>
+                </ol>
+            </div>
+
+            <div class="subhead">
+                <h2>Deliverable</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <h3>Part 1</h3>
+                <p>Open the file week9hw.html, and review the code. Then make the following changes::</p>
+                
+                <p>Add at least three of your favorite colors and foods to the arrays. (If you would rather change the theme of the "favorites" to something else--games, music, books etc--feel free.)</p>
+                
+                <p>Then write two "for" (or "for...in") loops to retrieve the values from the arrays,generating a new list item for each. Refer back to Tuesday's exercises for reminders on how to create a new list item, add content to it, and insert it into the DOM. Instead of inserting it relative target item, however, use the appendChild() method to add it to the #colorsList element.</p>
+
+                <p>Use an ES6 <code>for...in</code>loop to do the same thing for the second array.</p>
+                
+                <p>Optional challenge: Loop through the links object literal, pulling out both the key and the value. Use those to generate a list of functioning links, and add them to the last &lt;ol&gt; on the page.</p>
+
+                <p>Test your page; you should have two (or, if you did the challenge, three) fully populated lists.</p>
+
+                <h3>Part Two</h3>
+
+                <p>The problem with the code that you just wrote is that you're duplicating the same basic code for each of the first two lists - this violates a software development best practice known as D.R.Y. - "Don't Repeat Yourself". You need to factor out that duplicated code and put it into a function.</p>
+
+                <p>Start with this function declaration:</p>
+
+                <textarea class="samplecode">
+function createList(listElement,array){
+    // you write the rest
+}
+                </textarea>
+
+                <p>Replace your two existing for loops with two calls to this function, passing in a reference to the &lt;ol&gt; element you want to populate, and to the relevant array.</p>
+
+                <p>When you're done, link the completed file to your landing page as "Week 9 Functions Exercise".</p>
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
