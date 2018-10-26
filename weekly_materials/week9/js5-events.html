@@ -210,6 +210,14 @@ p.addEventListener("click",messWithDiv);
                     <li>When you click the submit button, the text in the paragraph should change to "Your FINAL CHOICE is <em>value</em>," and the &lt;legend&lt; element should be displayed in the color you chose.</li>
                 </ul>
 
+                <p>Here are a few hints to help you with your code:</p>
+                <ul>
+                    <li>You'll need to use <code>document.querySelectorAll()</code> to create an array of all the radio buttons. (There are several different selectors you could use for this.) Then you'll need to use a <code>for</code> or a <code>for...of</code> loop to assign either an event handler or an event listener with appropriate behaviors.</li>
+                    <li>To get the value of a radio button, the function it triggers can reference <code>this.value</code>.</li>
+                    <li>Both the radio buttons and the submit button can use  <code>click</code> as a trigger. </li>
+                    <li>You'll need to keep track of the color chosen, so think carefully about the scope of your variables and where they need to be defined.</li>
+                </ul>
+
                 <p>When you're done, link the file to your landing page with the name JS Event Exercise, and upload it no later than noon on Saturday.</p> 
 
 
