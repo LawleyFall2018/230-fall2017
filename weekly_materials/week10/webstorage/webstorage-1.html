@@ -36,8 +36,9 @@
 </main>
 
 <script>
+    "use strict";
 
-    /* This stuff happens "onload" */
+    /* This part of the script happens "onload" */
     // declare some constants
     const nameField = document.querySelector("#nameField");
     const colorSelect = document.querySelector("#colorSelect");
@@ -45,7 +46,7 @@
     const nameKey = prefix + "name"
     const colorKey = prefix + "color";
 
-    // grab the stored data, will return `null` if the user has never been to this page
+    // retrieve the stored data; will return `null` if the user has never been to this page
     const storedName = localStorage.getItem(nameKey);
     const storedColor = localStorage.getItem(colorKey);
 
@@ -61,8 +62,8 @@
         colorSelect.querySelector(`option[value='${storedColor}']`).selected = true;
     }
 
-    /* This stuff happens later when the user does something */
-    // when the user changes their favorites, update localStorage
+    /* This part of the script is triggered by user actions  */
+    // when the user changes their name or color, update localStorage
     nameField.onchange = e => { localStorage.setItem(nameKey, e.target.value); };
     colorSelect.onchange = e => { localStorage.setItem(colorKey, e.target.value); };
 
