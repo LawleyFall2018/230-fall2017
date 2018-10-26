@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 10 JavaScript In-Class Exercise 6: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your completed file from your landing page as JS Web Storage Exercise, and publish it to your GitHub site. This should be done before class on Thursday.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week10">Back to Week 10</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 6: Web Storage API<br class="mobile-break" /><span class="weekinfo">(Week 9, Tuesday 10/23)</span></h2>
+            <div class="page-desc">
+                <p>HTML pages are generally “stateless”–even if you change elements on the page based on user interaction, reloading the page sets it back to its original state.</p>
+
+                <p>You can save state information about a page (and a site) by storing data on the user’s computer using one of two methods: “cookies” or the Web Storage API. Cookies are name/value pairs typically used for things like session management, personalization, and user tracking. The Web Storage API introduced with HTML5 also allows us to use JavaScript to store <code>key:value</code> data in the user’s browser, and retrieve that information when the user returns to the site. This API allows more data storage than cookies, and is more secure.</p>
+
+                <p>For this exercise, you'll be using the files in the <a href="webstorage.zip">webstorage.zip</a> file. You should download and unzip that folder now.</p> 
+            </div>
+
+            <div class="subhead">
+                <h2>Web Storage Resources</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Before you begin, review these two pages on the MDN site:</p> 
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">MDN: Using the Web Storage API</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">MDN: Web Storage API</a></li>
+                </ul>
+
+            </div>
+
+            <div class="subhead">
+                <h2>A Web Storage Example</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>Open the webstorage-1.html file in a browser. Change the name in the text box, and choose a different value from the select menu. Then close the window, and re-open the file. Your changes should be preserved. That's because each time you change the value of the textbox or the selected drop-down item, their values are written to localStorage. </p>
+
+                <p>Open the Developer Tools pane, and select the Storage tab in Firefox, or the Application tab in Chrome. Find the current host for your page in the local storage section (if you opened the file directly, it will be file://; if you're using a live preview, it will be something like http://127.0.0.1). You should see the two key/value pairs listed.</p>   
+                
+                <p>Now open the file in an editor. If you've reviewed the MDN pages above, you should be able to get a sense of what's happening. One thing worth mentioning is the prefix variable that we're using.</p> 
+                        
+                <p>Web Storage links a key to the server name/domain. That means that if you use it on a shared server like people.rit.edu, two users who use the same key name in their application could overwrite each other's data. One way around this on a shared server is to prefix your key names with something unique, like your account ID. (This is less of a problem on GitHub Pages, since your username is part of the server name, but in other settings or classes you may be using a shared host).</p>
+                 
+                
+            </div>
+
+            <div class="subhead">
+                <h2>Storing Objects with Web Storage</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p>A major limitation of Web Storage is that it doesn't allow us to store arrays or other objects directly. Happily, there's an easy workaround:</p>
+
+                <p>You can easily convert built-in JavaScript objects (Object, Array, Date, etc) to and from a string representation, and then save the string to localStorage. This is known as <a href="https://en.wikipedia.org/wiki/Serialization">serialization</a>.</p>
+
+                <p>Data that has been serialized in this way uses a structure known as JSON, or JavaScript Object Notation. MDN has an excellent page explaining how to work with JSON files, which you can use as reference: <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON">Working with JSON</a>.</p>
+
+                <p>Below are examples of how you could store an array as a string, and then retrieve it from storage and place it back into an array.</p>
+
+                <h3>Save An Array to localStorage with <code>JSON.stringify()</code></h3>
+                
+                <textarea class="samplecode">
+let listID = "abc1234-action-list";
+let items = ["Direct Movie","Deliver Baby","Cure Cancer","Walk on Mars"];
+items = JSON.stringify(items); 			// now it's a String
+localStorage.setItem(listID, items);
+                </textarea>
+
+                <h3>Retrieve an Array from localStorage with <code>JSON.parse()</code></h3>
+                <textarea class="samplecode">
+let listID = "abc1234-action-list";
+let items = localStorage.getItem(listID); 	// returns a String
+items = JSON.parse(items);  			// now it's an Array again
+                </textarea>
+                    
+            </div>
+
+            <div class="subhead">
+                <h2>Important Notes About Web Storage</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <h3>Storage Limits</h3>
+                <p>The process by which the browser works out how much space to allocate to web data storage and what to delete when that limit is reached is not simple, and differs between browsers. You can find more information on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Browser_storage_limits_and_eviction_criteria">MDN Browser storage limits and eviction criteria page</a>.</p>
+
+                <h3>"Blocking" Behavior</h3>
+                <p>Because localStorage is a synchronous (blocking) API, it's important to know that DOM updates to your page will "hang" whenever localStorage is being updated by your code. What this means is that you should be careful about when you update your localStorage values.</p>
+                
+                <p>In a game for example, it wouldn't be wise to update your highScore localStorage value inside of your game loop, since it could be running 60 times a second. Doing so would seriously harm the game's performance. Instead, do the localStorage update only occasionally, for instance when a level or the entire game are completed. You can read more about this in Nolan Lawson's post "<a href="https://nolanlawson.com/2015/09/29/indexeddb-websql-localstorage-what-blocks-the-dom/">IndexedDB, WebSQL, LocalStorage – what blocks the DOM?</a>".</p>
+            </div>
+            
+
+            <div class="subhead">
+                <h2>Deliverable</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>Open the webstorage-exercise.html file in a browser--it's a copy of the webstorage-1.html file, with the addition of a #response div at the end of the page.</p>
+
+                <h3>Part 1: Background Change</h3> 
+                <p>Modify the code so that the user's color choice will also be reflected in the background color of the entire page. If you change the colors in the menu, make sure that you use <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords">CSS color keywords</a>.</p>
+                
+                <p>The color change effect should happen both when the user changes the color using the select menu, and should persist when the user reloads the page.</p>
+                
+                <p>Don't overthink it. This can be done with only two lines of code! </p>
+
+                <p>When you're done, link the file to your landing page with the name JS Web Storage Exercise, and upload it no later than the start of class on Tuesday.</p> 
+                    
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
