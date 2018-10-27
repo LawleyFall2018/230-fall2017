@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Your Name's Web Storage Exercise</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i');
+        html { font-family: Lato; font-size: 16px; }
+        main { max-width: 800px; margin: 0 auto; border: 1px dotted black; padding: 0 10px;} h1 { font-weight: 900;}
+        div { margin: 1.5rem 1rem;}
+    </style>
+   
+</head>
+
+<body>
+<main>
+    <h1>Your Name's Web Storage Exercise</h1>
+    <div>
+        What is your name? &rightarrow; <input type="text" id="nameField">
+    </div>
+
+    <div>
+        What is your favorite color? &rightarrow;
+        <select id="colorSelect">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="magenta">Magenta</option>
+            <option value="cyan">Cyan</option>
+            <option value="white">White</option>
+            <option value="gray">Gray</option>
+        </select>
+    </div>
+</main>
+
+<script>
+    "use strict";
+
+    /* This part of the script happens "onload" */
+    // declare some constants
+    const nameField = document.querySelector("#nameField");
+    const colorSelect = document.querySelector("#colorSelect");
+    const prefix = "webstorage-"; // change 'abc1234' to your github username
+    const nameKey = prefix + "name"
+    const colorKey = prefix + "color";
+
+    // retrieve the stored data; will return `null` if the user has never been to this page
+    const storedName = localStorage.getItem(nameKey);
+    const storedColor = localStorage.getItem(colorKey);
+
+    // if we find a previously set name value, display it
+    if (storedName) {
+        nameField.value = storedName;
+    } else {
+        nameField.value = "Turbo"; // a default value if `nameField` is not found
+    }
+
+    // if we find a previously set color value, display it
+    if (storedColor) {
+        colorSelect.querySelector(`option[value='${storedColor}']`).selected = true;
+    }
+
+    /* This part of the script is triggered by user actions  */
+    // when the user changes their name or color, update localStorage
+    nameField.onchange = e => { localStorage.setItem(nameKey, e.target.value); };
+    colorSelect.onchange = e => { localStorage.setItem(colorKey, e.target.value); };
+
+
+</script>
+</body>
+
+
+</html>
