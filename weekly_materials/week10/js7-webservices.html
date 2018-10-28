@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../main.css">
+
+    <title>IGME-230 Week 10 JavaScript Exercise 7: Lawley Fall 2018</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="prof">
+                <img alt="Photo of Professor Lawley" src="../../lawley-gls.jpg" onclick="document.location.href='http://lawley.rit.edu';" />
+                <p id="name">Professor <br class="mobile-break"> Lawley</p>
+            </div>
+            <div id="title">
+                <h1>Website Design <br class="mobile-break" />&amp; Implementation</h1>
+                <h2>IGME-230 / Fall 2018</h2>
+            </div>
+            <div id="menu">
+                <span><a href="../../index.html">Syllabus</a> </span>/
+                <span><a href="../../schedule.html">Schedule</a></span> /
+                <span><a href="https://mycourses.rit.edu/d2l/home/710486">MyCourses</a></span> /
+                <span><a href="https://lawley230fall2018.slack.com/">Slack</a></span>
+            </div>
+
+        </header>
+
+
+        <nav id="summary">
+            <h3>Deliverables</h3>
+            <ul>
+                <li>Link your completed file from your landing page as JS Web Services Exercise, and publish it to your GitHub site. This should be done before class on Thursday.</li>
+            </ul>
+
+            <h3><a href="../../schedule.html#week10">Back to Week 10</a></h3>
+        </nav>
+
+        <main>
+            <h2 class="page-title">JS Exercise 7: Web Services<br class="mobile-break" /><span class="weekinfo">(Week 10, Thursday 11/1)</span></h2>
+            <div class="page-desc">
+                <p>A <em><a href="http://en.wikipedia.org/wiki/Web_service">Web Service</a></em> is a piece of software running on an HTTP server that allows a web client to read and/or write data that's been as text using either <a href="https://www.w3schools.com/js/js_json_xml.asp">XML or JSON</a>. Web services are available for a wide range of information, including weather, maps and other location information, images, and videos. There are also web services that let the developer store user data online rather than in local storage, so that it is available from any computer. (One example of this is Amazon's AWS service.)</p>
+
+                <p>Reading and writing data to and from a database of content, whether on your own server, or on a cloud service like AWS, is a BIG topic, one which we address in more detail in downstream classes like 330 and 430. In this course, we are just going to scratch the surface. In this class, we'll only be reading data from a web service, not writing to it. </p>
+
+                <h3>Web Services vs Web APIs vs Browser APIs</h3>
+                <p>Web APIs differ from web services in that they can use any type of protocol, including local protocols like file access, not just HTTP. All web services are web APIs, but not all web APIs are web services.) </p>
+
+                <p>As an example, the browser has a significant number of APIs, which are functions built into the browser that don't require an external service to function. In fact, technically, even the DOM has an API, and that's what you're accessing when you call methods like createElement or appendChild. (Note: Methods that create new elements are also known as "constructors", which is how you'll see some of them referred to in this exercise.)</p>
+
+            </div>
+
+            <div class="subhead">
+                <h2>Retrieving and Display Remote Data with AJAX</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+                <p>In order to have your web application retrieve and display data from a third-party API, there are several things you'll need to do.</p>
+
+                <ol>
+                    <li>Create an interface that allows the user to specify their request (for instance, tomorrow's weather forecast for Henrietta, or a map of Rochester). This is typically provided through a form input, although the request could be triggered by any browser event--click, mouseOver, mouseOut, onLoad, etc).</li>
+                    <li>Send the request, in the correct format, to the appropriate third-party API.</li>
+                    <li>Receive and decode the response from the API</li>
+                    <li>Display the results to the user</li>
+                </ol>
+
+                <p>In step 4, you'll often want to update the information on the page without reloading the entire page. (Think about how annoying it would be if every time you scrolled on Google Maps, the whole page reloaded!) The process of updating the content without reloading the page is known as <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started">AJAX (Asynchronous JavaScript and XML)</a>. The acronym is a bit outdated, since many web services now encode their data using JSON rather than XML, but the name has persisted. (Fun fact: the person who coined the term is the same person who created the "Elements of User Experience" model that we looked at in week 4.) </p>
+
+                <p>In today's exercise, we're not going to give the user the ability to change the request and update the page on the fly, so we don't have to deal with AJAX. At the point where we do need AJAX, you'll learn how to use the JQuery library rather than writing all of the functionality yourself.</p>  
+
+                <h2>A Few Notes About Troubleshooting Your Code</h2> 
+                <p>Be sure to work through the code <strong>slowly</strong>, making sure that you understand each line and what it's doing. If you only copy and paste, you'll have a hard time when/if you have to use the commands in any way other than exactly what's here.</p>
+
+                <p>With each piece of code you add, I recommend putting in comments that explains (in your own words) what each line is doing. That will make it easier to both understand and troubleshoot.</p> 
+
+                <p>Test each step before moving on to the next; load the page in a browser and make sure it's doing what it's supposed to. Make sure you have the console open, so that you can if any errors result.</p>
+
+                <p>In this particular exercise, all of the code you add is going to go inside the <code>navigator.geolocation.getCurrentPosition</code> codeblock. Keep an eye on indentation to be sure you're putting things in the right places.</p> 
+            </div>
+
+            <div class="subhead">
+                <h2>A Simple API Example</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+            <div class="panel">
+                <p><em>(This portion of the exercise is adapted from the <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Third_party_APIs">MDN Third-party APIs</a> tutorial.)</em></p>
+
+                <h3>Using Browser APIs</h3>
+                <p>Open the <a href="maps_start.html">map-start.html</a> file in an editor, and look at the script. In the first if statement, you'll see this line:</p>
+
+                <p class="examplecode">navigator.geolocation.getCurrentPosition(function(position) { ... }</p>
+
+                <p>The <code>Navigator</code> object uses the browser's built-in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API">Geolocation API</a>, which allows a page to retrieve your current location (but only if you've given permission).</p>
+
+                <p>After we use the Geolocation API to retrieve the user's current location, we're going to send that information to a third-party API provided by Google Maps, and request information based on it.</p>
+
+                <h3>Using the Google Maps Javascript API</h3>
+
+                <p>To use the <a href="https://developers.google.com/maps/documentation/javascript/tutorial">Google Maps JavaSCript API</a>, we first have to link to it in a script tag, so that we have access to the various objects and methods it provides. In the maps-start.html page, note that there's a &lt;script&gt; tag in the head of the document that links to <code>https://maps.google.com/maps/api/js?key=INSERT-YOUR-API-KEY-HERE</code>.</p>
+
+                <p>As you may have gathered, you're going to need to add some information to that API call--specifically, a developer key. The point of the key is to provide some accountability in who's using the API and how. If you started using the API to do malicious activities (like tracking people's location without their permission, or spamming the API with requests), Google could simply revoke your key. (Try loading the page in a browser and checking the console to see what happens if you don't have a valid key.)</p>
+
+                <p>Google recently switched to requiring a credit card to get your own API key. (They don't charge you for using this API, but they require a payment method associated with your account for verification purposes.) I've set up a key for use in this example, which I'll revoke at the end of the semester. If you want your examples to work after that, you'll need to get your own key by signing up on the <a href="https://console.cloud.google.com/">Google Cloud Platform</a> site.</p>
+
+                <p>Because I don't want my key on the open web, I've posted it to Slack. Replace INSERT-YOUR-API-KEY-HERE with that key.</p>
+
+                <p>Once you've added the key, load the file in a browser. Give the page permission to access your location. Assuming you're in the Rochester area when you run the page, you should see a map like this one:</p>
+
+                <img src="webservices-1.png" alt="Rochester map" class="mobile-screenshot">
+
+                <p>(If you don't see that map, make sure you got the key right. If you're sure it's right, now would be a good time to ask for help!)</p>
+
+                <h3>Understanding the Google Maps Code</h3>
+
+                <p>Take a look at the code again, so that you understand what's happening. I've added comments to the function that calls the map that break it down section by section.</p>
+
+                <p>This exercise will walk you through a few of the API functions, but you can view tutorials on how to use more of the API's functionality on the <a href="https://developers.google.com/maps/documentation/javascript/tutorial">Google Maps JavaScript API reference site</a>.</p> 
+
+
+                <h3>Adding a Map Marker</h3>
+                <p>We're going to add a marker to the map, to show your current location. The Google Maps API has a constructor for markers: google.maps.Marker(). It requires you to pass in an object containing Lat/Long, as well as the map on which you want the marker.  Since we've defined both of those already, you don't need to define any new objects; just add this code below the <code>var myMap = ...</code> line :</p>
+
+                <textarea class="samplecode">
+var myMarker = new google.maps.Marker({
+    position: latlng,
+    map: myMap
+    });
+                </textarea>
+
+                <p>Reload the page; you should see a red map marker appear on or near your current location:</p>
+
+                <img src="webservices-2.png" alt="map with default marker" class="mobile-screenshot">
+
+                <h3>Creating a Custom Marker</h3>
+                <p>The red icon is the default Google Maps icon. To use a custom icon, we need to specify it when we create the marker. We can use a local image, or we can point to an image or icon on another site. In this example, I've downloaded the SVG for one of Google's Material Design icons, specifically the <a href="https://material.io/tools/icons/?icon=directions_walk&style=baseline">directions-walk</a> icon.</p>
+
+                <p>Because this is an SVG, you can actually edit its properties if you want to. By default, the icon is black. But you could add a fill color to the second path element to make it a different color. (I did this, which is why in the image of the map below, the icon is red.)</p> 
+
+                <p>The icon location is specified in the icon property of the options object. You're going to modify your existing marker code to include the icon reference: </p>
+
+                <p class="examplecode">
+var myMarker = new google.maps.Marker({ <br>
+    position: latlng,<br>
+    <strong>icon: "baseline-directions_walk-24px.svg",</strong><br>
+    map: myMap<br>
+    });
+</p>
+
+                <p>Reload the page in a browser. The map should now look like this:</p>
+
+                <img src="webservices-3.png" alt="map with custom marker" class="mobile-screenshot">
+
+                <h3>Display a Pop-Up When Marker is Clicked</h3>
+                
+                <p>Another common use case for Google Maps is displaying more information about a place when its name or marker is clicked. That's what we'll do next.</p>
+
+                <p>First, you need to create a variable holding the content that you want in the popup. This will be placed into the popup by the API and can contain just about any content you want. Add the following line below the google.maps.Marker() constructor definition:</p>
+
+                <textarea class="samplecode">
+var contentString = '&lt;div id="content"&gt;&lt;h2 id="firstHeading" class="firstHeading"&gt;I Did It!&lt;/h2&gt;&lt;p&gt;This is my very own custom info window.&lt;/p&gt;&lt;/div&gt;';
+                </textarea>
+
+                <p>Next, you need to create the popup. Popups are called "info windows" in the Google Maps API, so you'll create the popoup object using the google.maps.InfoWindow() constructor. Add the following below your contentString definition, passing into it a key/value pair of <code>content</code> and the string you want to include (<code>contentString</code>). (There are <a href="https://developers.google.com/maps/documentation/javascript/infowindows">other properties available for Info Windows</a> but here we are just specifying the content.</p>
+
+                <textarea class="samplecode">
+var myInfowindow = new google.maps.InfoWindow({
+    content: contentString
+    });
+                </textarea>
+
+                <p>Finally, to get the popup to display when the marker is clicked, we'll add a simple click event handler. Add the following below the google.maps.InfoWindow() constructor:</p>
+                
+                <textarea class="samplecode">
+myMarker.addListener('click', function() {
+  myInfowindow.open(myMap, myMarker);
+});
+                </textarea>
+
+                <p>Load the page up in a browser, and try clicking on your marker. Your custom popup should appear!</p>
+
+                <img src="webservices-3.png" alt="map with custom marker" class="mobile-screenshot">
+
+            </div>
+
+
+            <div class="subhead">
+                <h2>Deliverable</h2>
+                <i class="fas fa-angle-left" aria-label="expand/collapse arrow"></i>
+            </div>
+
+            <div class="panel">
+
+                <p>When you're done, link the file to your landing page with the name JS Web Services Exercise, and upload it no later than the start of class on Tuesday.</p>
+
+            </div>
+
+
+        </main>
+        <footer>
+            <a href="http://rit.edu"><img src="../../ritlogo.gif" alt="RIT Logo"></a>
+            <span>
+                <a id="cc" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><i class="fab fa-creative-commons" aria-label="Creative Commons"></i><i class="fab fa-creative-commons-by" aria-label="CC BY"></i><i class="fab fa-creative-commons-sa" aria-label="CC SA"></i></a> &bull; <a href="http://lawley.rit.edu/">Liz Lawley</a></span>
+            <a href="http://igm.rit.edu/"><img src="../../igmlogo.png" alt="IGM Logo"></a>
+        </footer>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../expand.js"></script>
+
+</body>
+
+</html>
