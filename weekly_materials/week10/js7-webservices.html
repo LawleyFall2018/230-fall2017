@@ -44,14 +44,14 @@
         <main>
             <h2 class="page-title">JS Exercise 7: Web Services<br class="mobile-break" /><span class="weekinfo">(Week 10, Tuesday 10/30)</span></h2>
             <div class="page-desc">
-                <p>A <em><a href="http://en.wikipedia.org/wiki/Web_service">Web Service</a></em> is a piece of software running on an HTTP server that allows a web client to read and/or write data that's been as text using either <a href="https://www.w3schools.com/js/js_json_xml.asp">XML or JSON</a>. Web services are available for a wide range of information, including weather, maps and other location information, images, and videos. There are also web services that let the developer store user data online rather than in local storage, so that it is available from any computer. (One example of this is Amazon's AWS service.)</p>
+                <p>A <em><a href="http://en.wikipedia.org/wiki/Web_service">Web Service</a></em> is a piece of software running on an HTTP server that allows a web client to read and/or write data that's been encoded as text using either <a href="https://www.w3schools.com/js/js_json_xml.asp">XML or JSON</a>. Web services are available for a wide range of information, including weather, maps and other location information, images, and videos. There are also web services that let the developer store user data online rather than in local storage, so that it is available from any computer. (One example of this is Amazon's AWS service.)</p>
 
-                <p>Reading and writing data to and from a database of content, whether on your own server, or on a cloud service like AWS, is a BIG topic, one which we address in more detail in downstream classes like 330 and 430. In this course, we are just going to scratch the surface. In this class, we'll only be reading data from a web service, not writing to it. </p>
+                <p>Reading and writing data to and from a database of content, whether on your own server, or on a cloud service like AWS, is a BIG topic, one which we address in more detail in downstream classes like 330 and 430. In this course we are just going to scratch the surface, and we'll only be reading data from a web service, not writing to it.</p>
 
                 <h3>Web Services vs Web APIs vs Browser APIs</h3>
-                <p>Web APIs differ from web services in that they can use any type of protocol, including local protocols like file access, not just HTTP. All web services are web APIs, but not all web APIs are web services.) </p>
+                <p>Web APIs differ from web services in that they can use any type of protocol (including local protocols like file access), not just HTTP. All web services are a type of web APIs, but not all web APIs are web services.</p>
 
-                <p>As an example, the browser has a significant number of APIs, which are functions built into the browser that don't require an external service to function. In fact, technically, even the DOM has an API, and that's what you're accessing when you call methods like createElement or appendChild. (Note: Methods that create new elements are also known as "constructors", which is how you'll see some of them referred to in this exercise.)</p>
+                <p>As an example, the browser has a significant number of APIs, which are objects and methods built into the browser that don't require an external service to function. Technically, even the DOM itself is considered an API, and that's what you're accessing when you call methods like createElement() or appendChild(). (Note: Methods that create new elements are also known as "constructors", which is how you'll see some of them referred to in this exercise.)</p>
 
             </div>
 
@@ -61,10 +61,10 @@
             </div>
 
             <div class="panel">
-                <p>In order to have your web application retrieve and display data from a third-party API, there are several things you'll need to do.</p>
+                <p>In order to have your web application retrieve and display data from a web service, there are several steps in the process:</p>
 
                 <ol>
-                    <li>Create an interface that allows the user to specify their request (for instance, tomorrow's weather forecast for Henrietta, or a map of Rochester). This is typically provided through a form input, although the request could be triggered by any browser event--click, mouseOver, mouseOut, onLoad, etc).</li>
+                    <li>Determine what information you want to request from the API--this could be a static value (like the weather for a specific city, or the results of a GIF search for "cute cats"), or it could be a value that the user provides.</li>
                     <li>Send the request, in the correct format, to the appropriate third-party API.</li>
                     <li>Receive and decode the response from the API</li>
                     <li>Display the results to the user</li>
@@ -81,7 +81,7 @@
 
                 <p>Test each step before moving on to the next; load the page in a browser and make sure it's doing what it's supposed to. Make sure you have the console open, so that you can if any errors result.</p>
 
-                <p>In this particular exercise, all of the code you add is going to go inside the <code>navigator.geolocation.getCurrentPosition</code> codeblock. Keep an eye on indentation to be sure you're putting things in the right places.</p> 
+                <p>In this particular exercise, all of the code you add is going to go inside the <code>navigator.geolocation.getCurrentPosition</code> codeblock. Keep an eye on brackets and indentation to be sure you're putting things in the right places.</p> 
             </div>
 
             <div class="subhead">
