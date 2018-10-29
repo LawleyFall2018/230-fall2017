@@ -247,6 +247,10 @@ h3 + p {
     font-family: 'Courier New', monospace;
 }
 
+h3+.samplecode {
+    margin: 1rem auto;
+}
+
 code, pre {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1em;
