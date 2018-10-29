@@ -85,11 +85,15 @@
             <div class="panel">
                 <p>Open the webstorage-1.html file in a browser. Change the name in the text box, and choose a different value from the select menu. Then close the window, and re-open the file. Your changes should be preserved. That's because each time you change the value of the textbox or the selected drop-down item, their values are written to localStorage. </p>
 
-                <p>Open the Developer Tools pane, and select the Storage tab in Firefox, or the Application tab in Chrome. Find the current host for your page in the local storage section (if you opened the file directly, it will be file://; if you're using a live preview, it will be something like http://127.0.0.1). You should see the two key/value pairs listed.</p>   
+                <p>Open the Developer Tools pane, and select the Storage tab in Firefox, or the Application tab in Chrome. Find the current host for your page in the local storage section (if you opened the file directly, it will be file://; if you're using a live preview, it will be something like http://127.0.0.1 ). You should see the two key/value pairs listed.</p>   
                 
-                <p>Now open the file in an editor. If you've reviewed the MDN pages above, you should be able to get a sense of what's happening. One thing worth mentioning is the prefix variable that we're using.</p> 
+                <p>Now open the file in an editor. If you've reviewed the MDN pages above, you should be able to get a sense of what's happening.</p>
+                
+                <p>One thing that's not immediately obvious is why we're adding a prefix to our variables.</p> 
                         
-                <p>Web Storage links a key to the server name/domain. That means that if you use it on a shared server like people.rit.edu, two users who use the same key name in their application could overwrite each other's data. One way around this on a shared server is to prefix your key names with something unique, like your account ID. (This is less of a problem on GitHub Pages, since your username is part of the server name, but in other settings or classes you may be using a shared host).</p>
+                <p>Web Storage links keys to the server name/domain on which they're created. That means that if you use it on a shared server like people.rit.edu, two people who use the same key name in their application could overwrite each other's data. One way around this on a shared server is to prefix your key names with something unique, like your username.</p>
+                
+                <p>On GitHub Pages, this is less of a problem because the server name already includes your username. However, if you were to set up two different JavaScript applications, and they both used the same key (like "name", for instance, or "highscore"), they could end up interfering with each other. In that case, you'd want to add a prefix that was specific to the application.</p>
             </div>
 
 
