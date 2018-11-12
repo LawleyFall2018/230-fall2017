@@ -1,4 +1,4 @@
-# Resource Page for [Project 4: Interactive Graphics on the Web](project4.md)
+# Resource Page for [Project 3: Interactive Graphics on the Web](https://lawleyfall2018.github.io/230-fall2018/projects/p3-interactive.html)
 
 ## CSS Graphics
 - [A Comparison of Animation Technologies (CSS-Tricks)](https://css-tricks.com/comparison-animation-technologies/)

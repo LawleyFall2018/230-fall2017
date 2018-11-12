@@ -273,6 +273,8 @@ code, pre {
     font-family: "Courier New", Courier, monospace;
 }
 
+
+
 /* Default Footer (Mobile) */
 
 footer {
@@ -454,6 +456,12 @@ footer img {
 
         #rubric {
             display: flex;
+        }
+
+        tr.heading {
+            border: 1px solid black;
+            background-color: #ccc;
+            font-weight: 500;
         }
 
         .rubric {
