@@ -159,10 +159,12 @@ If you view this in a browser, you'll see the main page grid layout with the hea
 grid-template-columns: repeat(30,25px);
 grid template-rows: repeat(20,25px); 
 ```
+
 Since you've got the number of rows, the number of columns, and the size of the cells as constants, you'll need to create that value string by concatenating text and variables. I highly recomment using ES6 templating strings for this rather than standard concatenation (you can see both examples below; don't use both, and don't forget that you need one for the rows, as well!)
 ```javascript
 pixelgrid.style.grid-template-columns = "repeat(" + numCols + "," + cellSize + "px)";  // standard concatenation
 pixelgrid.style.grid-template-columns = `repeat(${numCols},${cellSize}px)`;            // ES6 template string
+```
 
 1. Now we want to create enough cells to fill the grid that we just defined. To create a single element with the correct class and add it to the grid, we can use this jQuery line: 
 
