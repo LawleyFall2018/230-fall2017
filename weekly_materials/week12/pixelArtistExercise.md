@@ -45,6 +45,7 @@ Here is your starting file with the HTML and CSS all done for you. Copy and past
             min-height: 100vh;
             display: grid;
             grid-template-rows: 4rem auto;
+            grid-template-columns: 1fr auto 250px 1fr;
             grid-gap: 1em;
             background-color: #eee;
         }
@@ -245,9 +246,27 @@ The HTML page already has the button in place for you. You just have to bind an 
 
 See if you can figure out what the jQuery line would be to change the background color for all of the cells. (The syntax you need is available in the code you've already written...)
 
+(If you wanted to, you could add another button that automatically set all the cells to a different background color, using the same basic code.)
+
+
+## The Responsive Page (Optional Explanation for Layout Geeks)
+
+You may have noticed that there are two grids defined on this page; one is for the pixels, and the other is for the overall page layout (#wrapper). 
+
+The page layout grid is set up to take up the full height of the viewport, so that the background color covers the entire viewable space. 
+
+It's a 2x4 grid. The first row has content only in the second column (the title); the other three cells are empty. The second row has the pixel grid in the second column, and the instructions and controls in the third column; the first and fourth columns are empty. 
+
+It's set up as a 4-column grid because I'm using the first and fourth columns to center the rest of the content in the viewport. The second column is set to auto, so it should take up only as much space as the #pixelGrid container requires. The #instructions container is set to 250px. The other two columns are each set to 1fr, which means they each take up an equal amoutn of the remaining space--functioning like `margin: 0 auto` but in a more semantic and reliable way. The #instructions element is set to justify-self: left, which pushes it up right next to the side of the grid, regardless of the size of the viewport, and the h1 element is set to justify-self:center so that it stays centered over the grid. 
+
+
+![Wrapper Grid](pixelArtist3.png)
+
+Try changing the constant values in the script to create a grid of a different size (you can change the number rows, the number of columns, and or the size of the cells). How does the layout hold up as you resize the grid and/or the viewport? 
+
 
 ## Deliverable
-Upload your completed pixel-artist.html file to your igme230 folder and link to it from your main class page as "Pixel Artist Exercise". Because we're working throught most of this in class, you need to have it turned in no later than the beginning of Thursday's class. 
+Upload your completed pixel-artist.html file (responsive grid optional) to your igme230 folder and link to it from your main class page as "Week 12: Pixel Artist Exercise". Because we're working throught most of this in class, I expect you to have it turned in no later than the beginning of Thursday's class. 
 
 
 
