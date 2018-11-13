@@ -219,7 +219,7 @@ $("selector").mousedown(function () {
 3. Test it and see if it works. If you got the code right, the dragging will in fact work. But, unfortunately, the mouseover behavior continues even after you release the mouse button. We have to unbind the mouseover event from the cells to make that stop. jQuery allows us to do that with the `.unbind()` method:
 
 ```javascript
-$("selector).unbind("event");
+$("selector").unbind("event");
 ```
 
 4. We need to call the unbind method no matter where on the page the the mouse button is lifted, so that if someone drags off the edge of the grid and then releases the button it still unbinds the event. To bind an event handler to everything on the page, we use the document object. This time, instead of using the `this` keyword, we have to specify that the unbind method be used on the selector that has the mouseover event attached to it. 
