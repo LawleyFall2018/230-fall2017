@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
     <link rel="stylesheet" href="../main.css">
-    <title>IGME-230 Project 3 Interactive Graphics: Lawley Fall 2018</title>
+    <title>IGME-230 Project 3 Portfolio Revision: Lawley Fall 2018</title>
 </head>
 
 <body>
@@ -34,20 +34,22 @@
         <nav id="toc">
             <h2>Due Dates</h2>
             <p>Your proposal must be submitted to the myCourses Dropbox by 8am on <strong>Monday, November 26.</strong> I will provide feedback by Saturday, December 1.</p>
-            <p>Your project should be published on GitHub and linked properly from <strong><em>yourgithubname</em>.github.io/igme230/portfolio</strong> by 8:00am on <strong>Monday, December 10</strong>. The landing page link should read "Project 3: Interactive Graphics". If you worked with a partner it should include (partnered with Partner Name) in the link as well.</p>
+            <p>Your project should be published on GitHub and linked properly from <strong><em>yourgithubname</em>.github.io/igme230/portfolio</strong> by 8:00am on <strong>Monday, December 10</strong>. The landing page link should read "Project 3: Revised Portfolio". </p>
         </nav>
 
         <main>
-            <h2 class="page-title">Project 3: JS-Based Interactive Graphics</h2>
+            <h2 class="page-title">Project 3: Revised Portfolio Option</h2>
             <div class="page-desc">
 
-                <p>Create a landing page and a series of three interactive graphics that have some clear connection to each other. For example, they could be increasingly complex versions of the same thing, three different methods for creating the same thing, or three different things created using the same tools/aesthetic.</p>
+                <p>Redo your project 2 portfolio site to correct all problems noted in the original rubric, and to add the functionality listed in the technical requirements below.</p>
 
-                <p>If you choose this option, you may work with a partner. If you do, you must create a new shared repository on github for the project, and each person must make their own commits so that I can see who worked on which components. Each person should then link to the shared site from their own landing page. (I strongly recommend committing new work on a regular basis so that I can see your work over time.) Your documentation page must describe how you split the responsibilities for the project work.</p>
+                <p>The original portfolio should not be removed or replaced; you should create a new directory for the revised version.</p>
 
-                <p>Your focus should be on design and interaction, rather than text (although you should include any text necessary to enhance the appearance and/or interaction of the site). In addition to demonstrating your mastery of JavaScript, the project should be visually polished and easy to navigate/use.</p>
+                <p>If you choose this option, you may request that your revised portfolio grade replace your project 2 grade as well as being your final project grade. You must submit that request via either email or Slack no later than the date that the project is due.</p>
 
-                <p>Before thinking about the technical aspects of your project, take some time to consider how you would like to approach it. What kind of experience do you intend to create? How will the three interactive pages/applications relate to each other aesthetically and/or conceptually? What kind of interactivity do you want to implement?</p>
+                <p>All problems noted on the project 2 gradesheet must be corrected (NOTE: If you did not turn in a portfolio project at all, you will automatically lose the points for “project 2 problems corrected”. )</p>
+
+
 
             </div>
 
@@ -60,10 +62,9 @@
                 <p>You must submit an initial project proposal, with the following components, no later than 8am on November 26:</p>
                 <ul>
                     <li>A concise description of the intended audience(s) and goal(s) for your site, including your expectation of how, when, and why they would be accessing your site.</li>
+                    <li>A description of what you intend to change or improve from your project 2 submission.</li>
                     <li>Sketches or grid-based wireframes, showing how you plan to lay out the content on each of your pages.</li>
-                    <li>A description of the type of interactive graphics that you plan to implement, how they are thematically linked, and how users will interact with them.</li>
-                    <li>If you have an idea of what JavaScript library you would like to use, you should include that information as well. (This is not required.)</li>
-                    <li>If you're working with a partner, you should clearly outline what each of your responsibilities will be on the project. </li>
+                    <li>A description of how you intend to incorporate interactivity into the site. How will the interactive components you use enhance the experience for users of your site?</li>
                 </ul>
 
                 <p>The proposal will not be graded, but failure to submit it will result in a five-point deduction from your final project. (Submitting one that is late and/or incomplete will result in a three-point deduction.) </p>
@@ -75,22 +76,19 @@
             </div>
 
             <div class="panel">
-                <p>Your landing page has to work on a mobile browser, but your individual interactive graphics do not. (However, going directly to a page that does not work in mobile should redirect and/or show an explanation for the user.)</p>
+                <p>Desktop versions of pages should use a multi-column grid layout; mobile versions should use a single-column layout (grid or flex). If a single-page design is used, each section of the page should be clearly delineated, and should take up the full viewport height.</p>
 
-                <p>Because the goal is for you to learn how to utilize new technologies, you may not create these graphics using p5.js. I've created <a href="https://github.com/LawleyFall2018/230-fall2018/blob/master/projects/p3-resources.md">a list of possible libraries for you to use, along with links to tutorials for them</a>.</p>
+                <p>Individual project pages must provide detailed information about the project, including tools used and enough images to clearly illustrate the entirety of the project.</p>
 
-                <p>The main page must use a JavaScript-based interactive navigation component that allows the user to go to any of the major sections of the site.</p>
-                <ul>
-                    <li>It should enhance the experience and should not feel gratuitous. </li>
-                    <li>It must be implemented on the desktop version; it is optional on the mobile version</li>
-                    <li>What you used, why you used it, how you created it, and (if you started with an example rather than writing it from scratch) how you modified it for use with your site must all be addressed on your documentation page.</li>
-                </ul>
+                <p>You may not use a full templating system (like Bootstrap or W3.JS), unless you provide detailed, commented versions of all style changes that you make to the template. (Minified CSS is not acceptable.) Most templating systems use their own internal grid system that will not play well with CSS grid, so it will end up being more rather than less difficult to use them for this project. </p>
+
 
                 <p>Requirements for all pages:</p>
                 <ul>
-                    <li>Use CSS grid and/or flexbox for layout</li>
-                    <li>Usable on both Chrome and Firefox at 1920x1080 and 1280x800</li>
-                    <li>Mobile version (with or without interaction) optimized for 320x568 (an iPhone 5/SE, as rendered by responsive mode)</li>
+                    <li>Use native JavaScript and/or jQuery in some way—for navigation, interaction, or content.</li>
+                    <li>Use CSS grid for multicolumn layouts on desktop-sized viewports. (Flexbox may also be used for mobile views, and for laying out content in grid cells.)</li>
+                    <li>Usable on both Chrome and Firefox at 1280x800 resolution (my laptop). </li>
+                    <li>Mobile version optimized for 320x568 (an iPhone 5/SE, as rendered by responsive mode)</li>
                     <li>Validate properly for both HTML and CSS. (I use the <a href="https://validator.w3.org/">W3C HTML</a> and <a href="https://jigsaw.w3.org/css-validator/">CSS validators</a> for this. I recommend installing the <a href="https://chrispederick.com/work/web-developer/">Web Developer Toolbar</a> extension for easy access to the validators within your browsers.)</li>
                     <li>Have no more than one accessibility error in the <a href="http://wave.webaim.org/">WAVE accessibility evaluation tool</a>.</li>
                 </ul>
@@ -110,8 +108,7 @@
                     <li>Sketches or grid-based wireframes, showing how you designed the grid layouts for each of your page types and placed content within them. (Can be copied from proposal, or updated if it changed.)</li>
                     <li>A clear explanation of why you made the design decisions that you did, including your choices of images, colors, and typefaces. These should all relate back to the goal of your design.</li>
                     <li>A full list of sources for all elements used on the site that you did not create yourself, with the exception of web-based typefaces. This includes images and code samples. If you modified the original resource, you should explain what changes you made to it (if any).</li>
-                    <li>An explanation of what you incorporated that went beyond what was covered in in-class exercises; what did you learn or build upon in order to implement your design ideas? What skills and knowledge did you bring from other classes, or from research you did into specific libraries or technologies, that you integrated into your site? (Using any JavaScript library beyond jQuery or p5.js is likely to satisfy this requirement, but only if you do more than copy an existing demo or tutorial.) IF </li>
-                    <li>If you worked with a partner, it is <em>particularly</em> important for you to explain in this document what <em>each</em> of you did to go above and beyond the basic material covered in the class. The commit history on your shared repo should support your explanation.</li>
+                    <li>An explanation of what you incorporated that went beyond what was covered in in-class exercises; what did you learn or build upon in order to implement your design ideas? What skills and knowledge did you bring from other classes, or from research you did into specific libraries or technologies, that you integrated into your site? (Using any JavaScript library beyond jQuery or p5.js is likely to satisfy this requirement, but only if you do more than copy an existing demo or tutorial.)</li>
                 </ul>
             </div>
 
@@ -124,42 +121,46 @@
                 <p>I will use this rubric for grading your portfolio:</p>
                 <table class="table-rubric">
                     <tr class="heading">
-                        <td colspan="2">Interactive Graphics</td>
+                        <td colspan="2">Content &amp; Design</td>
                     </tr>
                     <tr>
-                        <td>Landing page has clear introduction.</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>Landing page with interactive navigation</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>Three distinct interactive graphics, each with a connection to the theme</td>
-                        <td>6</td>
-                    </tr>
-                    <tr>
-                        <td>Graphics go "above and beyond" basic replication of demos or tutorials</td>
+                        <td>Project 2 problems corrected.</td>
                         <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>JS functionality on all pages</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>At least one interactive portfolio piece</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Detailed descriptions for at least four portfolio pieces</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Multicolumn grid layout on all desktop pages</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Single column layout on all desktop pages</td>
+                        <td>2</td>
                     </tr>
                     <tr class="heading">
                         <td colspan="2">Mechanics</td>
                     </tr>
                     <tr>
-                        <td>Grid +/or Flexbox Used for Responsive Page Layout</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
                         <td>Works in Firefox &amp; Chrome</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Desktop version optimized for 1280x800</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Version optimized for 320x568</td>
                         <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>Desktop version works at 1280x800</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Mobile Version works at 320x568</td>
-                        <td>1</td>
                     </tr>
                     <tr>
                         <td>Semantic, valid HTML</td>
@@ -204,6 +205,10 @@
                         <td>1</td>
                     </tr>
                     <tr>
+                        <td>Explanation of What Changed</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
                         <td>Above and Beyond Explanation</td>
                         <td>1</td>
                     </tr>
@@ -222,7 +227,7 @@
 
             <div class="panel">
                 <p>Your proposal must be submitted to the myCourses Dropbox by 8am on <strong>Monday, November 26.</strong> I will provide feedback by Saturday, December 1.</p>
-                <p>Your project should be published on GitHub and linked properly from <strong><em>yourgithubname</em>.github.io/igme230/portfolio</strong> by 8:00am on <strong>Monday, December 10</strong>. The landing page link should read "Project 3: Interactive Graphics". If you worked with a partner it should include (partnered with Partner Name) in the link as well.</p>
+                <p>Your project should be published on GitHub and linked properly from <strong><em>yourgithubname</em>.github.io/igme230/portfolio</strong> by 8:00am on <strong>Monday, December 10</strong>. The landing page link should read "Project 3: Revised Portfolio". </p>
             </div>
         </main>
 
