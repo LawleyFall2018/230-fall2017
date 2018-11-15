@@ -18,9 +18,7 @@ $(document).ready(function () {
     }
   }
 
-  checkWidth();   // on load
-
-  /* $(window).resize(checkWidth); */
+  checkWidth();   // set panels properly on load
 
 
   $('#expandAll').click(expandAll);
