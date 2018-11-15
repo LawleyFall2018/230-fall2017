@@ -109,6 +109,11 @@ header {
     max-width: 1048px;
 }
 
+.stickytoc {
+    position: fixed;
+    top: 50px;
+}
+
 .sticky+content {
     padding-top: 20px;
 }
@@ -179,11 +184,11 @@ nav, .rubric, #rubric, #expandCollapse {
 }
 
 .panel {
-    display: none;
     margin-top: -5px;
     padding: 0 5px 5px 5px;
     font-size: .9em;
 }
+
 
 
 .panel h3 {
@@ -201,10 +206,6 @@ nav, .rubric, #rubric, #expandCollapse {
     }
 
 
-panel p {
-    padding:  0 5px 0 10px;
-    margin-top: 5px; 
-}
 
 .panel ul, ol {
     padding-left: 25px; 
@@ -413,7 +414,6 @@ footer img {
     
     .panel {
         background-color: white;
-        display: block;
         padding-left: 10px;
     }
   
@@ -448,10 +448,6 @@ footer img {
         nav ul li {
             padding-top: 5px; 
         }
-
-        #toc-wrapper {
-            position: fixed;
-        } 
 
 
         #rubric {
