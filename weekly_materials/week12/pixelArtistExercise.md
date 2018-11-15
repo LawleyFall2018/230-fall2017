@@ -152,7 +152,19 @@ If you view this in a browser, you'll see the main page grid layout with the hea
 
     We can change any of those numbers later to create a differently-sized grid. 
 
-1. Using those constants, we can use JavaScript to set the number of rows and columns for the pixel grid. Create a constant for the #pixelGrid div, and use the JavaScript method `element.style.property` (for example,  `p.style.color = "blue";`) to set its `grid-template-rows property` to the number of rows, and its `grid-template-columns` property to the number of columns. (Hint: this will be easier to write, and read, if you use ES6 templating strings.)
+1. Using those constants, we can use JavaScript to set the number of rows and columns for the pixel grid, and the size of those rows and columns. We've defined those values as constants already, so we don't want to hard code them into our CSS or our Javascript. 
+
+2. Create a variable for the #pixelGrid div, (`let pixelgrid = document.querySelector("#pixelGrid");`, and then use the JavaScript method `element.style.property` to set its `grid-template-rows property` to the number of rows, and its `grid-template-columns` property to the number of columns. Since all the rows and columns are the same width, you can use the `repeat(#,size)` syntax. If we were hard coding this into the CSS,it would look like this:
+```css
+grid-template-columns: repeat(30,25px);
+grid template-rows: repeat(20,25px); 
+```
+
+Since you've got the number of rows, the number of columns, and the size of the cells as constants, you'll need to create that value string by concatenating text and variables. I highly recomment using ES6 templating strings for this rather than standard concatenation (you can see both examples below; don't use both, and don't forget that you need one for the rows, as well!)
+```javascript
+pixelgrid.style.gridTemplateColumns = "repeat(" + numCols + "," + cellSize + "px)";  // standard concatenation
+pixelgrid.style.gridTemplateColumns = `repeat(${numCols},${cellSize}px)`;            // ES6 template string
+```
 
 1. Now we want to create enough cells to fill the grid that we just defined. To create a single element with the correct class and add it to the grid, we can use this jQuery line: 
 
@@ -173,16 +185,23 @@ Clicking on a cell should turn it to the selected color - let's get that working
 
 1. Define a script-level variable of `color` that will hold the currently selected color. jQuery makes it easy to retrieve the current value of a select element with `$( "selector" ).val();` (Replace "selector" with a selector for the menu element on the page.)
 
-2. We also want to make sure the color changes when the user chooses a new one from the list. That means we need an event listener for the menu that changes the color value. jQuery makes this easier, too. Use the code below (but make sure you replace "selector" with the actual selector for the menu! Notice that the code uses the `this` keyword, since we're getting the value from the selector that triggered the event. (Test your code by picking a new color and seeing if it's properly logged to the console.)
+2. We also want to make sure the color changes when the user chooses a new one from the list. That means we need a script level variable for color, and an event listener for the menu that changes the color value. We could set the color to a default value, but then we'd need to change if it we decided to change the available colors in the menu (or the default selected option). Instead, we'll use jQuery to retrieve the the value of the currently selected menu option. As you can see, this is a *lot* easier than what we had to do with native JavaScript to find the currently selected color in the Events exercise! (Make sure you check the console when you reload the page to make sure that the selected color was logged!)
 
 ```javascript
-$("selector").change(function () { 
+let color = $("putmenuselectorhere").val();
+console.log(color);
+```
+
+3. jQuery also makes it easy to add an event listenter that changes the color value when the user selects a new item from teh menu. Use the code below (but make sure you replace "selector" with the actual selector for the menu! Notice that the code uses the `this` keyword, since we're getting the value from the selector that triggered the event. (Test your code by picking a new color and seeing if it's properly logged to the console.)
+
+```javascript
+$("putmenuselectorhere").change(function () { 
     color = $(this).val();  
     console.log(color);  
 });
 ```
 
-3. Now that we've got the color, we can create a new event handler that changes the color of a cell when it's clicked. Again, jQuery makes this easier than native JavaScript. We're going ot use the same construction that we did in the previous step, but this time we're going to use the `.click` method instead of the `.change` method. We want to attach that to all of the items that have a class of `.cell`, and use it to change the background color of the clicked cell to the current color value. Because jQuery automatically applies the method to all elements that match the query selector, we don't need to write a loop. (Again, remember to change the generic selector string!)
+4. Now that we've got the color, we can create a new event handler that changes the color of a cell when it's clicked. Again, jQuery makes this easier than native JavaScript. We're going ot use the same construction that we did in the previous step, but this time we're going to use the `.click` method instead of the `.change` method. We want to attach that to all of the items that have a class of `.cell`, and use it to change the background color of the clicked cell to the current color value. Because jQuery automatically applies the method to all elements that match the query selector, we don't need to write a loop. (Again, remember to change the generic selector string!)
 
 ```javascript
 $("selector").click(function () { 
@@ -190,7 +209,7 @@ $("selector").click(function () {
 });
 ```
 
-4. Test it out now. Does it work? If so, **congratulations**! You now have the MVP (Minimum Viable Product) version of your app. 
+4. Test it out now. Does it work? If so, **congratulations**! You now have the MVP (Minimum Viable Product) version of your app. To get credit for this exercise, this is the minimum level you need to accomplish. However, the finished product is a lot more impressive--and you'll learn a lot more about JavaScript and jQuery, if you continue on and add in the drag behavior!
 
 ## Adding Drag Behavior
 Right now we can click on individual cells to change their color, but it would be so much better if we could click and then drag the mouse to "paint" multiple pixels. Let's make that happen.
