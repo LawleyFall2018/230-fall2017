@@ -1,0 +1,78 @@
+* {box-sizing: border-box;}
+
+html, body {
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+
+form {
+    width: 600px;
+    margin: 3rem auto;
+    background-color: #eee;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1em;
+}
+
+h1 {
+    text-align: center;
+}
+
+fieldset {
+    border: 1px solid #999;
+    border-radius: 1rem;
+    margin: 1rem 0;
+}
+
+fieldset legend {
+    font-size: 1.2rem;
+    padding: .5rem;
+}
+
+.inputs label {
+    justify-self: end;
+    font-size: .9rem;
+    display: inline-block;
+    text-align: right;
+    width: 150px;
+}
+
+.inputs input {
+    margin: .5rem .25rem;
+    width: 300px;
+    border: 1px solid #999;
+}
+
+label[for="comments"] {
+    vertical-align: top;
+    width: 150px;
+}
+
+textarea {
+    margin-bottom: 1rem;
+    width: 560px;
+    height: 200px;
+}
+
+ul { 
+    list-style-type: none;
+    margin-top: .5rem;
+    padding: 0;
+}
+
+ul li {
+    display: inline; 
+
+}
+
+button {
+    display: block;
+    margin: 1rem auto;
+}
+
+
+
+

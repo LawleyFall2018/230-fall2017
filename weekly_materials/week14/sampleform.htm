@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sample form for use with formmail.php</title>
+</head>
+<body>
+<p>This form demonstrates the use of formmail.php.
+<br />Note that formmail.php <i>requires</i> a one line change
+to work (two lines recommended).  Use a text editor to read the information
+at the top of formmail.php.
+</p>
+<p>Also, you need to change this form using a text editor;
+follow the 4 simple steps shown in the comments.
+</p>
+<p>We've included sample fields to show you how to
+submit Checkboxes, Radio Buttons, Multi-selection
+List Boxes, normal Text fields, and Text Areas.
+</p>
+<p>
+For full information and support, visit
+<a href="http://www.tectite.com/">www.tectite.com</a>
+</p>
+<p>
+You can save time and effort by using our
+<a href="http://www.tectite.com/wizards/choose.php">Form Designer and FormMail Configuration Wizard</a>
+to design your own forms and get a configured copy of FormMail.
+</p>
+<p></p>
+
+    <!-- STEP 1: Put the full URL to formmail.php on your website in the 'action' value. -->
+<form method="post" action="http://www.your-host-name/formmail.php" name="SampleForm">
+    <input type="hidden" name="env_report" value="REMOTE_HOST,REMOTE_ADDR,HTTP_USER_AGENT,AUTH_TYPE,REMOTE_USER" />
+
+    <!-- STEP 2: Put your email address in the 'recipients' value.
+                 Note that you also have to allow this email address in the
+                 $TARGET_EMAIL setting within formmail.php!
+    -->
+    <input type="hidden" name="recipients" value="you@your-host-name" />
+
+    <!-- STEP 3: Specify required fields in the 'required' value - or leave unchanged.
+            NOTE: DO NOT put your email address and name here.
+            "Your email address" and "Your name" are error messages for your users to see,
+            not placeholders for you to replace.
+    -->
+    <input type="hidden" name="required" value="EmailAddr:Your email address,FullName:Your name" />
+
+    <!-- STEP 4: Put your subject line in the 'subject' value. -->
+    <input type="hidden" name="subject" value="Sample FormMail Testing" />
+
+    <!-- ALL DONE! Visit our site for HOW TO guides and more complex features. -->
+
+    <!-- this derives (creates) "email" and "realname" special fields from the input fields -->
+    <input type="hidden" name="derive_fields" value="email=EmailAddr,realname=FullName" />
+
+    <!-- this excludes the "email" and "realname" special fields from the body of the email you receive -->
+    <input type="hidden" name="mail_options" value="Exclude=email;realname" />
+
+    <table border="1" cellspacing="5%">
+    <tr>
+        <td>
+        <p>Please enter your name:</p>
+        </td>
+        <td><input type="text" name="FullName" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <p>Please enter your email address:</p>
+        </td>
+        <td><input type="text" name="EmailAddr" />
+        </td>
+    </tr>
+    <tr>
+        <td><p>May we contact you?</p>
+        </td>
+        <td>
+            Yes <input type="radio" name="contact" value="Y" checked="checked" />
+            No <input type="radio" name="contact" value="N" />
+         </td>
+    </tr>
+    <tr>
+        <td><p>What are your favourite colours?</p>
+        </td>
+        <td>
+            Red     <input type="checkbox" name="colors[]" value="red" />
+            Blue    <input type="checkbox" name="colors[]" value="blue" />
+            Yellow  <input type="checkbox" name="colors[]" value="yellow" />
+         </td>
+    </tr>
+    <tr>
+        <td valign="top"><p>What vehicles do you have a license to operate?</p>
+        </td>
+        <td valign="top">
+            <p>
+            <select name="vehicles[]" multiple="multiple" size="5">
+                <option value="Car">Car</option>
+                <option value="Bus">Bus</option>
+                <option value="Truck">Truck</option>
+                <option value="Plane">Aeroplane</option>
+                <option value="Boat">Boat</option>
+            </select>&nbsp;(Select all that apply; use CTRL-click to select)
+            </p>
+         </td>
+    </tr>
+    <tr>
+        <td valign="top">
+        <p>Please enter your message:</p>
+        </td>
+        <td><textarea name="mesg" rows="10" cols="50"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Submit" /></td>
+        <td style="text-align:right;"><span style="font-size:60%;">Powered by Tectite <a href="http://www.tectite.com/" target="_blank">web form</a> processor (FormMail).</span>
+        </td>
+    </tr>
+    </table>
+</form>
+</body>
+</html>
