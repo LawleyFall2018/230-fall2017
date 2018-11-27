@@ -1,4 +1,4 @@
-# Week 14 Exercise: PHP Email Form 
+# Week 14 Homework Exercise: PHP Email Form 
 
 ## Overview & Goals
 In today's exercise, you'll build a simple PHP contact form. Because it's easy for a form like this to be abused, rather than writing our own script, we're going to use one that's been developed to include some security features. 
@@ -6,7 +6,7 @@ In today's exercise, you'll build a simple PHP contact form. Because it's easy f
 ## Downloading and Editing the Script
 
 We're going to use a PHP script provided by a company called Tectite. Got to 
-https://www.tectite.com/formmailpage.php. I've included the script in the [formmail.zip] archive, which you should download and extract now. 
+https://www.tectite.com/formmailpage.php. I've included the script in the [formmail.zip](formmail.zip) archive, which you should download and extract now. 
 
 Open the formmail.php file in an editor; you'll see that there is a good bit of documentation in the file itself. Under the "Quick Start" information, it tells you that the only thing you absolutely have to change in the script is the TARGET_EMAIL; it should include the domain to which the mail script can send email (in this case, we're going to restrict to only your email address). It also strongly suggests that you change the $DEF_ALERT value to your own email, which is particularly useful when you're testing a form that will be sent to another address. 
 
@@ -87,8 +87,7 @@ Save it, upload it to the server, and try it again.
 If you want to customize your form results further, you can look at [sampleform.htm], and/or consult the documentation at https://www.tectite.com/fmdoc/index.php. 
 
 ## Submitting Your Work
-This exercise should be linked from your landing page with the name "Week 14 Formmail Exercise" by the start of class on Tuesday of week 15. 
-
+This is an optional exercise. 
 
 
 
