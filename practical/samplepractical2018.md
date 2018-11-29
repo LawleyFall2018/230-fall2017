@@ -1,12 +1,17 @@
 # Sample Practical
 
-[Jump to Screenshots](#finished-version) - [Jump to Grading](#grading)
+| [Jump to Screenshots](#finished-version) | [Jump to Grading](#grading) |
+|-----|-----|
 
-Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains the .html, .css and .js files for this project. 
+This sample practical includes all the basic concepts that the final practical will include: CSS formatting, CSS layout, responsive design, and JavaScript functionality. The final practical will vary in its constraints/implementation. (For instance, you might be asked to build a grid with a column spanning multiple rows (instead of, or in addition row spanning multiple columns. Or you might need to trigger a JavaScript event based on a mouse click rather than a menu change.) 
 
-Do *not* edit the .html file -- all of your work should be in the .css and .js files. 
+Once you've worked through this sample practical, it is my expectation that you will be able to complete the final practical during our allotted class time on 12/6 (75 minutes). 
+
+*Important Note for Students Who Need Extended Time:* If you require extended testing time, you should not attend class on Wednesday, December 6th. You will instead take the exam during our scheduled final exam time (Wednesday, December 13 from 10:45am to 1:15pm), which will provide double the time allotted in class. If you fail to get 7/10 points on that practical, I will work with you to find a time for you to take a second version under my supervision during exam week. (Or, if necessary, give you an incomplete for the class and have you take the final practical at the start of the spring semester.)
 
 ## Instructions
+
+Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains the .html, .css and .js files for this project. Do *not* edit the .html file -- all of your work should be in the .css and .js files.  
 
 **Mobile Grid Layout (2 points)**
 - Grid takes up 100% of viewport width
@@ -38,8 +43,11 @@ Do *not* edit the .html file -- all of your work should be in the .css and .js f
 **JavaScript AJAX Content Loading (2 points)**
 - Edit content1.txt to use your name and today’s date. It should be displayed in the #contents element by default when the page loads
 - Selecting a menu item should display the appropriate content file
+
 ---
-[Return to Top](#sample-practical) - [Jump to Grading](#grading)
+
+| [Return to Top](#sample-practical) | [Jump to Grading](#grading) |
+|-----|-----|
 
 ## Finished Version
 Here's what the finished site should look like:
@@ -49,7 +57,9 @@ Here's what the finished site should look like:
 ![Mobile Layout](mobile.png)
  
 ---
-[Return to Top](#sample-practical) 
+
+| [Return to Top](#sample-practical) |
+| --- |
 
 ## Grading
 
@@ -75,10 +85,5 @@ Aside (content) Menu
 - content1.txt loads by default
 - Menu options load content files properly
 	
-[Return to Top](#sample-practical) 
-
- 
-
- 
-
- 
+| [Return to Top](#sample-practical) |
+| --- |
