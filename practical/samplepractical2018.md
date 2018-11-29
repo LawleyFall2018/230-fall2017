@@ -3,7 +3,7 @@
 | [Jump to Screenshots](#finished-version) | [Jump to Grading](#grading) |
 |-----|-----|
 
-This sample practical includes all the basic concepts that the final practical will include: CSS formatting, CSS layout, responsive design, and JavaScript functionality. The final practical will vary in its constraints/implementation. (For instance, you might be asked to build a grid with a column spanning multiple rows (instead of, or in addition row spanning multiple columns. Or you might need to trigger a JavaScript event based on a mouse click rather than a menu change.) 
+This sample practical includes all the basic concepts that the final practical will include: CSS formatting, CSS layout, responsive design, and JavaScript functionality. The final practical will vary in its constraints/implementation. (For instance, you might be asked to build a grid with a column spanning multiple rows instead of, or in addition to, a row spanning multiple columns. Or you might need to trigger a JavaScript event based on a mouse click rather than a menu change.) 
 
 Once you've worked through this sample practical, it is my expectation that you will be able to complete the final practical during our allotted class time on 12/6 (75 minutes). 
 
