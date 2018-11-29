@@ -7,7 +7,9 @@ This sample practical includes all the basic concepts that the final practical w
 
 Once you've worked through this sample practical, it is my expectation that you will be able to complete the final practical during our allotted class time on 12/6 (75 minutes). 
 
-*Important Note for Students Who Need Extended Time:* If you require extended testing time, you should not attend class on Wednesday, December 6th. You will instead take the exam during our scheduled final exam time (Wednesday, December 13 from 10:45am to 1:15pm), which will provide double the time allotted in class. If you fail to get 7/10 points on that practical, I will work with you to find a time for you to take a second version under my supervision during exam week. (Or, if necessary, give you an incomplete for the class and have you take the final practical at the start of the spring semester.)
+On the final practical, you must get 7/10 points to pass. If you do not, you will need to take the exam again on during our scheduled final exam time (Wednesday, December 13 from 10:45am to 1:15pm). You must receive an 8/10 to pass that exam. If you do not pass either exam, you will not receive a passing grade in the class.  
+
+*Important Note for Students Who Need Extended Testing Time:* If you require extended testing time, you should not attend class on Wednesday, December 6th. You will instead take the exam during our scheduled final exam time, which will provide double the time allotted in class. If do not get 7/10 points on that practical, I will work with you to find a time for you to take a second version under my supervision during exam week. (Or, if necessary, give you an incomplete for the class and have you take the final practical at the start of the spring semester.)
 
 ## Instructions
 
