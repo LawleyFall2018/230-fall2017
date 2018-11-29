@@ -48,7 +48,7 @@ Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains th
 
 ---
 
-| [Return to Top](#sample-practical) | [Jump to Grading](#grading) |
+| [Return to Instructions](#instructions) | [Jump to Grading](#grading) |
 |-----|-----|
 
 ## Finished Version
@@ -60,7 +60,7 @@ Here's what the finished site should look like:
  
 ---
 
-| [Return to Top](#sample-practical) |
+| [Return to Instructions](#instructions) |
 | --- |
 
 ## Grading
@@ -87,5 +87,5 @@ Aside (content) Menu
 - content1.txt loads by default
 - Menu options load content files properly
 	
-| [Return to Top](#sample-practical) |
+| [Return to Instructions](#instructions) |
 | --- |
