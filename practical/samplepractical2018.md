@@ -13,7 +13,9 @@ On the final practical, you must get 7/10 points to pass. If you do not, you wil
 
 ## Instructions
 
-Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains the .html, .css and .js files for this project. Do *not* edit the .html file -- all of your work should be in the .css and .js files.  
+Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains the .html, .css and .js files for this project. (Don't right-click to download; you need to click on the link and then select the download link.) 
+
+**Do *not* edit the .html file -- all of your work should be in the .css and .js files. ** 
 
 **Mobile Grid Layout (2 points)**
 - Grid takes up 100% of viewport width
