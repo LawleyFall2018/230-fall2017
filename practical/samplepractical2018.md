@@ -19,7 +19,7 @@ Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains th
 - Grid takes up 100% of viewport width
 - One column that uses all horizontal space
 - Rows automatically generated
-- Row order of elements: 1-nav, 2-header, 3-article, 4-aside, 5-footer
+- Row order of elements: 1-header, 2-nav, 3-article, 4-aside, 5-footer
 
 **Desktop Grid Layout (2 points)**
 - Grid width is 90% of the viewport width, with a max-width of 1200px
