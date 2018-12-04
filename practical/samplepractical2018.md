@@ -3,7 +3,7 @@
 | [Jump to Screenshots](#finished-version) | [Jump to Grading](#grading) |
 |-----|-----|
 
-This sample practical includes all the basic concepts that the final practical will include: CSS formatting, CSS layout, responsive design, and JavaScript functionality. The final practical will vary in its constraints/implementation. (For instance, you might be asked to build a grid with a column spanning multiple rows (instead of, or in addition row spanning multiple columns. Or you might need to trigger a JavaScript event based on a mouse click rather than a menu change.) 
+This sample practical includes all the basic concepts that the final practical will include: CSS formatting, CSS layout, responsive design, and JavaScript functionality. The final practical will vary in its constraints/implementation. (For instance, you might be asked to build a grid with a column spanning multiple rows instead of, or in addition to, a row spanning multiple columns. Or you might need to trigger a JavaScript event based on a mouse click rather than a menu change.) 
 
 Once you've worked through this sample practical, it is my expectation that you will be able to complete the final practical during our allotted class time on 12/6 (75 minutes). 
 
@@ -13,13 +13,15 @@ On the final practical, you must get 7/10 points to pass. If you do not, you wil
 
 ## Instructions
 
-Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains the .html, .css and .js files for this project. Do *not* edit the .html file -- all of your work should be in the .css and .js files.  
+Begin by downloading [fall2018sample.zip](fall2018sample.zip), which contains the .html, .css and .js files for this project. (Don't right-click to download; you need to click on the link and then select the download link.) 
+
+**Do *not* edit the .html file -- all of your work should be in the .css and .js files. ** 
 
 **Mobile Grid Layout (2 points)**
 - Grid takes up 100% of viewport width
 - One column that uses all horizontal space
 - Rows automatically generated
-- Row order of elements: 1-nav, 2-header, 3-article, 4-aside, 5-footer
+- Row order of elements: 1-header, 2-nav, 3-article, 4-aside, 5-footer
 
 **Desktop Grid Layout (2 points)**
 - Grid width is 90% of the viewport width, with a max-width of 1200px
