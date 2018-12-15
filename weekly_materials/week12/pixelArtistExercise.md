@@ -250,10 +250,16 @@ $(document).mouseup(function () {
     $("selector").unbind("mouseover");
 });
 ```
-5. Once you have the page working, play around with it a bit. It's likely that at some point, you'll find that instead of changing the cell color, the browser tries to handle the drag behavior "normally"--by selecting part of the document. This also causes problems with the mouseup behavior being properly detected. To fix this, we have to use JavaScript's `preventDefault` method to stop the default behavior of a `mousedown`. You'll need to add this line to the beginning of the .mousedown function: 
+5. Once you have the page working, play around with it a bit. It's likely that at some point, you'll find that instead of changing the cell color, the browser tries to handle the drag behavior "normally"--by selecting part of the document. This also causes problems with the mouseup behavior being properly detected. To fix this, we have to use JavaScript's `preventDefault` method to stop the default behavior of a `mousedown`. You'll need to edit the .mousedown function so that you pass the event into the function, and then prevent its default behavior. 
 
 ```javascript
-event.preventDefault(); 
+$("selector").mousedown(function (event) { 
+    event.preventDefault();
+    $(this).css("background-color", color);
+    $("selector").mouseover(function () {
+        $(this).css("background-color", color);
+    });
+});
 ```
 
 **Reload the page and try it out. You should now be able to click and drag to paint multiple cells.**
